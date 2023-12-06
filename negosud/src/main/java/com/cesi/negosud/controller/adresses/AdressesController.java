@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Validated
-@RestController
-public class AdressesController {
+    @RestController
+    public class AdressesController {
 
     private final String versionBDD = "/api/v1/bdd";
     private final String versionRest = "/api/v1/rest";
@@ -54,22 +54,22 @@ public class AdressesController {
     }
 
     @GetMapping(versionBDD + "/adresses/{adresse_id}")
-    public Adresses getAdressesBDD(@PathVariable int adresse_id, @RequestParam(value = "nom", required = false) String nom) {
+    public Adresses getAdressesBDD(@PathVariable int adresse_id) {
         return adressesBusiness.getAdressesBusiness(adresse_id, false);
     }
 
     @GetMapping(versionRest + "/adresses/{adresse_id}")
-    public Adresses getAdressesRest(@PathVariable int adresse_id, @RequestParam(value = "nom", required = false) String nom) {
+    public Adresses getAdressesRest(@PathVariable int adresse_id) {
         return adressesBusiness.getAdressesBusiness(adresse_id, true);
     }
 
     @GetMapping(versionBDD + "/adresses")
-    public List<Adresses> getAllAdressesBDD(@RequestParam(value = "nom", required = false) String nom) {
+    public List<Adresses> getAllAdressesBDD() {
         return adressesBusiness.getAllAdressesBusiness(false);
     }
 
     @GetMapping(versionRest + "/adresses")
-    public List<Adresses> getAllAdressesRest(@RequestParam(value = "nom", required = false) String nom) {
+    public List<Adresses> getAllAdressesRest() {
         return adressesBusiness.getAllAdressesBusiness(true);
     }
 }
