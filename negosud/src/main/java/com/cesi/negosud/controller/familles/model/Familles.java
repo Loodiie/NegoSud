@@ -1,0 +1,23 @@
+package com.cesi.negosud.controller.familles.model;
+
+public class Familles {
+    int famille_id;
+    String libelle;
+
+    public int getFamille_id() {
+        return famille_id;
+    }
+
+    public void setFamille_id(int famille_id) {
+        this.famille_id = famille_id;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+}
