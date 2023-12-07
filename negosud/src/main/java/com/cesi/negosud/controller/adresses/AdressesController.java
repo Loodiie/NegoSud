@@ -11,7 +11,7 @@ import java.util.List;
 
 @Validated
     @RestController
-    public class AdressesController {
+public class AdressesController {
 
     private final String versionBDD = "/api/v1/bdd";
     private final String versionRest = "/api/v1/rest";

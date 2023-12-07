@@ -36,12 +36,12 @@ public class AdressesDAORest {
     }
 
     public Adresses read(int adresse_id) {
-        // READ ONE PERSON DANS BDD
+        // READ ONE ADRESSE DANS BDD
         return new Adresses();
     }
 
     public List<Adresses> read() {
-        // READ ALL PERSON DANS BDD
+        // READ ALL ADRESSE DANS BDD
         ResponseEntity<Adresses[]> response;
         String url ="https://8080-cesi2022-spring3-zsh5qtnx8qn.ws-eu106.gitpod.io/api/vi/persons";  //A CHANGER
 
