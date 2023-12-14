@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Validated
-    @RestController
+@RestController
 public class AdressesController {
 
     private final String versionBDD = "/api/v1/bdd";

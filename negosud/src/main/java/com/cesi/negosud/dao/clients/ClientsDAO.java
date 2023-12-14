@@ -91,7 +91,7 @@ public class ClientsDAO {
         Clients clients = null;
         if(dtos != null && dtos.size() == 1){
             clients = new Clients();
-            clients.setAdresse_id(dtos.get(0).getAdresse_id());
+            clients.setClient_id(dtos.get(0).getClient_id());
             clients.setNom(dtos.get(0).getNom());
             clients.setPrenom(dtos.get(0).getPrenom());
             clients.setTelephone(dtos.get(0).getTelephone());

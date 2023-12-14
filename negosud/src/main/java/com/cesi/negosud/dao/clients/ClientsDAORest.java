@@ -29,7 +29,7 @@ public class ClientsDAORest {
     }
 
     public Clients update(int client_id, NewClients clients){
-        //READ ONE CLIENT DANS BDD
+        //UPDATE ONE CLIENT DANS BDD
         return new Clients();
     }
 
