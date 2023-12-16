@@ -22,15 +22,15 @@ public class FournisseursDAORest {
         return new Fournisseurs();
     }
 
-    public boolean delete(int fournisseurs_id){
+    public boolean delete(int fournisseur_id){
         return true;
     }
 
-    public Fournisseurs update(int fournisseurs_id, NewFournisseurs fournisseurs){
+    public Fournisseurs update(int fournisseur_id, NewFournisseurs fournisseurs){
         return new Fournisseurs();
     }
 
-    public Fournisseurs read(int fournisseurs_id){
+    public Fournisseurs read(int fournisseur_id){
         return new Fournisseurs();
     }
 

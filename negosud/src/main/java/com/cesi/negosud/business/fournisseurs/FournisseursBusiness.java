@@ -28,27 +28,27 @@ public class FournisseursBusiness {
         }
     }
 
-    public boolean deleteFournisseursBusiness(int fournisseurs_id, boolean rest){
+    public boolean deleteFournisseursBusiness(int fournisseur_id, boolean rest){
         if(rest){
-            return fournisseursDAO.delete(fournisseurs_id);
+            return fournisseursDAO.delete(fournisseur_id);
         } else {
-            return fournisseursDAORest.delete(fournisseurs_id);
+            return fournisseursDAORest.delete(fournisseur_id);
         }
     }
 
-    public Fournisseurs updateFournisseursBusiness(int fournisseurs_id, NewFournisseurs fournisseurs, boolean rest){
+    public Fournisseurs updateFournisseursBusiness(int fournisseur_id, NewFournisseurs fournisseurs, boolean rest){
         if(rest){
-            return fournisseursDAO.update(fournisseurs_id, fournisseurs);
+            return fournisseursDAO.update(fournisseur_id, fournisseurs);
         } else {
-            return fournisseursDAORest.update(fournisseurs_id, fournisseurs);
+            return fournisseursDAORest.update(fournisseur_id, fournisseurs);
         }
     }
 
-    public Fournisseurs getFournisseursBusiness(int fournisseurs_id, boolean rest){
+    public Fournisseurs getFournisseursBusiness(int fournisseur_id, boolean rest){
         if(rest){
-            return fournisseursDAO.read(fournisseurs_id);
+            return fournisseursDAO.read(fournisseur_id);
         } else {
-            return fournisseursDAORest.read(fournisseurs_id);
+            return fournisseursDAORest.read(fournisseur_id);
         }
     }
 

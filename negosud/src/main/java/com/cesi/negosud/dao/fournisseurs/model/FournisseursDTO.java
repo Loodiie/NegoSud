@@ -1,18 +1,18 @@
 package com.cesi.negosud.dao.fournisseurs.model;
 
 public class FournisseursDTO {
-    int fournisseurs_id;
+    int fournisseur_id;
     String nom;
     String telephone;
     String mail;
     int adresse_id;
 
-    public int getFournisseurs_id() {
-        return fournisseurs_id;
+    public int getFournisseur_id() {
+        return fournisseur_id;
     }
 
-    public void setFournisseurs_id(int fournisseurs_id) {
-        this.fournisseurs_id = fournisseurs_id;
+    public void setFournisseur_id(int fournisseur_id) {
+        this.fournisseur_id = fournisseur_id;
     }
 
     public String getNom() {

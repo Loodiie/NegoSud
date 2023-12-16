@@ -33,34 +33,34 @@ public class FamillesController {
         return famillesBusiness.createFamillesBusiness(familles, true);
     }
 
-    @DeleteMapping(versionBDD + "/familles/{familles_id}")
-    public boolean deleteFamillesBDD(@PathVariable int familles_id) {
-        return famillesBusiness.deleteFamillesBusiness(familles_id, false);
+    @DeleteMapping(versionBDD + "/familles/{famille_id}")
+    public boolean deleteFamillesBDD(@PathVariable int famille_id) {
+        return famillesBusiness.deleteFamillesBusiness(famille_id, false);
     }
 
-    @DeleteMapping(versionRest + "/familles/{familles_id}")
-    public boolean deleteFamillesRest(@PathVariable int familles_id) {
-        return famillesBusiness.deleteFamillesBusiness(familles_id, true);
+    @DeleteMapping(versionRest + "/familles/{famille_id}")
+    public boolean deleteFamillesRest(@PathVariable int famille_id) {
+        return famillesBusiness.deleteFamillesBusiness(famille_id, true);
     }
 
-    @PutMapping(versionBDD + "/familles/{familles_id}")
-    public Familles updateFamillesBDD(@PathVariable int familles_id, @RequestBody NewFamilles familles) {
-        return famillesBusiness.updateFamillesBusinesss(familles_id, familles, false);
+    @PutMapping(versionBDD + "/familles/{famille_id}")
+    public Familles updateFamillesBDD(@PathVariable int famille_id, @RequestBody NewFamilles familles) {
+        return famillesBusiness.updateFamillesBusinesss(famille_id, familles, false);
     }
 
-    @PutMapping(versionRest + "/familles/{familles_id}")
-    public Familles updateFamillesRest(@PathVariable int familles_id, @RequestBody NewFamilles familles) {
-        return famillesBusiness.updateFamillesBusinesss(familles_id, familles, true);
+    @PutMapping(versionRest + "/familles/{famille_id}")
+    public Familles updateFamillesRest(@PathVariable int famille_id, @RequestBody NewFamilles familles) {
+        return famillesBusiness.updateFamillesBusinesss(famille_id, familles, true);
     }
 
-    @GetMapping(versionBDD + "/familles/{familles_id}")
-    public Familles getFamillesBDD(@PathVariable int familles_id) {
-        return famillesBusiness.getFamillesBusiness(familles_id, false);
+    @GetMapping(versionBDD + "/familles/{famille_id}")
+    public Familles getFamillesBDD(@PathVariable int famille_id) {
+        return famillesBusiness.getFamillesBusiness(famille_id, false);
     }
 
-    @GetMapping(versionRest + "/familles/{familles_id}")
-    public Familles getFamillesRest(@PathVariable int familles_id) {
-        return famillesBusiness.getFamillesBusiness(familles_id, true);
+    @GetMapping(versionRest + "/familles/{famille_id}")
+    public Familles getFamillesRest(@PathVariable int famille_id) {
+        return famillesBusiness.getFamillesBusiness(famille_id, true);
     }
 
     @GetMapping(versionBDD + "/familles")

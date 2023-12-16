@@ -32,33 +32,33 @@ public class ClientsController {
     }
 
     @DeleteMapping(versionBDD + "/clients/{client_id}")
-    public boolean deleteClientsBDD(@PathVariable int clients_id) {
-        return clientsBusiness.deleteClientsBusiness(clients_id, false);
+    public boolean deleteClientsBDD(@PathVariable int client_id) {
+        return clientsBusiness.deleteClientsBusiness(client_id, false);
     }
 
     @DeleteMapping(versionRest + "/clients/{client_id}")
-    public boolean deleteClientsRest(@PathVariable int clients_id) {
-        return clientsBusiness.deleteClientsBusiness(clients_id, true);
+    public boolean deleteClientsRest(@PathVariable int client_id) {
+        return clientsBusiness.deleteClientsBusiness(client_id, true);
     }
 
     @PutMapping(versionBDD + "/clients/{client_id}")
-    public Clients updateAdressesBDD(@PathVariable int clients_id, @RequestBody NewClients clients) {
-        return clientsBusiness.updateClientsBusinesss(clients_id, clients, false);
+    public Clients updateAdressesBDD(@PathVariable int client_id, @RequestBody NewClients clients) {
+        return clientsBusiness.updateClientsBusinesss(client_id, clients, false);
     }
 
     @PutMapping(versionRest + "/clients/{client_id}")
-    public Clients updateAdressesRest(@PathVariable int clients_id, @RequestBody NewClients clients) {
-        return clientsBusiness.updateClientsBusinesss(clients_id, clients, true);
+    public Clients updateAdressesRest(@PathVariable int client_id, @RequestBody NewClients clients) {
+        return clientsBusiness.updateClientsBusinesss(client_id, clients, true);
     }
 
     @GetMapping(versionBDD + "/clients/{client_id}")
-    public Clients getAdressesBDD(@PathVariable int clients_id) {
-        return clientsBusiness.getClientsBusiness(clients_id, false);
+    public Clients getAdressesBDD(@PathVariable int client_id) {
+        return clientsBusiness.getClientsBusiness(client_id, false);
     }
 
     @GetMapping(versionRest + "/clients/{client_id}")
-    public Clients getAdressesRest(@PathVariable int clients_id) {
-        return clientsBusiness.getClientsBusiness(clients_id, true);
+    public Clients getAdressesRest(@PathVariable int client_id) {
+        return clientsBusiness.getClientsBusiness(client_id, true);
     }
 
     @GetMapping(versionBDD + "/clients")

@@ -14,7 +14,7 @@ import java.util.List;
 public class FamillesDAO {
     private final JdbcTemplate jdbcTemplate;
 
-    private static final String ID_FIELD = "familles_id";
+    private static final String ID_FIELD = "famille_id";
     private static final String LIBELLE_FIELD = "libelle";
 
 
@@ -47,10 +47,10 @@ public class FamillesDAO {
         return familles1;
     }
 
-    public boolean delete(int familles_id){
+    public boolean delete(int famille_id){
         //DELETE DANS BDD
         final String query = ("DELETE from familles where id=?");
-        int result = this.jdbcTemplate.update(query, familles_id);
+        int result = this.jdbcTemplate.update(query, famille_id);
         if(result == 1) {
             return true;
         }else{
@@ -58,22 +58,22 @@ public class FamillesDAO {
         }
     }
 
-    public Familles update(int familles_id, NewFamilles familles){
+    public Familles update(int famille_id, NewFamilles familles){
         //UPDATE DANS BDD
         Familles familles1= null;
         final String query = "UPADATE adresses set libelle=? where id=?";
         int result = this.jdbcTemplate.update(query, familles.getLibelle());
         if(result ==1){
             familles1= new Familles();
-            familles1.setFamille_id(familles_id);
+            familles1.setFamille_id(famille_id);
             familles1.setLibelle(familles.getLibelle());
         }
         return familles1;
     }
 
-    public Familles read(int familles_id) {
+    public Familles read(int famille_id) {
         // READ ONE PERSON DANS BDD
-        List<FamillesDTO> dtos = this.jdbcTemplate.query("select * from familles where familles_id ="+familles_id, this.rowMapper);
+        List<FamillesDTO> dtos = this.jdbcTemplate.query("select * from familles where famille_id ="+famille_id, this.rowMapper);
         Familles familles = null;
         if(dtos != null && dtos.size() == 1){
             familles = new Familles();

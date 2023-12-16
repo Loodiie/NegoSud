@@ -1,6 +1,5 @@
 package com.cesi.negosud.dao.fournisseurs;
 
-import com.cesi.negosud.controller.clients.model.Clients;
 import com.cesi.negosud.controller.fournisseurs.model.Fournisseurs;
 import com.cesi.negosud.controller.fournisseurs.model.NewFournisseurs;
 import com.cesi.negosud.dao.fournisseurs.model.FournisseursDTO;
@@ -30,7 +29,7 @@ public class FournisseursDAO {
 
     private final RowMapper<FournisseursDTO> rowMapper = (rs, rowNum) -> {
         final FournisseursDTO fournisseurs = new FournisseursDTO();
-        fournisseurs.setFournisseurs_id(rs.getInt(ID_FIELD));
+        fournisseurs.setFournisseur_id(rs.getInt(ID_FIELD));
         fournisseurs.setNom(rs.getString(NOM_FIELD));
         fournisseurs.setTelephone(rs.getString(TELEPHONE_FIELD));
         fournisseurs.setMail(rs.getString(MAIL_FIELD));
@@ -54,9 +53,9 @@ public class FournisseursDAO {
         return fournisseurs1;
     }
 
-    public boolean delete(int fournisseurs_id) {
+    public boolean delete(int fournisseur_id) {
         final String query = ("DELETE from fournisseurs where id=?");
-        int result = this.jdbcTemplate.update(query, fournisseurs_id);
+        int result = this.jdbcTemplate.update(query, fournisseur_id);
         if (result == 1) {
             return true;
         } else {
@@ -64,13 +63,13 @@ public class FournisseursDAO {
         }
     }
 
-    public Fournisseurs update(int fournisseurs_id, NewFournisseurs fournisseurs) {
+    public Fournisseurs update(int fournisseur_id, NewFournisseurs fournisseurs) {
         Fournisseurs fournisseurs1 = null;
         final String query = "UPADATE fournisseurs set nom=?, telephone=?, mail=?, adresse_id=? where id=?";
         int result = this.jdbcTemplate.update(query, fournisseurs.getNom(), fournisseurs.getTelephone(), fournisseurs.getMail(), fournisseurs.getAdresse_id());
         if (result == 1) {
             fournisseurs1 = new Fournisseurs();
-            fournisseurs1.setFournisseurs_id(fournisseurs_id);
+            fournisseurs1.setFournisseur_id(fournisseur_id);
             fournisseurs1.setNom(fournisseurs.getNom());
             fournisseurs1.setTelephone(fournisseurs.getTelephone());
             fournisseurs1.setMail(fournisseurs.getMail());
@@ -79,9 +78,9 @@ public class FournisseursDAO {
         return fournisseurs1;
     }
 
-    public Fournisseurs read(int fournisseurs_id) {
+    public Fournisseurs read(int fournisseur_id) {
         // READ ONE PERSON DANS BDD
-        List<FournisseursDTO> dtos = this.jdbcTemplate.query("select * from fournisseurs where fournisseurs_id ="+fournisseurs_id, this.rowMapper);
+        List<FournisseursDTO> dtos = this.jdbcTemplate.query("select * from fournisseurs where fournisseur_id ="+fournisseur_id, this.rowMapper);
         Fournisseurs fournisseurs = null;
         if(dtos != null && dtos.size() == 1){
             fournisseurs = new Fournisseurs();
@@ -102,7 +101,7 @@ public class FournisseursDAO {
             listFournisseurs = new ArrayList<Fournisseurs>();
             for (FournisseursDTO dto : dtos) {
                 Fournisseurs resp = new Fournisseurs();
-                resp.setFournisseurs_id(dto.getFournisseurs_id());
+                resp.setFournisseur_id(dto.getFournisseur_id());
                 resp.setNom(dto.getNom());
                 resp.setTelephone(dto.getTelephone());
                 resp.setMail(dto.getMail());

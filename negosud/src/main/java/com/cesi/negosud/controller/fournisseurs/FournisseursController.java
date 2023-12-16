@@ -32,33 +32,33 @@ public class FournisseursController {
     }
 
     @DeleteMapping(versionBDD + "/inventaires/{inventaires_id}")
-    public boolean deleteFournisseursBDD(@PathVariable int fournisseurs_id){
-        return fournisseursBusiness.deleteFournisseursBusiness(fournisseurs_id, false);
+    public boolean deleteFournisseursBDD(@PathVariable int fournisseur_id){
+        return fournisseursBusiness.deleteFournisseursBusiness(fournisseur_id, false);
     }
 
     @DeleteMapping(versionRest + "/inventaires/{inventaires_id}")
-    public boolean deleteFournisseursRest(@PathVariable int fournisseurs_id){
-        return fournisseursBusiness.deleteFournisseursBusiness(fournisseurs_id, true);
+    public boolean deleteFournisseursRest(@PathVariable int fournisseur_id){
+        return fournisseursBusiness.deleteFournisseursBusiness(fournisseur_id, true);
     }
 
     @PutMapping(versionBDD + "/inventaires/{inventaires_id}")
-    public Fournisseurs updateFournisseursBDD(@PathVariable int fournisseurs_id, @RequestBody NewFournisseurs fournisseurs){
-        return fournisseursBusiness.updateFournisseursBusiness(fournisseurs_id, fournisseurs, false);
+    public Fournisseurs updateFournisseursBDD(@PathVariable int fournisseur_id, @RequestBody NewFournisseurs fournisseurs){
+        return fournisseursBusiness.updateFournisseursBusiness(fournisseur_id, fournisseurs, false);
     }
 
     @PutMapping(versionRest + "/inventaires/{inventaires_id}")
-    public Fournisseurs updateFournisseursRest(@PathVariable int fournisseurs_id, @RequestBody NewFournisseurs fournisseurs){
-        return fournisseursBusiness.updateFournisseursBusiness(fournisseurs_id, fournisseurs, true);
+    public Fournisseurs updateFournisseursRest(@PathVariable int fournisseur_id, @RequestBody NewFournisseurs fournisseurs){
+        return fournisseursBusiness.updateFournisseursBusiness(fournisseur_id, fournisseurs, true);
     }
 
     @GetMapping(versionBDD + "/inventaires/{inventaires_id}")
-    public Fournisseurs getFournisseursBDD(@PathVariable int fournisseurs_id){
-        return fournisseursBusiness.getFournisseursBusiness(fournisseurs_id, false);
+    public Fournisseurs getFournisseursBDD(@PathVariable int fournisseur_id){
+        return fournisseursBusiness.getFournisseursBusiness(fournisseur_id, false);
     }
 
     @GetMapping(versionRest + "/inventaires/{inventaires_id}")
-    public Fournisseurs getFournisseursRest(@PathVariable int fournisseurs_id){
-        return fournisseursBusiness.getFournisseursBusiness(fournisseurs_id, true);
+    public Fournisseurs getFournisseursRest(@PathVariable int fournisseur_id){
+        return fournisseursBusiness.getFournisseursBusiness(fournisseur_id, true);
     }
 
     @GetMapping(versionBDD + "/inventaires")

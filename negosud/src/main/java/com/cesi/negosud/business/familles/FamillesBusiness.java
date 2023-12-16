@@ -28,21 +28,21 @@ public class FamillesBusiness {
         }
     }
 
-    public boolean deleteFamillesBusiness(int familles_id, boolean rest){
+    public boolean deleteFamillesBusiness(int famille_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return famillesDAO.delete(familles_id);
+            return famillesDAO.delete(famille_id);
         }else {
-            return famillesDAORest.delete(familles_id);
+            return famillesDAORest.delete(famille_id);
         }
     }
 
-    public Familles updateFamillesBusinesss(int familles_id, NewFamilles familles, boolean rest){
+    public Familles updateFamillesBusinesss(int famille_id, NewFamilles familles, boolean rest){
         //UPDATE BDD
         if(rest){
-            return famillesDAO.update(familles_id, familles);
+            return famillesDAO.update(famille_id, familles);
         }else {
-            return famillesDAORest.update(familles_id, familles);
+            return famillesDAORest.update(famille_id, familles);
         }
     }
 

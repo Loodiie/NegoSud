@@ -26,17 +26,17 @@ public class FamillesDAORest {
         return new Familles();
     }
 
-    public boolean delete(int familles_id){
+    public boolean delete(int famille_id){
         //DELETE DANS BDD
         return true;
     }
 
-    public Familles update(int familles_id, NewFamilles familles){
+    public Familles update(int famille_id, NewFamilles familles){
         //UPDATE DANS BDD
         return new Familles();
     }
 
-    public Familles read(int familles_id) {
+    public Familles read(int famille_id) {
         // READ ONE PERSON DANS BDD
         return new Familles();
     }

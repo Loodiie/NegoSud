@@ -30,29 +30,29 @@ public class ClientsBusiness {
         }
     }
 
-    public boolean deleteClientsBusiness(int clients_id, boolean rest){
+    public boolean deleteClientsBusiness(int client_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return clientsDAO.delete(clients_id);
+            return clientsDAO.delete(client_id);
         }else {
-            return clientsDAORest.delete(clients_id);
+            return clientsDAORest.delete(client_id);
         }
     }
 
-    public Clients updateClientsBusinesss(int clients_id, NewClients Clients, boolean rest){
+    public Clients updateClientsBusinesss(int client_id, NewClients Clients, boolean rest){
         //UPDATE BDD
         if(rest){
-            return clientsDAO.update(clients_id, Clients);
+            return clientsDAO.update(client_id, Clients);
         }else {
-            return clientsDAORest.update(clients_id, Clients);
+            return clientsDAORest.update(client_id, Clients);
         }
     }
 
-    public Clients getClientsBusiness(int clients_id, boolean rest) {
+    public Clients getClientsBusiness(int client_id, boolean rest) {
         if(rest){
-            return clientsDAO.read(clients_id);
+            return clientsDAO.read(client_id);
         }else {
-            return clientsDAORest.read(clients_id);
+            return clientsDAORest.read(client_id);
         }
     }
 
