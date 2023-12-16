@@ -61,7 +61,7 @@ public class FamillesDAO {
     public Familles update(int famille_id, NewFamilles familles){
         //UPDATE DANS BDD
         Familles familles1= null;
-        final String query = "UPADATE adresses set libelle=? where id=?";
+        final String query = "UPADATE familles set libelle=? where id=?";
         int result = this.jdbcTemplate.update(query, familles.getLibelle());
         if(result ==1){
             familles1= new Familles();

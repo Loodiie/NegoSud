@@ -3,7 +3,6 @@ package com.cesi.negosud.dao.familles.model;
 public class FamillesDTO {
     int famille_id;
     String libelle;
-    String date;
 
     public int getFamille_id() {
         return famille_id;
