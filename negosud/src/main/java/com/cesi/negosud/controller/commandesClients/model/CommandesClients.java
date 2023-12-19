@@ -1,31 +1,31 @@
-package com.cesi.negosud.controller.clients.model;
+package com.cesi.negosud.controller.commandesClients.model;
 
 public class CommandesClients {
     int commandeClient_id;
     DATE date;
-    int adresse_id;
+    int client_id;
 
     public int getCommandeClient_id() {
-        return client_id;
+        return commandeClient_id;
     }
 
-    public void setCommandeClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setCommandeClient_id(int commandeClient_id) {
+        this.commandeClient_id = commandeClient_id;
     }
 
     public String getDate() {
-        return nom;
+        return date;
     }
 
-    public void setDate(String nom) {
-        this.nom = nom;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public int getAdresse_id() {
-        return adresse_id;
+    public int getClient_id() {
+        return client_id;
     }
 
-    public void setAdresse_id(int adresse_id) {
-        this.adresse_id = adresse_id;
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
     }
 }

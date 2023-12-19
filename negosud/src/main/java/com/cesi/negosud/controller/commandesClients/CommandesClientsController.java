@@ -14,61 +14,61 @@ public class CommandesClientsController {
     private final String versionBDD = "/api/v1/bdd";
     private final String versionRest = "/api/v1/rest";
 
-    private final CommandesClientsBusiness commandesclientsBusiness;
+    private final CommandesClientsBusiness commandesClientsBusiness;
 
     @Autowired //Constructeur pour injection
-    public CommandesClientsController(CommandesClientsBusiness commandesclientsBusiness) {
-        this.commandesclientsBusiness = commandesclientsBusiness;
+    public CommandesClientsController(CommandesClientsBusiness commandesClientsBusiness) {
+        this.commandesClientsBusiness = commandesClientsBusiness;
     }
 
-    @PostMapping(versionBDD + "/commandesclients")
-    public CommandesClients createCommandesClientsBDD(@RequestBody NewCommandesClients commandesclients) {
-        return commandesclientsBusiness.createCommandesCleintsBusiness(commandesclients, false);
+    @PostMapping(versionBDD + "/commandesClients")
+    public CommandesClients createCommandesClientsBDD(@RequestBody NewCommandesClients commandesClients) {
+        return commandesClientsBusiness.createCommandesCleintsBusiness(commandesClients, false);
     }
 
-    @PostMapping(versionRest + "/commandesclients")
-    public CommandesClients createCommandesClientsRest(@RequestBody NewCommandesClients commandesclients) {
-        return commandesclientsBusiness.createCommandesCleintsBusiness(commandesclients, true);
+    @PostMapping(versionRest + "/commandesClients")
+    public CommandesClients createCommandesClientsRest(@RequestBody NewCommandesClients commandesClients) {
+        return commandesClientsBusiness.createCommandesCleintsBusiness(commandesClients, true);
     }
 
-    @DeleteMapping(versionBDD + "/commandesclients/{commandeclient_id}")
+    @DeleteMapping(versionBDD + "/commandesClients/{commandeClient_id}")
     public boolean deleteCommandesClientsBDD(@PathVariable int commandeclient_id) {
-        return commandesclientsBusiness.deleteCommandesClientsBusiness(commandeclient_id, false);
+        return commandesClientsBusiness.deleteCommandesClientsBusiness(commandeClient_id, false);
     }
 
-    @DeleteMapping(versionRest + "/commandesclients/{commandeclient_id}")
-    public boolean deleteCommandesClientsRest(@PathVariable int commandeclient_id) {
-        return commandesclientsBusiness.deleteCommandesClientsBusiness(commandeclient_id, true);
+    @DeleteMapping(versionRest + "/commandesClients/{commandeClient_id}")
+    public boolean deleteCommandesClientsRest(@PathVariable int commandeClient_id) {
+        return commandesClientsBusiness.deleteCommandesClientsBusiness(commandeClient_id, true);
     }
 
-    @PutMapping(versionBDD + "/commandesclients/{commandeclient_id}")
-    public CommandesClients updateCommandesClientsBDD(@PathVariable int clicommandeclient_ident_id, @RequestBody NewCommandesClients commandesclients) {
-        return commandesclientsBusiness.updateCommandesClientsBusinesss(commandeclient_id, commandesclients, false);
+    @PutMapping(versionBDD + "/commandesClients/{commandeclient_id}")
+    public CommandesClients updateCommandesClientsBDD(@PathVariable int commandeclient_id, @RequestBody NewCommandesClients commandesClients) {
+        return commandesClientsBusiness.updateCommandesClientsBusinesss(commandeclient_id, commandesClients, false);
     }
 
-    @PutMapping(versionRest + "/commandesclients/{commandeclient_id}")
-    public CommandesClients updateCommandesClientsRest(@PathVariable int commandeclient_id, @RequestBody NewCommandesClients commandesclients) {
-        return commandesclientsBusiness.updateCommandesClientsBusinesss(commandeclient_id, commandesclients, true);
+    @PutMapping(versionRest + "/commandesClients/{commandeclient_id}")
+    public CommandesClients updateCommandesClientsRest(@PathVariable int commandeclient_id, @RequestBody NewCommandesClients commandesClients) {
+        return commandesClientsBusiness.updateCommandesClientsBusinesss(commandeclient_id, commandesClients, true);
     }
 
-    @GetMapping(versionBDD + "/commandesclients/{commandeclient_id}")
+    @GetMapping(versionBDD + "/commandesClients/{commandeclient_id}")
     public CommandesClients getCommandesClientsBDD(@PathVariable int commandeclient_id) {
-        return commandesclientsBusiness.getCommandesClientsBusiness(commandeclient_id, false);
+        return commandesClientsBusiness.getCommandesClientsBusiness(commandeclient_id, false);
     }
 
-    @GetMapping(versionRest + "/commandesclients/{commandeclient_id}")
+    @GetMapping(versionRest + "/commandesClients/{commandeclient_id}")
     public CommandesClients getCommandesClientsRest(@PathVariable int commandeclient_id) {
-        return commandesclientsBusiness.getCommandesClientsBusiness(commandeclient_id, true);
+        return commandesClientsBusiness.getCommandesClientsBusiness(commandeclient_id, true);
     }
 
-    @GetMapping(versionBDD + "/commandesclients")
+    @GetMapping(versionBDD + "/commandesClients")
     public List<CommandesClients> getAllCommandesClientsBDD() {
-        return commandesclientsBusiness.getAllCommandesClientsBusiness(false);
+        return commandesClientsBusiness.getAllCommandesClientsBusiness(false);
     }
 
-    @GetMapping(versionRest + "/commandesclients")
+    @GetMapping(versionRest + "/commandesClients")
     public List<CommandesClients> getAllCommandesClientsRest() {
-        return commandesclientsBusiness.getAllCommandesClientsBusiness(true);
+        return commandesClientsBusiness.getAllCommandesClientsBusiness(true);
     }
 
 }

@@ -18,7 +18,7 @@ public class CommandesClientsDAO {
 
     private static final String ID_FIELD = "commandeClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String ADRESSEID_FIELD = "adresse_id";
+    private static final String CLIENTID_FIELD = "client_id";
 
     @Autowired
     public CommandesClientsDAO(DataSource dataSource){
@@ -27,25 +27,25 @@ public class CommandesClientsDAO {
 
 
     private final RowMapper<CommandesClientsDAO> rowMapper = (rs, rowNum) -> {
-        final CommandesClientsDAO commandesClients = new ClientsDTO();
+        final CommandesClientsDAO commandesClients = new CommandesClientsDTO();
         commandesClients.setCommandeClient_id(rs.getInt(ID_FIELD));
         commandesClients.setDate(rs.getString(DATE_FIELD));
-        commandesClients.setAdresse_id(rs.getInt(ADRESSEID_FIELD));
+        commandesClients.setClient_id(rs.getInt(CLIENTID_FIELD));
         return commandesClients;
     };
 
     public CommandesClients create(NewCommandesClients commandesClients) {
         //INSERT DANS BDD
-        CommandesClients ccommandesClients1= null;
-        final String query = "INSERT INTO commandesClients(date, adresse_id) VALUES(?,?)";
-        int result = this.jdbcTemplate.update(query, clients.getDate(), clients.getAdresse_id());
+        CommandesClients commandesClients1= null;
+        final String query = "INSERT INTO commandesClients(date, client_id) VALUES(?,?)";
+        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
         if(result ==1){
             //faire un select avant
-            ccommandesClients1= new CommandesClients();
-            ccommandesClients1.setNom(commandesClients.getDate());
-            ccommandesClients1.setAdresse_id(clients.getAdresse_id());
+            commandesClients1= new CommandesClients();
+            commandesClients1.setNom(commandesClients.getDate());
+            commandesClients1.setClient_id(commandesClients.getClient_id());
         }
-        return ccommandesClients1;
+        return commandesClients1;
     }
 
     public boolean delete(int commandeClient_id){
@@ -62,13 +62,13 @@ public class CommandesClientsDAO {
     public CommandesClients update(int commandeClient_id, NewCommandesClients commandesClients){
         //UPDATE DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "UPADATE commandesClients set date=?, adresse_id=? where id=?";
-        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), clients.getAdresse_id());
+        final String query = "UPADATE commandesClients set date=?, client_id=? where id=?";
+        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
         if(result ==1){
             commandesClients1= new CommandesClients();
             commandesClients1.setCommandeClient_id(commandeClient_id);
             commandesClients1.setNDate(clients.getDate());
-            commandesClients1.setAdresse_id(clients.getAdresse_id());
+            commandesClients1.setClient_id(clients.getClient_id());
         }
         return commandesClients1;
     }
@@ -81,7 +81,7 @@ public class CommandesClientsDAO {
             commandesClients = new CommandesClients();
             commandesClients.setCommandeClient_id(dtos.get(0).getCommandeClient_id());
             commandesClients.setDate(dtos.get(0).getDate());
-            commandesClients.setAdresse_id(dtos.get(0).getAdresse_id());
+            commandesClients.setClient_id(dtos.get(0).getClient_id());
         }
         return commandesClients;
     }
@@ -96,7 +96,7 @@ public class CommandesClientsDAO {
                 CommandesClients resp = new CommandesClients();
                 resp.setCommandeClient_id(dto.getCommandeClient_id());
                 resp.setDate(dto.getDate());
-                resp.setAdresse_id(dto.getAdresse_id());
+                resp.setClient_id(dto.getClient_id());
                 listCommandesClients.add(resp);
             }
         }

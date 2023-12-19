@@ -29,29 +29,29 @@ public class CommandesClientsBusiness {
         }
     }
 
-    public boolean deleteCommandesClientsBusiness(int adresse_id, boolean rest){
+    public boolean deleteCommandesClientsBusiness(int commandeClient_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return commandesClientsDAO.delete(adresse_id);
+            return commandesClientsDAO.delete(commandeClient_id);
         }else {
-            return commandesClientsDAORest.delete(adresse_id);
+            return commandesClientsDAORest.delete(commandeClient_id);
         }
     }
 
-    public CommandesClients updateCommandesClientsBusinesss(int adresse_id, NewCommandesClients commandesClients, boolean rest){
+    public CommandesClients updateCommandesClientsBusinesss(int commandeClient_id, NewCommandesClients commandesClients, boolean rest){
         //UPDATE BDD
         if(rest){
-            return commandesClientsDAO.update(adresse_id, commandesClients);
+            return commandesClientsDAO.update(commandeClient_id, commandesClients);
         }else {
-            return commandesClientsDAORest.update(adresse_id, commandesClients);
+            return commandesClientsDAORest.update(commandeClient_id, commandesClients);
         }
     }
 
-    public CommandesClients getCommandesClientsBusiness(int adresse_id, boolean rest) {
+    public CommandesClients getCommandesClientsBusiness(int commandeClient_id, boolean rest) {
         if(rest){
-            return commandesClientsDAO.read(adresse_id);
+            return commandesClientsDAO.read(commandeClient_id);
         }else {
-            return commandesClientsDAORest.read(adresse_id);
+            return commandesClientsDAORest.read(commandeClient_id);
         }
     }
 
