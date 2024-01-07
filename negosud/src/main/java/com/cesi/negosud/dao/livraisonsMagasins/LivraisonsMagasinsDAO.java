@@ -18,7 +18,7 @@ public class LivraisonsMagasinsDAO {
 
     private static final String ID_FIELD = "livraisonMagasin_id";
     private static final String DATE_FIELD = "date";
-    private static final String COMMANDEMagasinID_FIELD = "commandeMagasin_id";
+    private static final String COMMANDEMAGASINID_FIELD = "commandeMagasin_id";
 
     @Autowired
     public LivraisonsMagasinsDAO(DataSource dataSource){
@@ -30,7 +30,7 @@ public class LivraisonsMagasinsDAO {
         final LivraisonsMagasinsDAO livraisonsMagasins = new LivraisonsMagasinsDTO();
         livraisonsMagasins.setlivraisonMagasin_id(rs.getInt(ID_FIELD));
         livraisonsMagasins.setDate(rs.getString(DATE_FIELD));
-        livraisonsMagasins.setCommandeMagasin_id(rs.getInt(COMMANDEMagasinID_FIELD));
+        livraisonsMagasins.setCommandeMagasin_id(rs.getInt(COMMANDEMAGASINID_FIELD));
         return livraisonsMagasins;
     };
 
