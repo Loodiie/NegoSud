@@ -1,4 +1,4 @@
-package com.cesi.negosud.dao.clients;
+package com.cesi.negosud.dao.commandesClients;
 
 import com.cesi.negosud.controller.commandesClients.model.CommandesClients;
 import com.cesi.negosud.controller.commandesClients.model.CommandesClients;

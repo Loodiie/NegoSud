@@ -1,4 +1,4 @@
-package com.cesi.negosud.controller.clients.model;
+package com.cesi.negosud.controller.commandesClients.model;
 
 public class NewCommandesClients {
     DATE date;
