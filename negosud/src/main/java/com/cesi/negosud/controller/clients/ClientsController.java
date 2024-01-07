@@ -23,12 +23,12 @@ public class ClientsController {
 
     @PostMapping(versionBDD + "/clients")
     public Clients createClientsBDD(@RequestBody NewClients clients) {
-        return clientsBusiness.createCleintsBusiness(clients, false);
+        return clientsBusiness.createClientsBusiness(clients, false);
     }
 
     @PostMapping(versionRest + "/clients")
     public Clients createClientsRest(@RequestBody NewClients clients) {
-        return clientsBusiness.createCleintsBusiness(clients, true);
+        return clientsBusiness.createClientsBusiness(clients, true);
     }
 
     @DeleteMapping(versionBDD + "/clients/{client_id}")

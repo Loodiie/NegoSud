@@ -67,8 +67,8 @@ public class CommandesClientsDAO {
         if(result ==1){
             commandesClients1= new CommandesClients();
             commandesClients1.setCommandeClient_id(commandeClient_id);
-            commandesClients1.setNDate(clients.getDate());
-            commandesClients1.setClient_id(clients.getClient_id());
+            commandesClients1.setNDate(commandesClients.getDate());
+            commandesClients1.setClient_id(commandesClients.getClient_id());
         }
         return commandesClients1;
     }

@@ -1,6 +1,6 @@
-package com.cesi.negosud.controller.clients.model;
+package com.cesi.negosud.controller.livraisonsClients.model;
 
-public class NewCommandesClients {
+public class NewLivraisonsClients {
     DATE date;
     int commandeClient_id;
 

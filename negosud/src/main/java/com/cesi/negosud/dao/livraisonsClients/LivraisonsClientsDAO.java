@@ -67,8 +67,8 @@ public class LivraisonsClientsDAO {
         if(result ==1){
             livraisonsClients1= new LivraisonsClients();
             livraisonsClients1.setlivraisonClient_id(livraisonClient_id);
-            livraisonsClients1.setNDate(clients.getDate());
-            livraisonsClients1.setCommandeClient_id(clients.getCommandeClient_id());
+            livraisonsClients1.setNDate(livraisonsClients.getDate());
+            livraisonsClients1.setCommandeClient_id(livraisonsClients.getCommandeClient_id());
         }
         return livraisonsClients1;
     }

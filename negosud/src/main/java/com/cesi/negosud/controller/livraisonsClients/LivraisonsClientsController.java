@@ -23,12 +23,12 @@ public class LivraisonsClientsController {
 
     @PostMapping(versionBDD + "/livraisonsClients")
     public LivraisonsClients createLivraisonsClientsBDD(@RequestBody NewLivraisonsClients livraisonsClients) {
-        return livraisonsClientsBusiness.createLivraisonsCleintsBusiness(livraisonsClients, false);
+        return livraisonsClientsBusiness.createLivraisonsClientsBusiness(livraisonsClients, false);
     }
 
     @PostMapping(versionRest + "/livraisonsClients")
     public LivraisonsClients createLivraisonsClientsRest(@RequestBody NewLivraisonsClients livraisonsClients) {
-        return livraisonsClientsBusiness.createLivraisonsCleintsBusiness(livraisonsClients, true);
+        return livraisonsClientsBusiness.createLivraisonsClientsBusiness(livraisonsClients, true);
     }
 
     @DeleteMapping(versionBDD + "/livraisonsClients/{livraisonClient_id}")
