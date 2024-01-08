@@ -52,7 +52,7 @@ public class AdressesDAO {
     public Adresses create(NewAdresses adresses) {
         //INSERT DANS BDD
         Adresses adresses1= null;
-        final String query = "INSERT INTO adresses(ville, code_postal, pays, numero, etage, rue,complement) VALUES(?,?,?,?,?,?,?,?)";
+        final String query = "INSERT INTO adresses(ville, code_postal, pays, numero, rue, etage, batiment,complement) VALUES(?,?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, adresses.getVille(), adresses.getCode_postal(), adresses.getPays(), adresses.getNumero(), adresses.getRue(), adresses.getEtage(), adresses.getBatiment(), adresses.getComplement());
         if(result ==1){
             //faire un select avant
