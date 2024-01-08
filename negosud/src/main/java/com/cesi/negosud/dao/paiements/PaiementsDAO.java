@@ -20,6 +20,7 @@ public class PaiementsDAO {
     private static final String TYPE_PAIEMENT_FIELD = "type_paiement";
     private static final String ACQUITTE_FIELD = "acquitte";
     private static final String ECHEANCE_FIELD = "echeance";
+    private static final String FACTUREID_FIELD = "fk_facture";
 
 
 
@@ -45,7 +46,7 @@ public class PaiementsDAO {
     public Paiements create(NewPaiements Paiements) {
         //INSERT DANS BDD
         Paiements Paiements1= null;
-        final String query = "INSERT INTO paiements(date_prelevement,type_prelevement,acquitte,echeance) " +
+        final String query = "INSERT INTO paiements(date_prelevement,type_prelevement,acquitte,echeance,fk_facture) " +
                 "VALUES(?,?,?,?)";
         int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
                 Paiements.getType_paiement(),Paiements.isAcquitte(),Paiements.getEcheance());
@@ -74,7 +75,7 @@ public class PaiementsDAO {
     public Paiements update(int paiements_id, NewPaiements Paiements){
         //UPDATE DANS BDD
         Paiements Paiements1= null;
-        final String query = "UPADATE paiements set date_prelevement=?, type_paiement=?, acquitte=?, echeance=? where id=?";
+        final String query = "UPADATE paiements set date_prelevement=?, type_paiement=?, acquitte=?, echeance=?, fk_facture=? where id=?";
         int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
                 Paiements.getType_paiement(), Paiements.isAcquitte(), Paiements.getEcheance(), paiements_id);
         if(result ==1){

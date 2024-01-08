@@ -18,7 +18,7 @@ public class CommandesClientsDAO {
 
     private static final String ID_FIELD = "commandeClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String CLIENTID_FIELD = "client_id";
+    private static final String CLIENTID_FIELD = "fk_client";
 
     @Autowired
     public CommandesClientsDAO(DataSource dataSource){
@@ -37,7 +37,7 @@ public class CommandesClientsDAO {
     public CommandesClients create(NewCommandesClients commandesClients) {
         //INSERT DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "INSERT INTO commandesclients(date, client_id) VALUES(?,?)";
+        final String query = "INSERT INTO commandesclients(date, fk_client) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
         if(result ==1){
             //faire un select avant
@@ -62,7 +62,7 @@ public class CommandesClientsDAO {
     public CommandesClients update(int commandeClient_id, NewCommandesClients commandesClients){
         //UPDATE DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "UPADATE commandesclients set date=?, client_id=? where id=?";
+        final String query = "UPADATE commandesclients set date=?, fk_client=? where id=?";
         int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
         if(result ==1){
             commandesClients1= new CommandesClients();

@@ -19,7 +19,7 @@ public class LivraisonsClientsDAO {
 
     private static final String ID_FIELD = "livraisonClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String COMMANDECLIENTID_FIELD = "commandeClient_id";
+    private static final String COMMANDECLIENTID_FIELD = "fk_commandeC";
 
     @Autowired
     public LivraisonsClientsDAO(DataSource dataSource){
@@ -38,7 +38,7 @@ public class LivraisonsClientsDAO {
     public LivraisonsClients create(NewLivraisonsClients livraisonsClients) {
         //INSERT DANS BDD
         LivraisonsClients livraisonsClients1= null;
-        final String query = "INSERT INTO livraisonsclient(date, commandeClient_id) VALUES(?,?)";
+        final String query = "INSERT INTO livraisonsclient(date, fk_commandeC) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
         if(result ==1){
             //faire un select avant
@@ -63,7 +63,7 @@ public class LivraisonsClientsDAO {
     public LivraisonsClients update(int livraisonClient_id, NewLivraisonsClients livraisonsClients){
         //UPDATE DANS BDD
         LivraisonsClients livraisonsClients1= null;
-        final String query = "UPADATE livraisonsclient set date=?, commandeClient_id=? where id=?";
+        final String query = "UPADATE livraisonsclient set date=?, fk_commandeC=? where id=?";
         int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
         if(result ==1){
             livraisonsClients1= new LivraisonsClients();

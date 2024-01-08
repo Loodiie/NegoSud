@@ -12,7 +12,7 @@ import java.util.List;
 @Validated
 @RestController
 public class LivraisonsClientsController {
-    private final String versionBDD = "/api/v1/bdd";
+    private final String versionBDD = "/api/v1";
     //private final String versionRest = "/api/v1/rest";
 
     private final LivraisonsClientsBusiness livraisonsClientsBusiness;
