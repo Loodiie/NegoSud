@@ -23,43 +23,43 @@ public class LivraisonsClientsBusiness {
     public LivraisonsClients createLivraisonsClientsBusiness(NewLivraisonsClients livraisonsClients, boolean rest) {
         //INSERT BDD
         if(rest){
-            return livraisonsClientsDAO.create(livraisonsClients);
-        }else {
             return livraisonsClientsDAORest.create(livraisonsClients);
+        }else {
+            return livraisonsClientsDAO.create(livraisonsClients);
         }
     }
 
     public boolean deleteLivraisonsClientsBusiness(int livraisonClient_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return livraisonsClientsDAO.delete(livraisonClient_id);
-        }else {
             return livraisonsClientsDAORest.delete(livraisonClient_id);
+        }else {
+            return livraisonsClientsDAO.delete(livraisonClient_id);
         }
     }
 
     public LivraisonsClients updateLivraisonsClientsBusinesss(int livraisonClient_id, NewLivraisonsClients livraisonsClients, boolean rest){
         //UPDATE BDD
         if(rest){
-            return livraisonsClientsDAO.update(livraisonClient_id, livraisonsClients);
-        }else {
             return livraisonsClientsDAORest.update(livraisonClient_id, livraisonsClients);
+        }else {
+            return livraisonsClientsDAO.update(livraisonClient_id, livraisonsClients);
         }
     }
 
     public LivraisonsClients getLivraisonsClientsBusiness(int livraisonClient_id, boolean rest) {
         if(rest){
-            return livraisonsClientsDAO.read(livraisonClient_id);
-        }else {
             return livraisonsClientsDAORest.read(livraisonClient_id);
+        }else {
+            return livraisonsClientsDAO.read(livraisonClient_id);
         }
     }
 
     public List<LivraisonsClients> getAllLivraisonsClientsBusiness(boolean rest) {
         if(rest){
-            return livraisonsClientsDAO.read();
-        }else {
             return livraisonsClientsDAORest.read();
+        }else {
+            return livraisonsClientsDAO.read();
         }
     }
 }

@@ -18,7 +18,7 @@ public class CommandesClientsDAO {
 
     private static final String ID_FIELD = "commandeClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String CLIENTID_FIELD = "client_id";
+    private static final String CLIENTID_FIELD = "fk_client";
 
     @Autowired
     public CommandesClientsDAO(DataSource dataSource){
@@ -37,7 +37,7 @@ public class CommandesClientsDAO {
     public CommandesClients create(NewCommandesClients commandesClients) {
         //INSERT DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "INSERT INTO commandesClients(date, client_id) VALUES(?,?)";
+        final String query = "INSERT INTO commandesclients(date, fk_client) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
         if(result ==1){
             //faire un select avant
@@ -50,7 +50,7 @@ public class CommandesClientsDAO {
 
     public boolean delete(int commandeClient_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from commandesClients where id=?");
+        final String query = ("DELETE from commandesclients where id=?");
         int result = this.jdbcTemplate.update(query, commandeClient_id);
         if(result == 1) {
             return true;
@@ -62,7 +62,7 @@ public class CommandesClientsDAO {
     public CommandesClients update(int commandeClient_id, NewCommandesClients commandesClients){
         //UPDATE DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "UPADATE commandesClients set date=?, client_id=? where id=?";
+        final String query = "UPADATE commandesclients set date=?, fk_client=? where id=?";
         int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
         if(result ==1){
             commandesClients1= new CommandesClients();
@@ -75,7 +75,7 @@ public class CommandesClientsDAO {
 
     public CommandesClients read(int commandeClient_id) {
         // READ ONE PERSON DANS BDD
-        List<CommandesClientsDTO> dtos = this.jdbcTemplate.query("select * from commandesClients where commandeClient_id ="+commandeClient_id, this.rowMapper);
+        List<CommandesClientsDTO> dtos = this.jdbcTemplate.query("select * from commandesclients where commandeClient_id ="+commandeClient_id, this.rowMapper);
         CommandesClients commandesClients = null;
         if(dtos != null && dtos.size() == 1){
             commandesClients = new CommandesClients();
@@ -89,7 +89,7 @@ public class CommandesClientsDAO {
     public List<CommandesClients> read() {
         // READ ALL PERSON DANS BDD
         List<CommandesClients> listCommandesClients = null;
-        List<CommandesClientsDTO> dtos = this.jdbcTemplate.query("select * from commandesClients", this.rowMapper);
+        List<CommandesClientsDTO> dtos = this.jdbcTemplate.query("select * from commandesclients", this.rowMapper);
         if (dtos != null && dtos.size() > 0) {
             listCommandesClients = new ArrayList<CommandesClients> ();
             for (CommandesClientsDTO dto : dtos) {

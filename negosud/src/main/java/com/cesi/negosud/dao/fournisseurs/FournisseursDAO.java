@@ -20,7 +20,7 @@ public class FournisseursDAO {
     private static final String NOM_FIELD = "nom";
     private static final String TELEPHONE_FIELD = "telephone";
     private static final String MAIL_FIELD = "mail";
-    private static final String ADRESSEID_FIELD = "adresse_id";
+    private static final String ADRESSEID_FIELD = "fk_adresse";
 
     @Autowired
     public FournisseursDAO(DataSource dataSource) {
@@ -40,7 +40,7 @@ public class FournisseursDAO {
     public Fournisseurs create(NewFournisseurs fournisseurs) {
         //INSERT DANS BDD
         Fournisseurs fournisseurs1 = null;
-        final String query = "INSERT INTO fournisseurs(nom, telephone, mail, adresse_id) VALUES(?,?,?,?)";
+        final String query = "INSERT INTO fournisseurs(nom, telephone, mail, fk_adresse) VALUES(?,?,?,?)";
         int result = this.jdbcTemplate.update(query, fournisseurs.getNom(), fournisseurs.getTelephone(), fournisseurs.getMail(), fournisseurs.getAdresse_id());
         if (result == 1) {
             //faire un select avant
@@ -65,7 +65,7 @@ public class FournisseursDAO {
 
     public Fournisseurs update(int fournisseur_id, NewFournisseurs fournisseurs) {
         Fournisseurs fournisseurs1 = null;
-        final String query = "UPADATE fournisseurs set nom=?, telephone=?, mail=?, adresse_id=? where id=?";
+        final String query = "UPADATE fournisseurs set nom=?, telephone=?, mail=?, fk_adresse=? where id=?";
         int result = this.jdbcTemplate.update(query, fournisseurs.getNom(), fournisseurs.getTelephone(), fournisseurs.getMail(), fournisseurs.getAdresse_id());
         if (result == 1) {
             fournisseurs1 = new Fournisseurs();

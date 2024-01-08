@@ -22,43 +22,43 @@ public class FacturesBusiness {
     public Factures createFacturesBusiness(NewFactures factures, boolean rest) {
         //INSERT BDD
         if(rest){
-            return facturesDAO.create(factures);
-        }else {
             return facturesDAORest.create(factures);
+        }else {
+            return facturesDAO.create(factures);
         }
     }
 
     public boolean deleteFacturesBusiness(int facture_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return facturesDAO.delete(facture_id);
-        }else {
             return facturesDAORest.delete(facture_id);
+        }else {
+            return facturesDAO.delete(facture_id);
         }
     }
 
     public Factures updateFacturesBusinesss(int facture_id, NewFactures factures, boolean rest){
         //UPDATE BDD
         if(rest){
-            return facturesDAO.update(facture_id, factures);
-        }else {
             return facturesDAORest.update(facture_id, factures);
+        }else {
+            return facturesDAO.update(facture_id, factures);
         }
     }
 
     public Factures getFacturesBusiness(int adresse_id, boolean rest) {
         if(rest){
-            return facturesDAO.read(adresse_id);
-        }else {
             return facturesDAORest.read(adresse_id);
+        }else {
+            return facturesDAO.read(adresse_id);
         }
     }
 
     public List<Factures> getAllFacturesBusiness(boolean rest) {
         if(rest){
-            return facturesDAO.read();
-        }else {
             return facturesDAORest.read();
+        }else {
+            return facturesDAO.read();
         }
     }
 }

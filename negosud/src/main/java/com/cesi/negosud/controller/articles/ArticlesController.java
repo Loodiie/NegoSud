@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class ArticlesController {
 
-    private final String versionBDD = "/api/v1/bdd";
+    private final String versionBDD = "/api/v1";
     private final String versionRest = "/api/v1/rest";
 
     private final ArticlesBusiness articlesBusiness;

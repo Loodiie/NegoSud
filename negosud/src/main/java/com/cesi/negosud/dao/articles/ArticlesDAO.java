@@ -25,8 +25,8 @@ public class ArticlesDAO {
     private static final String TVA_FIELD = "tva";
     private static final String REDUCTION_FIELD = "reduction";
     private static final String OFFERT_FIELD = "offert";
-    private static final String FAMILLE_FIELD = "famille_id";
-    private static final String FOURNISSEUR_FIELD = "fournisseur_id";
+    private static final String FAMILLE_FIELD = "fk_famille";
+    private static final String FOURNISSEUR_FIELD = "fk_fournisseur";
 
     @Autowired
     public ArticlesDAO(DataSource dataSource) { this.jdbcTemplate = new JdbcTemplate(dataSource);}
@@ -49,7 +49,7 @@ public class ArticlesDAO {
 
     public Articles create(NewArticles articles) {
         Articles articles1= null;
-        final String query = "INSERT INTO articles(designation, description, prix_unit, seuil, tva, reduction, offert, famille_id, fournisseur_id) VALUES(?,?,?,?,?,?,?,?,?)";
+        final String query = "INSERT INTO articles(designation, description, prix_unit, seuil, tva, reduction, offert, fk_famille, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, articles.getDesignation(), articles.getDescription(), articles.getPrix_unit(), articles.getSeuil(), articles.getTva(), articles.getReduction(), articles.getOffert(), articles.getFamille_id(), articles.getFournisseur_id());
         if (result ==1){
             articles1 = new Articles();
@@ -78,7 +78,7 @@ public class ArticlesDAO {
 
     public Articles update(int article_id, NewArticles articles){
         Articles articles1= null;
-        final String query = "UPDATE articles set designation=?, description=?, prix_unit=?, seuil=?, tva=?, reduction=?, offert=?, famille_id=?, fournisseur_id=? where id=?";
+        final String query = "UPDATE articles set designation=?, description=?, prix_unit=?, seuil=?, tva=?, reduction=?, offert=?, fk_famille=?, fk_fournisseur=? where id=?";
         int result = this.jdbcTemplate.update(query, articles.getDesignation(), articles.getDescription(), articles.getPrix_unit(), articles.getSeuil(), articles.getTva(), articles.getReduction(), articles.getOffert(), articles.getFamille_id(), articles.getFournisseur_id());
         if(result ==1){
             articles1 = new Articles();

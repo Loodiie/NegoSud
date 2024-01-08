@@ -21,7 +21,7 @@ public class ClientsDAO {
     private static final String PRENOM_FIELD = "prenom";
     private static final String TELEPHONE_FIELD = "telephone";
     private static final String MAIL_FIELD = "mail";
-    private static final String ADRESSEID_FIELD = "adresse_id";
+    private static final String ADRESSEID_FIELD = "fk_adresse";
 
     @Autowired
     public ClientsDAO(DataSource dataSource){
@@ -43,7 +43,7 @@ public class ClientsDAO {
     public Clients create(NewClients clients) {
         //INSERT DANS BDD
         Clients clients1= null;
-        final String query = "INSERT INTO clients(nom, prenom, telephone, mail, adresse_id) VALUES(?,?,?,?,?)";
+        final String query = "INSERT INTO clients(nom, prenom, telephone, mail, fk_adresse) VALUES(?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id());
         if(result ==1){
             //faire un select avant
@@ -71,7 +71,7 @@ public class ClientsDAO {
     public Clients update(int client_id, NewClients clients){
         //UPDATE DANS BDD
         Clients clients1= null;
-        final String query = "UPADATE clients set nom=?, prenom=?, telephone=?, mail=?, adresse_id=? where id=?";
+        final String query = "UPADATE clients set nom=?, prenom=?, telephone=?, mail=?, fk_adresse=? where id=?";
         int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id());
         if(result ==1){
             clients1= new Clients();

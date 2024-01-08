@@ -22,41 +22,41 @@ public class FournisseursBusiness {
 
     public Fournisseurs createFournisseursBusiness(NewFournisseurs fournisseurs, boolean rest){
         if(rest){
-            return fournisseursDAO.create(fournisseurs);
-        } else {
             return fournisseursDAORest.create(fournisseurs);
+        } else {
+            return fournisseursDAO.create(fournisseurs);
         }
     }
 
     public boolean deleteFournisseursBusiness(int fournisseur_id, boolean rest){
         if(rest){
-            return fournisseursDAO.delete(fournisseur_id);
-        } else {
             return fournisseursDAORest.delete(fournisseur_id);
+        } else {
+            return fournisseursDAO.delete(fournisseur_id);
         }
     }
 
     public Fournisseurs updateFournisseursBusiness(int fournisseur_id, NewFournisseurs fournisseurs, boolean rest){
         if(rest){
-            return fournisseursDAO.update(fournisseur_id, fournisseurs);
-        } else {
             return fournisseursDAORest.update(fournisseur_id, fournisseurs);
+        } else {
+            return fournisseursDAO.update(fournisseur_id, fournisseurs);
         }
     }
 
     public Fournisseurs getFournisseursBusiness(int fournisseur_id, boolean rest){
         if(rest){
-            return fournisseursDAO.read(fournisseur_id);
-        } else {
             return fournisseursDAORest.read(fournisseur_id);
+        } else {
+            return fournisseursDAO.read(fournisseur_id);
         }
     }
 
     public List<Fournisseurs> getAllFournisseursBusiness(boolean rest){
         if(rest){
-            return fournisseursDAO.read();
-        } else {
             return fournisseursDAORest.read();
+        } else {
+            return fournisseursDAO.read();
         }
     }
 }

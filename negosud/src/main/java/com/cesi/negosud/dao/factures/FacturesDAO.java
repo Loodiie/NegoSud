@@ -19,8 +19,8 @@ public class FacturesDAO {
     private static final String ID_FIELD = "facture_id";
     private static final String DATE_FIELD = "date";
     private static final String MARGE_FIELD = "marge";
-    private static final String COMMANDECLIENTID_FIELD = "commandeClient_id";
-    private static final String COMMANDEMAGID_FIELD = "commandeMag_id";
+    private static final String COMMANDECLIENTID_FIELD = "fk_commandeC";
+    private static final String COMMANDEMAGID_FIELD = "fk_commandeM";
 
 
     @Autowired
@@ -43,7 +43,7 @@ public class FacturesDAO {
     public Factures create(NewFactures factures) {
         //INSERT DANS BDD
         Factures factures1= null;
-        final String query = "INSERT INTO factures(date, marge, commandeClient_id, commandeMag_id) VALUES(?,?,?,?)";
+        final String query = "INSERT INTO factures(date, marge, fk_commandeC, fk_commandeM) VALUES(?,?,?,?)";
         int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id());
         if(result ==1){
             //faire un select avant
@@ -70,7 +70,7 @@ public class FacturesDAO {
     public Factures update(int facture_id, NewFactures factures){
         //UPDATE DANS BDD
         Factures factures1= null;
-        final String query = "UPADATE factures set date=?, marge=?, commandeClient_id=?, commandeMag_id=? where id=?";
+        final String query = "UPADATE factures set date=?, marge=?, fk_commandeC=?, fk_commandeM=? where id=?";
         int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id());
         if(result ==1){
             factures1= new Factures();

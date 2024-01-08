@@ -19,7 +19,7 @@ public class LivraisonsClientsDAO {
 
     private static final String ID_FIELD = "livraisonClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String COMMANDECLIENTID_FIELD = "commandeClient_id";
+    private static final String COMMANDECLIENTID_FIELD = "fk_commandeC";
 
     @Autowired
     public LivraisonsClientsDAO(DataSource dataSource){
@@ -38,7 +38,7 @@ public class LivraisonsClientsDAO {
     public LivraisonsClients create(NewLivraisonsClients livraisonsClients) {
         //INSERT DANS BDD
         LivraisonsClients livraisonsClients1= null;
-        final String query = "INSERT INTO livraisonsClients(date, commandeClient_id) VALUES(?,?)";
+        final String query = "INSERT INTO livraisonsclient(date, fk_commandeC) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
         if(result ==1){
             //faire un select avant
@@ -51,7 +51,7 @@ public class LivraisonsClientsDAO {
 
     public boolean delete(int livraisonClient_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from livraisonsClients where id=?");
+        final String query = ("DELETE from livraisonsclient where id=?");
         int result = this.jdbcTemplate.update(query, livraisonClient_id);
         if(result == 1) {
             return true;
@@ -63,7 +63,7 @@ public class LivraisonsClientsDAO {
     public LivraisonsClients update(int livraisonClient_id, NewLivraisonsClients livraisonsClients){
         //UPDATE DANS BDD
         LivraisonsClients livraisonsClients1= null;
-        final String query = "UPADATE livraisonsClients set date=?, commandeClient_id=? where id=?";
+        final String query = "UPADATE livraisonsclient set date=?, fk_commandeC=? where id=?";
         int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
         if(result ==1){
             livraisonsClients1= new LivraisonsClients();
@@ -76,7 +76,7 @@ public class LivraisonsClientsDAO {
 
     public LivraisonsClients read(int livraisonClient_id) {
         // READ ONE PERSON DANS BDD
-        List<LivraisonsClientsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsClients where livraisonClient_id ="+livraisonClient_id, this.rowMapper);
+        List<LivraisonsClientsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsclient where livraisonClient_id ="+livraisonClient_id, this.rowMapper);
         LivraisonsClients livraisonsClients = null;
         if(dtos != null && dtos.size() == 1){
             livraisonsClients = new LivraisonsClients();
@@ -90,7 +90,7 @@ public class LivraisonsClientsDAO {
     public List<LivraisonsClients> read() {
         // READ ALL PERSON DANS BDD
         List<LivraisonsClients> listLivraisonsClients = null;
-        List<LivraisonsClientsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsClients", this.rowMapper);
+        List<LivraisonsClientsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsclient", this.rowMapper);
         if (dtos != null && dtos.size() > 0) {
             listLivraisonsClients = new ArrayList<LivraisonsClients> ();
             for (LivraisonsClientsDTO dto : dtos) {

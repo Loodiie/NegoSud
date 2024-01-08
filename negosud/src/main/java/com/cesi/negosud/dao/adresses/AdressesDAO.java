@@ -71,7 +71,7 @@ public class AdressesDAO {
 
     public boolean delete(int adresse_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from person where id=?");
+        final String query = ("DELETE from adresses where id=?");
         int result = this.jdbcTemplate.update(query, adresse_id);
         if(result == 1) {
             return true;
@@ -102,7 +102,7 @@ public class AdressesDAO {
 
     public Adresses read(int adresse_id) {
         // READ ONE PERSON DANS BDD
-        List<AdressesDTO> dtos = this.jdbcTemplate.query("select * from person where adresse_id ="+adresse_id, this.rowMapper);
+        List<AdressesDTO> dtos = this.jdbcTemplate.query("select * from adresses where adresse_id ="+adresse_id, this.rowMapper);
         Adresses adresses = null;
         if(dtos != null && dtos.size() == 1){
             adresses = new Adresses();
