@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
-
+@Repository
 public class PaiementsDAORest {
     private final RestTemplate restTemplate;
 
