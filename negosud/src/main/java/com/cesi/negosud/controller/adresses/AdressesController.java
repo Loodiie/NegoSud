@@ -28,50 +28,50 @@ public class AdressesController {
         return adressesBusiness.createAdressesBusiness(adresses, false);
     }
 
-    @PostMapping(versionRest + "/adresses")
+    /*@PostMapping(versionRest + "/adresses")
     public Adresses createAdressesRest(@RequestBody NewAdresses adresses) {
         return adressesBusiness.createAdressesBusiness(adresses, true);
-    }
+    }*/
 
     @DeleteMapping(versionBDD + "/adresses/{adresse_id}")
     public boolean deleteAdressesBDD(@PathVariable int adresse_id) {
         return adressesBusiness.deleteAdressesBusiness(adresse_id, false);
     }
 
-    @DeleteMapping(versionRest + "/adresses/{adresse_id}")
+   /* @DeleteMapping(versionRest + "/adresses/{adresse_id}")
     public boolean deleteAdressesRest(@PathVariable int adresse_id) {
         return adressesBusiness.deleteAdressesBusiness(adresse_id, true);
-    }
+    }*/
 
     @PutMapping(versionBDD + "/adresses/{adresse_id}")
     public Adresses updateAdressesBDD(@PathVariable int adresse_id, @RequestBody NewAdresses adresses) {
         return adressesBusiness.updateAdressesBusinesss(adresse_id, adresses, false);
     }
 
-    @PutMapping(versionRest + "/adresses/{adresse_id}")
+    /*@PutMapping(versionRest + "/adresses/{adresse_id}")
     public Adresses updateAdressesRest(@PathVariable int adresse_id, @RequestBody NewAdresses adresses) {
         return adressesBusiness.updateAdressesBusinesss(adresse_id, adresses, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/adresses/{adresse_id}")
     public Adresses getAdressesBDD(@PathVariable int adresse_id) {
         return adressesBusiness.getAdressesBusiness(adresse_id, false);
     }
 
-    @GetMapping(versionRest + "/adresses/{adresse_id}")
+    /*@GetMapping(versionRest + "/adresses/{adresse_id}")
     public Adresses getAdressesRest(@PathVariable int adresse_id) {
         return adressesBusiness.getAdressesBusiness(adresse_id, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/adresses")
     public List<Adresses> getAllAdressesBDD() {
         return adressesBusiness.getAllAdressesBusiness(false);
     }
 
-    @GetMapping(versionRest + "/adresses")
+    /*@GetMapping(versionRest + "/adresses")
     public List<Adresses> getAllAdressesRest() {
         return adressesBusiness.getAllAdressesBusiness(true);
-    }
+    }*/
 }
 
 

@@ -28,48 +28,48 @@ public class FamillesController {
         return famillesBusiness.createFamillesBusiness(familles, false);
     }
 
-    @PostMapping(versionRest + "/familles")
+    /*@PostMapping(versionRest + "/familles")
     public Familles createFamillesRest(@RequestBody NewFamilles familles) {
         return famillesBusiness.createFamillesBusiness(familles, true);
-    }
+    }*/
 
     @DeleteMapping(versionBDD + "/familles/{famille_id}")
     public boolean deleteFamillesBDD(@PathVariable int famille_id) {
         return famillesBusiness.deleteFamillesBusiness(famille_id, false);
     }
 
-    @DeleteMapping(versionRest + "/familles/{famille_id}")
+    /*@DeleteMapping(versionRest + "/familles/{famille_id}")
     public boolean deleteFamillesRest(@PathVariable int famille_id) {
         return famillesBusiness.deleteFamillesBusiness(famille_id, true);
-    }
+    }*/
 
     @PutMapping(versionBDD + "/familles/{famille_id}")
     public Familles updateFamillesBDD(@PathVariable int famille_id, @RequestBody NewFamilles familles) {
         return famillesBusiness.updateFamillesBusinesss(famille_id, familles, false);
     }
 
-    @PutMapping(versionRest + "/familles/{famille_id}")
+    /*@PutMapping(versionRest + "/familles/{famille_id}")
     public Familles updateFamillesRest(@PathVariable int famille_id, @RequestBody NewFamilles familles) {
         return famillesBusiness.updateFamillesBusinesss(famille_id, familles, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/familles/{famille_id}")
     public Familles getFamillesBDD(@PathVariable int famille_id) {
         return famillesBusiness.getFamillesBusiness(famille_id, false);
     }
 
-    @GetMapping(versionRest + "/familles/{famille_id}")
+    /*@GetMapping(versionRest + "/familles/{famille_id}")
     public Familles getFamillesRest(@PathVariable int famille_id) {
         return famillesBusiness.getFamillesBusiness(famille_id, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/familles")
     public List<Familles> getAllFamillesBDD() {
         return famillesBusiness.getAllFamillesBusiness(false);
     }
 
-    @GetMapping(versionRest + "/familles")
+    /*@GetMapping(versionRest + "/familles")
     public List<Familles> getAllFamillesRest() {
         return famillesBusiness.getAllFamillesBusiness(true);
-    }
+    }*/
 }
