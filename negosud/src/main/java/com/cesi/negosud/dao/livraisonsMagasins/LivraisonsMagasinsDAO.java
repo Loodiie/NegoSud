@@ -2,6 +2,7 @@ package com.cesi.negosud.dao.livraisonsMagasins;
 
 import com.cesi.negosud.controller.livraisonsMagasins.model.LivraisonsMagasins;
 import com.cesi.negosud.controller.livraisonsMagasins.model.LivraisonsMagasins;
+import com.cesi.negosud.controller.livraisonsMagasins.model.NewLivraisonsMagasins;
 import com.cesi.negosud.dao.livraisonsMagasins.model.LivraisonsMagasinsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,10 +27,10 @@ public class LivraisonsMagasinsDAO {
     }
 
 
-    private final RowMapper<LivraisonsMagasinsDAO> rowMapper = (rs, rowNum) -> {
-        final LivraisonsMagasinsDAO livraisonsMagasins = new LivraisonsMagasinsDTO();
-        livraisonsMagasins.setlivraisonMagasin_id(rs.getInt(ID_FIELD));
-        livraisonsMagasins.setDate(rs.getString(DATE_FIELD));
+    private final RowMapper<LivraisonsMagasinsDTO> rowMapper = (rs, rowNum) -> {
+        final LivraisonsMagasinsDTO livraisonsMagasins = new LivraisonsMagasinsDTO();
+        livraisonsMagasins.setLivraisonMagasin_id(rs.getInt(ID_FIELD));
+        livraisonsMagasins.setDate(rs.getTimestamp(DATE_FIELD));
         livraisonsMagasins.setCommandeMagasin_id(rs.getInt(COMMANDEMAGASINID_FIELD));
         return livraisonsMagasins;
     };
@@ -42,7 +43,7 @@ public class LivraisonsMagasinsDAO {
         if(result ==1){
             //faire un select avant
             livraisonsMagasins1= new LivraisonsMagasins();
-            livraisonsMagasins1.setNom(livraisonsMagasins.getDate());
+            livraisonsMagasins1.setDate(livraisonsMagasins.getDate());
             livraisonsMagasins1.setCommandeMagasin_id(livraisonsMagasins.getCommandeMagasin_id());
         }
         return livraisonsMagasins1;
@@ -66,8 +67,8 @@ public class LivraisonsMagasinsDAO {
         int result = this.jdbcTemplate.update(query, livraisonsMagasins.getDate(), livraisonsMagasins.getCommandeMagasin_id());
         if(result ==1){
             livraisonsMagasins1= new LivraisonsMagasins();
-            livraisonsMagasins1.setlivraisonMagasin_id(livraisonMagasin_id);
-            livraisonsMagasins1.setNDate(livraisonsMagasins.getDate());
+            livraisonsMagasins1.setLivraisonMagasin_id(livraisonMagasin_id);
+            livraisonsMagasins1.setDate(livraisonsMagasins.getDate());
             livraisonsMagasins1.setCommandeMagasin_id(livraisonsMagasins.getCommandeMagasin_id());
         }
         return livraisonsMagasins1;
@@ -79,7 +80,7 @@ public class LivraisonsMagasinsDAO {
         LivraisonsMagasins livraisonsMagasins = null;
         if(dtos != null && dtos.size() == 1){
             livraisonsMagasins = new LivraisonsMagasins();
-            livraisonsMagasins.setlivraisonMagasin_id(dtos.get(0).getlivraisonMagasin_id());
+            livraisonsMagasins.setLivraisonMagasin_id(dtos.get(0).getLivraisonMagasin_id());
             livraisonsMagasins.setDate(dtos.get(0).getDate());
             livraisonsMagasins.setCommandeMagasin_id(dtos.get(0).getCommandeMagasin_id());
         }
@@ -94,7 +95,7 @@ public class LivraisonsMagasinsDAO {
             listLivraisonsMagasins = new ArrayList<LivraisonsMagasins> ();
             for (LivraisonsMagasinsDTO dto : dtos) {
                 LivraisonsMagasins resp = new LivraisonsMagasins();
-                resp.setlivraisonMagasin_id(dto.getlivraisonMagasin_id());
+                resp.setLivraisonMagasin_id(dto.getLivraisonMagasin_id());
                 resp.setDate(dto.getDate());
                 resp.setCommandeMagasin_id(dto.getCommandeMagasin_id());
                 listLivraisonsMagasins.add(resp);

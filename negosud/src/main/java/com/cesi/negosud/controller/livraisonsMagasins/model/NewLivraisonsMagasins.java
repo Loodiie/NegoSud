@@ -1,14 +1,16 @@
 package com.cesi.negosud.controller.livraisonsMagasins.model;
 
+import java.sql.Timestamp;
+
 public class NewLivraisonsMagasins {
-    DATE date;
+	Timestamp date;
     int commandeMagasin_id;
 
-	public DATE getDate() {
+	public Timestamp getDate() {
 		return this.date;
 	}
 
-	public void setDate(DATE date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

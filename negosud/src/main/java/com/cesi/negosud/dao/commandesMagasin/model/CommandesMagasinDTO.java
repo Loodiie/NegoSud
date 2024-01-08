@@ -1,8 +1,10 @@
 package com.cesi.negosud.dao.commandesMagasin.model;
 
+import java.sql.Timestamp;
+
 public class CommandesMagasinDTO {
     int commandeMag_id;
-    DATE date;
+    Timestamp date;
     int fournisseur_id;
 
     public int getCommandeMag_id() {
@@ -13,15 +15,15 @@ public class CommandesMagasinDTO {
         this.commandeMag_id = commandeMag_id;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
-    public int getfournisseur_id() {
+    public int getFournisseur_id() {
         return fournisseur_id;
     }
 

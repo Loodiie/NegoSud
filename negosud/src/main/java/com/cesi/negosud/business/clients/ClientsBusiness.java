@@ -21,7 +21,7 @@ public class ClientsBusiness {
         this.clientsDAORest = clientsDAORest;
     }
 
-    public Clients createCleintsBusiness(NewClients clients, boolean rest){
+    public Clients createClientsBusiness(NewClients clients, boolean rest){
         //INSERT BDD
         if(rest){
             return clientsDAO.create(clients);

@@ -5,7 +5,7 @@ import com.cesi.negosud.controller.livraisonsMagasins.model.NewLivraisonsMagasin
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.livraisonsMagasins.RestTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class LivraisonsMagasinsDAORest {
     public LivraisonsMagasinsDAORest(RestTemplate restTemplate){this.restTemplate = restTemplate;}
 
     public LivraisonsMagasins create(NewLivraisonsMagasins livraisonsMagasins){
-        return new livraisonsMagasins();
+        return new LivraisonsMagasins();
     }
 
     public boolean delete(int livraisonsMagasin_id){

@@ -1,8 +1,10 @@
 package com.cesi.negosud.dao.livraisonsClients.model;
 
+import java.sql.Timestamp;
+
 public class LivraisonsClientsDTO {
     int livraisonClient_id;
-    DATE date;
+	Timestamp date;
     int commandeClient_id;
 
 	public int getLivraisonClient_id() {
@@ -13,11 +15,11 @@ public class LivraisonsClientsDTO {
 		this.livraisonClient_id = livraisonClient_id;
 	}
 
-	public DATE getDate() {
+	public Timestamp getDate() {
 		return this.date;
 	}
 
-	public void setDate(DATE date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

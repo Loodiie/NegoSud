@@ -1,16 +1,18 @@
 package com.cesi.negosud.controller.factures.model;
 
+import java.sql.Timestamp;
+
 public class NewFactures {
-    DATE date;
+	Timestamp date;
     float marge;
     int commandeClient_id;
     int commandeMag_id;
 
-	public DATE getDate() {
+	public Timestamp getDate() {
 		return this.date;
 	}
 
-	public void setDate(DATE date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

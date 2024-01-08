@@ -1,7 +1,7 @@
 package com.cesi.negosud.dao.commandesClients;
 
 import com.cesi.negosud.controller.commandesClients.model.CommandesClients;
-import com.cesi.negosud.controller.commandesClients.model.CommandesClients;
+import com.cesi.negosud.controller.commandesClients.model.NewCommandesClients;
 import com.cesi.negosud.dao.commandesClients.model.CommandesClientsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,10 +26,10 @@ public class CommandesClientsDAO {
     }
 
 
-    private final RowMapper<CommandesClientsDAO> rowMapper = (rs, rowNum) -> {
-        final CommandesClientsDAO commandesClients = new CommandesClientsDTO();
+    private final RowMapper<CommandesClientsDTO> rowMapper = (rs, rowNum) -> {
+        final CommandesClientsDTO commandesClients = new CommandesClientsDTO();
         commandesClients.setCommandeClient_id(rs.getInt(ID_FIELD));
-        commandesClients.setDate(rs.getString(DATE_FIELD));
+        commandesClients.setDate(rs.getTimestamp (DATE_FIELD));
         commandesClients.setClient_id(rs.getInt(CLIENTID_FIELD));
         return commandesClients;
     };
@@ -42,7 +42,7 @@ public class CommandesClientsDAO {
         if(result ==1){
             //faire un select avant
             commandesClients1= new CommandesClients();
-            commandesClients1.setNom(commandesClients.getDate());
+            commandesClients1.setDate(commandesClients.getDate());
             commandesClients1.setClient_id(commandesClients.getClient_id());
         }
         return commandesClients1;
@@ -67,7 +67,7 @@ public class CommandesClientsDAO {
         if(result ==1){
             commandesClients1= new CommandesClients();
             commandesClients1.setCommandeClient_id(commandeClient_id);
-            commandesClients1.setNDate(commandesClients.getDate());
+            commandesClients1.setDate(commandesClients.getDate());
             commandesClients1.setClient_id(commandesClients.getClient_id());
         }
         return commandesClients1;

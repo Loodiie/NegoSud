@@ -23,16 +23,16 @@ public class CommandesClientsController {
 
     @PostMapping(versionBDD + "/commandesClients")
     public CommandesClients createCommandesClientsBDD(@RequestBody NewCommandesClients commandesClients) {
-        return commandesClientsBusiness.createCommandesCleintsBusiness(commandesClients, false);
+        return commandesClientsBusiness.createCommandesClientsBusiness(commandesClients, false);
     }
 
     @PostMapping(versionRest + "/commandesClients")
     public CommandesClients createCommandesClientsRest(@RequestBody NewCommandesClients commandesClients) {
-        return commandesClientsBusiness.createCommandesCleintsBusiness(commandesClients, true);
+        return commandesClientsBusiness.createCommandesClientsBusiness(commandesClients, true);
     }
 
     @DeleteMapping(versionBDD + "/commandesClients/{commandeClient_id}")
-    public boolean deleteCommandesClientsBDD(@PathVariable int commandeclient_id) {
+    public boolean deleteCommandesClientsBDD(@PathVariable int commandeClient_id) {
         return commandesClientsBusiness.deleteCommandesClientsBusiness(commandeClient_id, false);
     }
 

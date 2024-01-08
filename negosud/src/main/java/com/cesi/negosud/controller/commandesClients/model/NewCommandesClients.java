@@ -1,14 +1,16 @@
 package com.cesi.negosud.controller.commandesClients.model;
 
+import java.sql.Timestamp;
+
 public class NewCommandesClients {
-    DATE date;
+    Timestamp date;
     int client_id;
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

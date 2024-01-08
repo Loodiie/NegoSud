@@ -29,10 +29,10 @@ public class FacturesDAO {
     private final RowMapper<FacturesDTO> rowMapper = (rs, rowNum) -> {
         final FacturesDTO factures = new FacturesDTO();
         factures.setFacture_id(rs.getInt(ID_FIELD));
-        factures.setDate(rs.getString(DATE_FIELD));
-        factures.setMarge(rs.getString(MARGE_FIELD));
-        factures.setCommandeClient_id(rs.getString(COMMANDECLIENTID_FIELD));
-        factures.setCommandeMag_id(rs.getString(COMMANDEMAGID_FIELD));
+        factures.setDate(rs.getTimestamp(DATE_FIELD));
+        factures.setMarge(Float.parseFloat (rs.getString(MARGE_FIELD)));
+        factures.setCommandeClient_id(rs.getInt(COMMANDECLIENTID_FIELD));
+        factures.setCommandeMag_id(rs.getInt(COMMANDEMAGID_FIELD));
         return factures;
     };
 
@@ -42,11 +42,14 @@ public class FacturesDAO {
         //INSERT DANS BDD
         Factures factures1= null;
         final String query = "INSERT INTO factures(date, marge, commandeClient_id, commandeMag_id) VALUES(?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, factures.getLibelle());
+        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id());
         if(result ==1){
             //faire un select avant
             factures1= new Factures();
-            factures1.setLibelle(factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id());
+            factures1.setDate(factures.getDate());
+            factures1.setMarge(factures.getMarge());
+            factures1.setCommandeClient_id (factures.getCommandeClient_id());
+            factures1.setCommandeMag_id(factures.getCommandeMag_id());
         }
         return factures1;
     }

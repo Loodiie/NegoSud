@@ -5,7 +5,7 @@ import com.cesi.negosud.controller.commandesClients.model.NewCommandesClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.commandesClients.RestTemplate;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;

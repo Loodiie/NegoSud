@@ -2,6 +2,7 @@ package com.cesi.negosud.dao.livraisonsClients;
 
 import com.cesi.negosud.controller.livraisonsClients.model.LivraisonsClients;
 import com.cesi.negosud.controller.livraisonsClients.model.LivraisonsClients;
+import com.cesi.negosud.controller.livraisonsClients.model.NewLivraisonsClients;
 import com.cesi.negosud.dao.livraisonsClients.model.LivraisonsClientsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,10 +27,10 @@ public class LivraisonsClientsDAO {
     }
 
 
-    private final RowMapper<LivraisonsClientsDAO> rowMapper = (rs, rowNum) -> {
-        final LivraisonsClientsDAO livraisonsClients = new LivraisonsClientsDTO();
-        livraisonsClients.setlivraisonClient_id(rs.getInt(ID_FIELD));
-        livraisonsClients.setDate(rs.getString(DATE_FIELD));
+    private final RowMapper<LivraisonsClientsDTO> rowMapper = (rs, rowNum) -> {
+        final LivraisonsClientsDTO livraisonsClients = new LivraisonsClientsDTO();
+        livraisonsClients.setLivraisonClient_id(rs.getInt(ID_FIELD));
+        livraisonsClients.setDate(rs.getTimestamp(DATE_FIELD));
         livraisonsClients.setCommandeClient_id(rs.getInt(COMMANDECLIENTID_FIELD));
         return livraisonsClients;
     };
@@ -42,7 +43,7 @@ public class LivraisonsClientsDAO {
         if(result ==1){
             //faire un select avant
             livraisonsClients1= new LivraisonsClients();
-            livraisonsClients1.setNom(livraisonsClients.getDate());
+            livraisonsClients1.setDate(livraisonsClients.getDate());
             livraisonsClients1.setCommandeClient_id(livraisonsClients.getCommandeClient_id());
         }
         return livraisonsClients1;
@@ -66,8 +67,8 @@ public class LivraisonsClientsDAO {
         int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
         if(result ==1){
             livraisonsClients1= new LivraisonsClients();
-            livraisonsClients1.setlivraisonClient_id(livraisonClient_id);
-            livraisonsClients1.setNDate(livraisonsClients.getDate());
+            livraisonsClients1.setLivraisonClient_id(livraisonClient_id);
+            livraisonsClients1.setDate(livraisonsClients.getDate());
             livraisonsClients1.setCommandeClient_id(livraisonsClients.getCommandeClient_id());
         }
         return livraisonsClients1;
@@ -79,7 +80,7 @@ public class LivraisonsClientsDAO {
         LivraisonsClients livraisonsClients = null;
         if(dtos != null && dtos.size() == 1){
             livraisonsClients = new LivraisonsClients();
-            livraisonsClients.setlivraisonClient_id(dtos.get(0).getlivraisonClient_id());
+            livraisonsClients.setLivraisonClient_id(dtos.get(0).getLivraisonClient_id());
             livraisonsClients.setDate(dtos.get(0).getDate());
             livraisonsClients.setCommandeClient_id(dtos.get(0).getCommandeClient_id());
         }
@@ -94,7 +95,7 @@ public class LivraisonsClientsDAO {
             listLivraisonsClients = new ArrayList<LivraisonsClients> ();
             for (LivraisonsClientsDTO dto : dtos) {
                 LivraisonsClients resp = new LivraisonsClients();
-                resp.setlivraisonClient_id(dto.getlivraisonClient_id());
+                resp.setLivraisonClient_id(dto.getLivraisonClient_id());
                 resp.setDate(dto.getDate());
                 resp.setCommandeClient_id(dto.getCommandeClient_id());
                 listLivraisonsClients.add(resp);

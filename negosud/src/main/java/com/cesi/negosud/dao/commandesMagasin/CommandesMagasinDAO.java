@@ -2,6 +2,7 @@ package com.cesi.negosud.dao.commandesMagasin;
 
 import com.cesi.negosud.controller.commandesMagasin.model.CommandesMagasin;
 import com.cesi.negosud.controller.commandesMagasin.model.CommandesMagasin;
+import com.cesi.negosud.controller.commandesMagasin.model.NewCommandesMagasin;
 import com.cesi.negosud.dao.commandesMagasin.model.CommandesMagasinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,10 +27,10 @@ public class CommandesMagasinDAO {
     }
 
 
-    private final RowMapper<CommandesMagasinDAO> rowMapper = (rs, rowNum) -> {
-        final CommandesMagasinDAO commandesMagasin = new CommandesMagasinDTO();
+    private final RowMapper<CommandesMagasinDTO> rowMapper = (rs, rowNum) -> {
+        final CommandesMagasinDTO commandesMagasin = new CommandesMagasinDTO();
         commandesMagasin.setCommandeMag_id(rs.getInt(ID_FIELD));
-        commandesMagasin.setDate(rs.getString(DATE_FIELD));
+        commandesMagasin.setDate(rs.getTimestamp(DATE_FIELD));
         commandesMagasin.setFournisseur_id(rs.getInt(FOURNISSEURID_FIELD));
         return commandesMagasin;
     };
@@ -48,7 +49,7 @@ public class CommandesMagasinDAO {
         return commandesMagasin1;
     }
 
-    public boolean delete(int commandeClient_id){
+    public boolean delete(int commandeMag_id){
         //DELETE DANS BDD
         final String query = ("DELETE from commandesMagasin where id=?");
         int result = this.jdbcTemplate.update(query, commandeMag_id);
@@ -67,7 +68,7 @@ public class CommandesMagasinDAO {
         if(result ==1){
             commandesMagasin1= new CommandesMagasin();
             commandesMagasin1.setCommandeMag_id(commandeMag_id);
-            commandesMagasin1.setNDate(commandesMagasin.getDate());
+            commandesMagasin1.setDate(commandesMagasin.getDate());
             commandesMagasin1.setFournisseur_id(commandesMagasin.getFournisseur_id());
         }
         return commandesMagasin1;

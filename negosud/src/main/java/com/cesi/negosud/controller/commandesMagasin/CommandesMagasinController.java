@@ -23,12 +23,12 @@ public class CommandesMagasinController {
 
     @PostMapping(versionBDD + "/commandesMagasin")
     public CommandesMagasin createCommandesMagasinBDD(@RequestBody NewCommandesMagasin commandesMagasin) {
-        return commandesMagasinBusiness.createCommandesCleintsBusiness(commandesMagasin, false);
+        return commandesMagasinBusiness.createCommandesMagasinBusiness(commandesMagasin, false);
     }
 
     @PostMapping(versionRest + "/commandesMagasin")
     public CommandesMagasin createCommandesMagasinRest(@RequestBody NewCommandesMagasin commandesMagasin) {
-        return commandesMagasinBusiness.createCommandesCleintsBusiness(commandesMagasin, true);
+        return commandesMagasinBusiness.createCommandesMagasinBusiness(commandesMagasin, true);
     }
 
     @DeleteMapping(versionBDD + "/commandesMagasin/{commandeMag_id}")

@@ -19,7 +19,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3' // Dépendance pour le pilote JDBC MariaDB
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

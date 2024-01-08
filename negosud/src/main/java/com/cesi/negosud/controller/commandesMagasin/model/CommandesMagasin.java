@@ -1,8 +1,10 @@
 package com.cesi.negosud.controller.commandesMagasin.model;
 
+import java.sql.Timestamp;
+
 public class CommandesMagasin {
     int commandeMag_id;
-    DATE date;
+    Timestamp date;
     int fournisseur_id;
 
     public int getCommandeMag_id() {
@@ -13,11 +15,11 @@ public class CommandesMagasin {
         this.commandeMag_id = commandeMag_id;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

@@ -1,8 +1,10 @@
 package com.cesi.negosud.dao.commandesClients.model;
 
+import java.sql.Timestamp;
+
 public class CommandesClientsDTO {
     int commandeClient_id;
-    DATE date;
+    Timestamp date;
     int client_id;
 
     public int getCommandeClient_id() {
@@ -13,11 +15,11 @@ public class CommandesClientsDTO {
         this.client_id = client_id;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
