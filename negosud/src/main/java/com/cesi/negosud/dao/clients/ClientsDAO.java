@@ -43,7 +43,7 @@ public class ClientsDAO {
     public Clients create(NewClients clients) {
         //INSERT DANS BDD
         Clients clients1= null;
-        final String query = "INSERT INTO cleints(nom, prenom, telephone, mail, adresse_id) VALUES(?,?,?,?,?)";
+        final String query = "INSERT INTO clients(nom, prenom, telephone, mail, adresse_id) VALUES(?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id());
         if(result ==1){
             //faire un select avant
