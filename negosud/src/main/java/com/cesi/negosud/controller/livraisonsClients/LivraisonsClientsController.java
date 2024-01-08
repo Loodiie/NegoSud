@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Validated
+@RestController
 public class LivraisonsClientsController {
     private final String versionBDD = "/api/v1/bdd";
-    private final String versionRest = "/api/v1/rest";
+    //private final String versionRest = "/api/v1/rest";
 
     private final LivraisonsClientsBusiness livraisonsClientsBusiness;
 
@@ -26,49 +27,49 @@ public class LivraisonsClientsController {
         return livraisonsClientsBusiness.createLivraisonsClientsBusiness(livraisonsClients, false);
     }
 
-    @PostMapping(versionRest + "/livraisonsClients")
+    /*@PostMapping(versionRest + "/livraisonsClients")
     public LivraisonsClients createLivraisonsClientsRest(@RequestBody NewLivraisonsClients livraisonsClients) {
         return livraisonsClientsBusiness.createLivraisonsClientsBusiness(livraisonsClients, true);
-    }
+    }*/
 
     @DeleteMapping(versionBDD + "/livraisonsClients/{livraisonClient_id}")
     public boolean deleteLivraisonsClientsBDD(@PathVariable int livraisonClient_id) {
         return livraisonsClientsBusiness.deleteLivraisonsClientsBusiness(livraisonClient_id, false);
     }
 
-    @DeleteMapping(versionRest + "/livraisonsClients/{livraisonClient_id}")
+    /*@DeleteMapping(versionRest + "/livraisonsClients/{livraisonClient_id}")
     public boolean deleteLivraisonsClientsRest(@PathVariable int livraisonClient_id) {
         return livraisonsClientsBusiness.deleteLivraisonsClientsBusiness(livraisonClient_id, true);
-    }
+    }*/
 
     @PutMapping(versionBDD + "/livraisonsClients/{livraisonClient_id}")
     public LivraisonsClients updateLivraisonsClientsBDD(@PathVariable int livraisonClient_id, @RequestBody NewLivraisonsClients livraisonsClients) {
         return livraisonsClientsBusiness.updateLivraisonsClientsBusinesss(livraisonClient_id, livraisonsClients, false);
     }
 
-    @PutMapping(versionRest + "/livraisonsClients/{livraisonClient_id}")
+    /*@PutMapping(versionRest + "/livraisonsClients/{livraisonClient_id}")
     public LivraisonsClients updateLivraisonsClientsRest(@PathVariable int livraisonClient_id, @RequestBody NewLivraisonsClients livraisonsClients) {
         return livraisonsClientsBusiness.updateLivraisonsClientsBusinesss(livraisonClient_id, livraisonsClients, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/livraisonsClients/{livraisonClient_id}")
     public LivraisonsClients getLivraisonsClientsBDD(@PathVariable int livraisonClient_id) {
         return livraisonsClientsBusiness.getLivraisonsClientsBusiness(livraisonClient_id, false);
     }
 
-    @GetMapping(versionRest + "/livraisonsClients/{livraisonClient_id}")
+    /*@GetMapping(versionRest + "/livraisonsClients/{livraisonClient_id}")
     public LivraisonsClients getLivraisonsClientsRest(@PathVariable int livraisonClient_id) {
         return livraisonsClientsBusiness.getLivraisonsClientsBusiness(livraisonClient_id, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/livraisonsClients")
     public List<LivraisonsClients> getAllLivraisonsClientsBDD() {
         return livraisonsClientsBusiness.getAllLivraisonsClientsBusiness(false);
     }
 
-    @GetMapping(versionRest + "/livraisonsClients")
+    /*@GetMapping(versionRest + "/livraisonsClients")
     public List<LivraisonsClients> getAllLivraisonsClientsRest() {
         return livraisonsClientsBusiness.getAllLivraisonsClientsBusiness(true);
-    }
+    }*/
 
 }

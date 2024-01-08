@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class FournisseursController {
     private final String versionBDD = "/api/v1/bdd";
-    private final String versionRest = "/api/v1/rest";
+    //private final String versionRest = "/api/v1/rest";
 
     private final FournisseursBusiness fournisseursBusiness;
 
@@ -26,49 +26,49 @@ public class FournisseursController {
     public Fournisseurs createFournisseursBDD(@RequestBody NewFournisseurs fournisseurs){
         return fournisseursBusiness.createFournisseursBusiness(fournisseurs, false);
     }
-    @PostMapping(versionRest + "/inventaires")
+    /*@PostMapping(versionRest + "/inventaires")
     public Fournisseurs createFournisseursRest(@RequestBody NewFournisseurs fournisseurs){
         return fournisseursBusiness.createFournisseursBusiness(fournisseurs, true);
-    }
+    }*/
 
     @DeleteMapping(versionBDD + "/inventaires/{inventaires_id}")
     public boolean deleteFournisseursBDD(@PathVariable int fournisseur_id){
         return fournisseursBusiness.deleteFournisseursBusiness(fournisseur_id, false);
     }
 
-    @DeleteMapping(versionRest + "/inventaires/{inventaires_id}")
+    /*@DeleteMapping(versionRest + "/inventaires/{inventaires_id}")
     public boolean deleteFournisseursRest(@PathVariable int fournisseur_id){
         return fournisseursBusiness.deleteFournisseursBusiness(fournisseur_id, true);
-    }
+    }*/
 
     @PutMapping(versionBDD + "/inventaires/{inventaires_id}")
     public Fournisseurs updateFournisseursBDD(@PathVariable int fournisseur_id, @RequestBody NewFournisseurs fournisseurs){
         return fournisseursBusiness.updateFournisseursBusiness(fournisseur_id, fournisseurs, false);
     }
 
-    @PutMapping(versionRest + "/inventaires/{inventaires_id}")
+    /*@PutMapping(versionRest + "/inventaires/{inventaires_id}")
     public Fournisseurs updateFournisseursRest(@PathVariable int fournisseur_id, @RequestBody NewFournisseurs fournisseurs){
         return fournisseursBusiness.updateFournisseursBusiness(fournisseur_id, fournisseurs, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/inventaires/{inventaires_id}")
     public Fournisseurs getFournisseursBDD(@PathVariable int fournisseur_id){
         return fournisseursBusiness.getFournisseursBusiness(fournisseur_id, false);
     }
 
-    @GetMapping(versionRest + "/inventaires/{inventaires_id}")
+    /*@GetMapping(versionRest + "/inventaires/{inventaires_id}")
     public Fournisseurs getFournisseursRest(@PathVariable int fournisseur_id){
         return fournisseursBusiness.getFournisseursBusiness(fournisseur_id, true);
-    }
+    }*/
 
     @GetMapping(versionBDD + "/inventaires")
     public List<Fournisseurs> getAllInventairesBDD(){
         return fournisseursBusiness.getAllFournisseursBusiness(false);
     }
 
-    @GetMapping(versionRest + "/inventaires")
+    /*@GetMapping(versionRest + "/inventaires")
     public List<Fournisseurs> getAllFournisseursRest(){
         return fournisseursBusiness.getAllFournisseursBusiness(true);
-    }
+    }*/
 
 }
