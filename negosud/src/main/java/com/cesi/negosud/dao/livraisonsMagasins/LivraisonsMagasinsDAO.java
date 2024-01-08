@@ -38,7 +38,7 @@ public class LivraisonsMagasinsDAO {
     public LivraisonsMagasins create(NewLivraisonsMagasins livraisonsMagasins) {
         //INSERT DANS BDD
         LivraisonsMagasins livraisonsMagasins1= null;
-        final String query = "INSERT INTO livraisonsMagasins(date, commandeMagasin_id) VALUES(?,?)";
+        final String query = "INSERT INTO livraisonsmagasin(date, commandeMagasin_id) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, livraisonsMagasins.getDate(), livraisonsMagasins.getCommandeMagasin_id());
         if(result ==1){
             //faire un select avant
@@ -51,7 +51,7 @@ public class LivraisonsMagasinsDAO {
 
     public boolean delete(int livraisonMagasin_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from livraisonsMagasins where id=?");
+        final String query = ("DELETE from livraisonsmagasin where id=?");
         int result = this.jdbcTemplate.update(query, livraisonMagasin_id);
         if(result == 1) {
             return true;
@@ -63,7 +63,7 @@ public class LivraisonsMagasinsDAO {
     public LivraisonsMagasins update(int livraisonMagasin_id, NewLivraisonsMagasins livraisonsMagasins){
         //UPDATE DANS BDD
         LivraisonsMagasins livraisonsMagasins1= null;
-        final String query = "UPADATE livraisonsMagasins set date=?, commandeMagasin_id=? where id=?";
+        final String query = "UPADATE livraisonsmagasin set date=?, commandeMagasin_id=? where id=?";
         int result = this.jdbcTemplate.update(query, livraisonsMagasins.getDate(), livraisonsMagasins.getCommandeMagasin_id());
         if(result ==1){
             livraisonsMagasins1= new LivraisonsMagasins();
@@ -76,7 +76,7 @@ public class LivraisonsMagasinsDAO {
 
     public LivraisonsMagasins read(int livraisonMagasin_id) {
         // READ ONE PERSON DANS BDD
-        List<LivraisonsMagasinsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsMagasins where livraisonMagasin_id ="+livraisonMagasin_id, this.rowMapper);
+        List<LivraisonsMagasinsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsmagasin where livraisonMagasin_id ="+livraisonMagasin_id, this.rowMapper);
         LivraisonsMagasins livraisonsMagasins = null;
         if(dtos != null && dtos.size() == 1){
             livraisonsMagasins = new LivraisonsMagasins();
@@ -90,7 +90,7 @@ public class LivraisonsMagasinsDAO {
     public List<LivraisonsMagasins> read() {
         // READ ALL PERSON DANS BDD
         List<LivraisonsMagasins> listLivraisonsMagasins = null;
-        List<LivraisonsMagasinsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsMagasins", this.rowMapper);
+        List<LivraisonsMagasinsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsmagasin", this.rowMapper);
         if (dtos != null && dtos.size() > 0) {
             listLivraisonsMagasins = new ArrayList<LivraisonsMagasins> ();
             for (LivraisonsMagasinsDTO dto : dtos) {

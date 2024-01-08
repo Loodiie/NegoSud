@@ -23,43 +23,43 @@ public class CommandesClientsBusiness {
     public CommandesClients createCommandesClientsBusiness(NewCommandesClients commandesClients, boolean rest) {
         //INSERT BDD
         if(rest){
-            return commandesClientsDAO.create(commandesClients);
-        }else {
             return commandesClientsDAORest.create(commandesClients);
+        }else {
+            return commandesClientsDAO.create(commandesClients);
         }
     }
 
     public boolean deleteCommandesClientsBusiness(int commandeClient_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return commandesClientsDAO.delete(commandeClient_id);
-        }else {
             return commandesClientsDAORest.delete(commandeClient_id);
+        }else {
+            return commandesClientsDAO.delete(commandeClient_id);
         }
     }
 
     public CommandesClients updateCommandesClientsBusinesss(int commandeClient_id, NewCommandesClients commandesClients, boolean rest){
         //UPDATE BDD
         if(rest){
-            return commandesClientsDAO.update(commandeClient_id, commandesClients);
-        }else {
             return commandesClientsDAORest.update(commandeClient_id, commandesClients);
+        }else {
+            return commandesClientsDAO.update(commandeClient_id, commandesClients);
         }
     }
 
     public CommandesClients getCommandesClientsBusiness(int commandeClient_id, boolean rest) {
         if(rest){
-            return commandesClientsDAO.read(commandeClient_id);
-        }else {
             return commandesClientsDAORest.read(commandeClient_id);
+        }else {
+            return commandesClientsDAO.read(commandeClient_id);
         }
     }
 
     public List<CommandesClients> getAllCommandesClientsBusiness(boolean rest) {
         if(rest){
-            return commandesClientsDAO.read();
-        }else {
             return commandesClientsDAORest.read();
+        }else {
+            return commandesClientsDAO.read();
         }
     }
 }

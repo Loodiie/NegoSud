@@ -45,7 +45,7 @@ public class PaiementsDAO {
     public Paiements create(NewPaiements Paiements) {
         //INSERT DANS BDD
         Paiements Paiements1= null;
-        final String query = "INSERT INTO Paiements(date_prelevement,type_prelevement,acquitte,echeance) " +
+        final String query = "INSERT INTO paiements(date_prelevement,type_prelevement,acquitte,echeance) " +
                 "VALUES(?,?,?,?)";
         int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
                 Paiements.getType_paiement(),Paiements.isAcquitte(),Paiements.getEcheance());
@@ -62,7 +62,7 @@ public class PaiementsDAO {
 
     public boolean delete(int paiements_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from Paiements where id=?");
+        final String query = ("DELETE from paiements where id=?");
         int result = this.jdbcTemplate.update(query, paiements_id);
         if(result == 1) {
             return true;
@@ -74,7 +74,7 @@ public class PaiementsDAO {
     public Paiements update(int paiements_id, NewPaiements Paiements){
         //UPDATE DANS BDD
         Paiements Paiements1= null;
-        final String query = "UPADATE Paiements set date_prelevement=?, type_paiement=?, acquitte=?, echeance=? where id=?";
+        final String query = "UPADATE paiements set date_prelevement=?, type_paiement=?, acquitte=?, echeance=? where id=?";
         int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
                 Paiements.getType_paiement(), Paiements.isAcquitte(), Paiements.getEcheance(), paiements_id);
         if(result ==1){
@@ -91,7 +91,7 @@ public class PaiementsDAO {
 
     public Paiements read(int paiements_id) {
         // READ ONE PERSON DANS BDD
-        List<PaiementsDTO> dtos = this.jdbcTemplate.query("select * from Paiements where paiements_id ="+paiements_id, this.rowMapper);
+        List<PaiementsDTO> dtos = this.jdbcTemplate.query("select * from paiements where paiements_id ="+paiements_id, this.rowMapper);
         Paiements Paiements = null;
         if(dtos != null && dtos.size() == 1){
             Paiements = new Paiements();
@@ -107,7 +107,7 @@ public class PaiementsDAO {
     public List<Paiements> read() {
         // READ ALL PERSON DANS BDD
         List<Paiements> listPaiements = null;
-        List<PaiementsDTO> dtos = this.jdbcTemplate.query("select * from Paiements", this.rowMapper);
+        List<PaiementsDTO> dtos = this.jdbcTemplate.query("select * from paiements", this.rowMapper);
         if (dtos != null && dtos.size() > 0) {
             listPaiements = new ArrayList<Paiements>();
             for (PaiementsDTO dto : dtos) {

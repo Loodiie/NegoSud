@@ -23,41 +23,41 @@ public class ArticlesBusiness {
 
     public Articles createArticlesBusiness(NewArticles articles, boolean rest){
         if (rest){
-            return articlesDAO.create(articles);
-        }else {
             return articlesDAORest.create(articles);
+        }else {
+            return articlesDAO.create(articles);
         }
     }
 
     public boolean deleteArticlesBusiness(int article_id, boolean rest){
         if (rest){
-            return articlesDAO.delete(article_id);
-        }else {
             return articlesDAORest.delete(article_id);
+        }else {
+            return articlesDAO.delete(article_id);
         }
     }
 
     public Articles updateArticlesBusiness(int article_id, NewArticles articles, boolean rest){
         if (rest){
-            return articlesDAO.update(article_id, articles);
-        }else {
             return articlesDAORest.update(article_id, articles);
+        }else {
+            return articlesDAO.update(article_id, articles);
         }
     }
 
     public Articles getArticlesBusiness(int article_id, boolean rest){
         if (rest){
-            return articlesDAO.read(article_id);
-        }else {
             return articlesDAORest.read(article_id);
+        }else {
+            return articlesDAO.read(article_id);
         }
     }
 
     public List<Articles> getAllArticlesBusiness(boolean rest){
         if (rest){
-            return articlesDAO.read();
-        }else {
             return articlesDAORest.read();
+        }else {
+            return articlesDAO.read();
         }
     }
 

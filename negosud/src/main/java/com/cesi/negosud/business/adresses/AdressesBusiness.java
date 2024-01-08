@@ -23,43 +23,43 @@ public class AdressesBusiness {
     public Adresses createAdressesBusiness(NewAdresses Adresses, boolean rest) {
         //INSERT BDD
         if(rest){
-            return adressesDAO.create(Adresses);
-        }else {
             return adressesDAORest.create(Adresses);
+        }else {
+            return adressesDAO.create(Adresses);
         }
     }
 
     public boolean deleteAdressesBusiness(int adresse_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return adressesDAO.delete(adresse_id);
-        }else {
             return adressesDAORest.delete(adresse_id);
+        }else {
+            return adressesDAO.delete(adresse_id);
         }
     }
 
     public Adresses updateAdressesBusinesss(int adresse_id, NewAdresses Adresses, boolean rest){
         //UPDATE BDD
         if(rest){
-            return adressesDAO.update(adresse_id, Adresses);
-        }else {
             return adressesDAORest.update(adresse_id, Adresses);
+        }else {
+            return adressesDAO.update(adresse_id, Adresses);
         }
     }
 
     public Adresses getAdressesBusiness(int adresse_id, boolean rest) {
         if(rest){
-            return adressesDAO.read(adresse_id);
-        }else {
             return adressesDAORest.read(adresse_id);
+        }else {
+            return adressesDAO.read(adresse_id);
         }
     }
 
     public List<Adresses> getAllAdressesBusiness(boolean rest) {
         if(rest){
-            return adressesDAO.read();
-        }else {
             return adressesDAORest.read();
+        }else {
+            return adressesDAO.read();
         }
     }
 }

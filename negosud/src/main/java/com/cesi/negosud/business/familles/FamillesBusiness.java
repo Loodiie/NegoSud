@@ -22,43 +22,43 @@ public class FamillesBusiness {
     public Familles createFamillesBusiness(NewFamilles familles, boolean rest) {
         //INSERT BDD
         if(rest){
-            return famillesDAO.create(familles);
-        }else {
             return famillesDAORest.create(familles);
+        }else {
+            return famillesDAO.create(familles);
         }
     }
 
     public boolean deleteFamillesBusiness(int famille_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return famillesDAO.delete(famille_id);
-        }else {
             return famillesDAORest.delete(famille_id);
+        }else {
+            return famillesDAO.delete(famille_id);
         }
     }
 
     public Familles updateFamillesBusinesss(int famille_id, NewFamilles familles, boolean rest){
         //UPDATE BDD
         if(rest){
-            return famillesDAO.update(famille_id, familles);
-        }else {
             return famillesDAORest.update(famille_id, familles);
+        }else {
+            return famillesDAO.update(famille_id, familles);
         }
     }
 
     public Familles getFamillesBusiness(int adresse_id, boolean rest) {
         if(rest){
-            return famillesDAO.read(adresse_id);
-        }else {
             return famillesDAORest.read(adresse_id);
+        }else {
+            return famillesDAO.read(adresse_id);
         }
     }
 
     public List<Familles> getAllFamillesBusiness(boolean rest) {
         if(rest){
-            return famillesDAO.read();
-        }else {
             return famillesDAORest.read();
+        }else {
+            return famillesDAO.read();
         }
     }
 }

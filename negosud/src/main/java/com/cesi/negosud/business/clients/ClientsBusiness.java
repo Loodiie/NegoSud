@@ -24,41 +24,41 @@ public class ClientsBusiness {
     public Clients createClientsBusiness(NewClients clients, boolean rest){
         //INSERT BDD
         if(rest){
-            return clientsDAO.create(clients);
-        }else {
             return clientsDAORest.create(clients);
+        }else {
+            return clientsDAO.create(clients);
         }
     }
 
     public boolean deleteClientsBusiness(int client_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return clientsDAO.delete(client_id);
-        }else {
             return clientsDAORest.delete(client_id);
+        }else {
+            return clientsDAO.delete(client_id);
         }
     }
 
     public Clients updateClientsBusinesss(int client_id, NewClients Clients, boolean rest){
         //UPDATE BDD
         if(rest){
-            return clientsDAO.update(client_id, Clients);
-        }else {
             return clientsDAORest.update(client_id, Clients);
+        }else {
+            return clientsDAO.update(client_id, Clients);
         }
     }
 
     public Clients getClientsBusiness(int client_id, boolean rest) {
         if(rest){
-            return clientsDAO.read(client_id);
-        }else {
             return clientsDAORest.read(client_id);
+        }else {
+            return clientsDAO.read(client_id);
         }
     }
 
     public List<Clients> getAllClientsBusiness(boolean rest) {
         if(rest){
-            return clientsDAO.read();
+            return clientsDAORest.read();
         }else {
             return clientsDAO.read();
         }
