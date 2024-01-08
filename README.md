@@ -5,3 +5,5 @@ https://viacesifr-my.sharepoint.com/:x:/r/personal/elody_legouyen_viacesi_fr/_la
 
 Lien Trello : 
 https://trello.com/b/vpVPtOyD/negosud-%F0%9F%8D%B7
+
+© 2024 NegoSud inc.
