@@ -22,7 +22,7 @@ public class FournisseursController {
         this.fournisseursBusiness = fournisseursBusiness;
     }
 
-    @PostMapping(versionBDD + "/inventaires")
+    @PostMapping(versionBDD + "/fournisseurs")
     public Fournisseurs createFournisseursBDD(@RequestBody NewFournisseurs fournisseurs){
         return fournisseursBusiness.createFournisseursBusiness(fournisseurs, false);
     }
@@ -31,7 +31,7 @@ public class FournisseursController {
         return fournisseursBusiness.createFournisseursBusiness(fournisseurs, true);
     }*/
 
-    @DeleteMapping(versionBDD + "/inventaires/{inventaires_id}")
+    @DeleteMapping(versionBDD + "/fournisseurs/{fournisseur_id}")
     public boolean deleteFournisseursBDD(@PathVariable int fournisseur_id){
         return fournisseursBusiness.deleteFournisseursBusiness(fournisseur_id, false);
     }
@@ -41,7 +41,7 @@ public class FournisseursController {
         return fournisseursBusiness.deleteFournisseursBusiness(fournisseur_id, true);
     }*/
 
-    @PutMapping(versionBDD + "/inventaires/{inventaires_id}")
+    @PutMapping(versionBDD + "/fournisseurs/{fournisseur_id}")
     public Fournisseurs updateFournisseursBDD(@PathVariable int fournisseur_id, @RequestBody NewFournisseurs fournisseurs){
         return fournisseursBusiness.updateFournisseursBusiness(fournisseur_id, fournisseurs, false);
     }
@@ -51,7 +51,7 @@ public class FournisseursController {
         return fournisseursBusiness.updateFournisseursBusiness(fournisseur_id, fournisseurs, true);
     }*/
 
-    @GetMapping(versionBDD + "/inventaires/{inventaires_id}")
+    @GetMapping(versionBDD + "/fournisseurs/{fournisseur_id}")
     public Fournisseurs getFournisseursBDD(@PathVariable int fournisseur_id){
         return fournisseursBusiness.getFournisseursBusiness(fournisseur_id, false);
     }
@@ -61,8 +61,8 @@ public class FournisseursController {
         return fournisseursBusiness.getFournisseursBusiness(fournisseur_id, true);
     }*/
 
-    @GetMapping(versionBDD + "/inventaires")
-    public List<Fournisseurs> getAllInventairesBDD(){
+    @GetMapping(versionBDD + "/fournisseurs")
+    public List<Fournisseurs> getAllFournisseursBDD(){
         return fournisseursBusiness.getAllFournisseursBusiness(false);
     }
 
