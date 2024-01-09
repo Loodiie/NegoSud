@@ -10,7 +10,7 @@ public class NewCommandesMagasin {
         return date;
     }
 
-    public void setDate(Timestamp nom) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
