@@ -51,7 +51,7 @@ public class LivraisonsClientsDAO {
 
     public boolean delete(int livraisonClient_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from livraisonsclient where id=?");
+        final String query = ("DELETE from livraisonsclient where livraisonClient_id=?");
         int result = this.jdbcTemplate.update(query, livraisonClient_id);
         if(result == 1) {
             return true;
@@ -63,8 +63,8 @@ public class LivraisonsClientsDAO {
     public LivraisonsClients update(int livraisonClient_id, NewLivraisonsClients livraisonsClients){
         //UPDATE DANS BDD
         LivraisonsClients livraisonsClients1= null;
-        final String query = "UPADATE livraisonsclient set date=?, fk_commandeC=? where id=?";
-        int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
+        final String query = "UPDATE livraisonsclient set date=?, fk_commandeC=? where livraisonClient_id=?";
+        int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id(), livraisonClient_id);
         if(result ==1){
             livraisonsClients1= new LivraisonsClients();
             livraisonsClients1.setLivraisonClient_id(livraisonClient_id);
