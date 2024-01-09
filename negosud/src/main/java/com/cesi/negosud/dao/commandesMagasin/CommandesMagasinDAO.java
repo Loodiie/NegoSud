@@ -1,7 +1,6 @@
 package com.cesi.negosud.dao.commandesMagasin;
 
 import com.cesi.negosud.controller.commandesMagasin.model.CommandesMagasin;
-import com.cesi.negosud.controller.commandesMagasin.model.CommandesMagasin;
 import com.cesi.negosud.controller.commandesMagasin.model.NewCommandesMagasin;
 import com.cesi.negosud.dao.commandesMagasin.model.CommandesMagasinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
