@@ -58,7 +58,7 @@ public class FacturesDAO {
 
     public boolean delete(int facture_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from factures where id=?");
+        final String query = ("DELETE from factures where facture_id=?");
         int result = this.jdbcTemplate.update(query, facture_id);
         if(result == 1) {
             return true;
@@ -70,8 +70,8 @@ public class FacturesDAO {
     public Factures update(int facture_id, NewFactures factures){
         //UPDATE DANS BDD
         Factures factures1= null;
-        final String query = "UPADATE factures set date=?, marge=?, fk_commandeC=?, fk_commandeM=? where id=?";
-        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id());
+        final String query = "UPDATE factures set date=?, marge=?, fk_commandeC=?, fk_commandeM=? where facture_id=?";
+        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id(), facture_id);
         if(result ==1){
             factures1= new Factures();
             factures1.setFacture_id(facture_id);

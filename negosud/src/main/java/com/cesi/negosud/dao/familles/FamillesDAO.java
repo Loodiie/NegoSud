@@ -50,7 +50,7 @@ public class FamillesDAO {
 
     public boolean delete(int famille_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from familles where id=?");
+        final String query = ("DELETE from familles where famille_id=?");
         int result = this.jdbcTemplate.update(query, famille_id);
         if(result == 1) {
             return true;
@@ -62,8 +62,8 @@ public class FamillesDAO {
     public Familles update(int famille_id, NewFamilles familles){
         //UPDATE DANS BDD
         Familles familles1= null;
-        final String query = "UPADATE familles set libelle=? where id=?";
-        int result = this.jdbcTemplate.update(query, familles.getLibelle());
+        final String query = "UPDATE familles set libelle=? where famille_id=?";
+        int result = this.jdbcTemplate.update(query, familles.getLibelle(), famille_id);
         if(result ==1){
             familles1= new Familles();
             familles1.setFamille_id(famille_id);

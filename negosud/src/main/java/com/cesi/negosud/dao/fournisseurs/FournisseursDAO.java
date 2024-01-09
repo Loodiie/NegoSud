@@ -54,7 +54,7 @@ public class FournisseursDAO {
     }
 
     public boolean delete(int fournisseur_id) {
-        final String query = ("DELETE from fournisseurs where id=?");
+        final String query = ("DELETE from fournisseurs where fournisseur_id=?");
         int result = this.jdbcTemplate.update(query, fournisseur_id);
         if (result == 1) {
             return true;
@@ -65,8 +65,8 @@ public class FournisseursDAO {
 
     public Fournisseurs update(int fournisseur_id, NewFournisseurs fournisseurs) {
         Fournisseurs fournisseurs1 = null;
-        final String query = "UPADATE fournisseurs set nom=?, telephone=?, mail=?, fk_adresse=? where id=?";
-        int result = this.jdbcTemplate.update(query, fournisseurs.getNom(), fournisseurs.getTelephone(), fournisseurs.getMail(), fournisseurs.getAdresse_id());
+        final String query = "UPDATE fournisseurs set nom=?, telephone=?, mail=?, fk_adresse=? where fournisseur_id=?";
+        int result = this.jdbcTemplate.update(query, fournisseurs.getNom(), fournisseurs.getTelephone(), fournisseurs.getMail(), fournisseurs.getAdresse_id(), fournisseur_id);
         if (result == 1) {
             fournisseurs1 = new Fournisseurs();
             fournisseurs1.setFournisseur_id(fournisseur_id);
