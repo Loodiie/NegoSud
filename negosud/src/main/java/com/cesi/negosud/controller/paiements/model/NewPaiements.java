@@ -9,7 +9,6 @@ public class NewPaiements {
     public int getId_facture() {
         return id_facture;
     }
-
     public void setId_facture(int id_facture) {
         this.id_facture = id_facture;
     }

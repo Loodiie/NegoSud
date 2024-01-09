@@ -63,6 +63,7 @@ public class PaiementsDAO {
         return paiements1;
     }
 
+
     public boolean delete(int paiements_id){
         //DELETE DANS BDD
         final String query = ("DELETE from paiements where paiement_id=?");

@@ -8,6 +8,7 @@ public class Paiements {
     long echeance;
     int id_facture;
 
+    
     public int getId_facture() {
         return id_facture;
     }
