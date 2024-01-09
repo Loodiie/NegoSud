@@ -71,7 +71,7 @@ public class AdressesDAO {
 
     public boolean delete(int adresse_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from adresses where id=?");
+        final String query = ("DELETE from adresses where adresse_id=?");
         int result = this.jdbcTemplate.update(query, adresse_id);
         if(result == 1) {
             return true;
@@ -83,8 +83,8 @@ public class AdressesDAO {
     public Adresses update(int adresse_id, NewAdresses adresses){
         //UPDATE DANS BDD
         Adresses adresses1= null;
-        final String query = "UPADATE adresses set ville=?, code_postal=?, pays=?, numero=?, rue=?, etage=?, batiment=?, complement=? where id=?";
-        int result = this.jdbcTemplate.update(query, adresses.getVille(), adresses.getCode_postal(), adresses.getPays(), adresses.getNumero(), adresses.getRue(), adresses.getEtage(), adresses.getBatiment(), adresses.getComplement());
+        final String query = "UPDATE adresses set ville=?, code_postal=?, pays=?, numero=?, rue=?, etage=?, batiment=?, complement=? where adresse_id=?";
+        int result = this.jdbcTemplate.update(query, adresses.getVille(), adresses.getCode_postal(), adresses.getPays(), adresses.getNumero(), adresses.getRue(), adresses.getEtage(), adresses.getBatiment(), adresses.getComplement(), adresse_id);
         if(result ==1){
             adresses1= new Adresses();
             adresses1.setAdresse_id(adresse_id);

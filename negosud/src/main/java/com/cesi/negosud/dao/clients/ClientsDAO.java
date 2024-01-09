@@ -59,7 +59,7 @@ public class ClientsDAO {
 
     public boolean delete(int client_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from clients where id=?");
+        final String query = ("DELETE from clients where client_id=?");
         int result = this.jdbcTemplate.update(query, client_id);
         if(result == 1) {
             return true;
@@ -71,9 +71,9 @@ public class ClientsDAO {
     public Clients update(int client_id, NewClients clients){
         //UPDATE DANS BDD
         Clients clients1= null;
-        final String query = "UPADATE clients set nom=?, prenom=?, telephone=?, mail=?, fk_adresse=? where id=?";
-        int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id());
-        if(result ==1){
+        final String query = "UPDATE clients set nom=?, prenom=?, telephone=?, mail=?, fk_adresse=? where client_id=?";
+        int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id(), client_id);
+        if(result == 1){
             clients1= new Clients();
             clients1.setClient_id(client_id);
             clients1.setNom(clients.getNom());
