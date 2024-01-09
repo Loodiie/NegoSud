@@ -8,11 +8,11 @@ public class CommandesClientsDTO {
     int client_id;
 
     public int getCommandeClient_id() {
-        return client_id;
+        return commandeClient_id;
     }
 
-    public void setCommandeClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setCommandeClient_id(int commandeClientId) {
+        this.commandeClient_id = commandeClientId;
     }
 
     public Timestamp getDate() {
