@@ -31,39 +31,41 @@ public class PaiementsDAO {
     }
 
     private final RowMapper<PaiementsDTO> rowMapper = (rs, rowNum) -> {
-        final PaiementsDTO Paiements = new PaiementsDTO();
-        Paiements.setPaiements_id(rs.getInt(ID_FIELD));
-        Paiements.setDate_prelevement(rs.getLong(DATE_PRELEVELEMENT_FIELD));
-        Paiements.setType_paiement(rs.getString(TYPE_PAIEMENT_FIELD));
-        Paiements.setAcquitte(rs.getBoolean(ACQUITTE_FIELD));
-        Paiements.setEcheance(rs.getInt(ECHEANCE_FIELD));
+        final PaiementsDTO paiements = new PaiementsDTO();
+        paiements.setPaiements_id(rs.getInt(ID_FIELD));
+        paiements.setDate_prelevement(rs.getLong(DATE_PRELEVELEMENT_FIELD));
+        paiements.setType_paiement(rs.getString(TYPE_PAIEMENT_FIELD));
+        paiements.setAcquitte(rs.getBoolean(ACQUITTE_FIELD));
+        paiements.setEcheance(rs.getInt(ECHEANCE_FIELD));
+        paiements.setEcheance(rs.getInt(FACTUREID_FIELD));
 
-        return Paiements;
+        return paiements;
     };
 
 
 
     public Paiements create(NewPaiements Paiements) {
         //INSERT DANS BDD
-        Paiements Paiements1= null;
+        Paiements paiements1= null;
         final String query = "INSERT INTO paiements(date_prelevement,type_prelevement,acquitte,echeance,fk_facture) " +
-                "VALUES(?,?,?,?)";
+                "VALUES(?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
-                Paiements.getType_paiement(),Paiements.isAcquitte(),Paiements.getEcheance());
+                Paiements.getType_paiement(),Paiements.isAcquitte(),Paiements.getEcheance(),Paiements.getId_facture());
         if(result ==1){
             //faire un select avant
-            Paiements1= new Paiements();
-            Paiements1.setDate_prelevement(Paiements.getDate_prelevement());
-            Paiements1.setType_paiement(Paiements.getType_paiement());
-            Paiements1.setAcquitte(Paiements.isAcquitte());
-            Paiements1.setEcheance(Paiements.getEcheance());
+            paiements1= new Paiements();
+            paiements1.setDate_prelevement(Paiements.getDate_prelevement());
+            paiements1.setType_paiement(Paiements.getType_paiement());
+            paiements1.setAcquitte(Paiements.isAcquitte());
+            paiements1.setEcheance(Paiements.getEcheance());
+            paiements1.setEcheance(Paiements.getId_facture());
         }
-        return Paiements1;
+        return paiements1;
     }
 
     public boolean delete(int paiements_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from paiements where id=?");
+        final String query = ("DELETE from paiements where paiement_id=?");
         int result = this.jdbcTemplate.update(query, paiements_id);
         if(result == 1) {
             return true;
@@ -72,37 +74,38 @@ public class PaiementsDAO {
         }
     }
 
-    public Paiements update(int paiements_id, NewPaiements Paiements){
+    public Paiements update(int paiements_id, NewPaiements paiements){
         //UPDATE DANS BDD
-        Paiements Paiements1= null;
-        final String query = "UPADATE paiements set date_prelevement=?, type_paiement=?, acquitte=?, echeance=?, fk_facture=? where id=?";
-        int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
-                Paiements.getType_paiement(), Paiements.isAcquitte(), Paiements.getEcheance(), paiements_id);
+        Paiements paiements1= null;
+        final String query = "UPDATE paiements set date_prelevement=?, type_paiement=?, acquitte=?, echeance=?, fk_facture=? where paiement_id=?";
+        int result = this.jdbcTemplate.update(query, paiements.getDate_prelevement(), paiements.getType_paiement(),
+                paiements.isAcquitte(), paiements.getEcheance(),paiements.getId_facture(), paiements_id);
         if(result ==1){
-            Paiements1= new Paiements();
-            Paiements1.setPaiements_id(paiements_id);
-            Paiements1.setDate_prelevement(Paiements.getDate_prelevement());
-            Paiements1.setType_paiement(Paiements.getType_paiement());
-            Paiements1.setAcquitte(Paiements.isAcquitte());
-            Paiements1.setEcheance(Paiements.getEcheance());
+            paiements1= new Paiements();
+            paiements1.setPaiements_id(paiements_id);
+            paiements1.setDate_prelevement(paiements.getDate_prelevement());
+            paiements1.setType_paiement(paiements.getType_paiement());
+            paiements1.setAcquitte(paiements.isAcquitte());
+            paiements1.setEcheance(paiements.getEcheance());
 
         }
-        return Paiements1;
+        return paiements1;
     }
 
     public Paiements read(int paiements_id) {
         // READ ONE PERSON DANS BDD
         List<PaiementsDTO> dtos = this.jdbcTemplate.query("select * from paiements where paiements_id ="+paiements_id, this.rowMapper);
-        Paiements Paiements = null;
+        Paiements paiements = null;
         if(dtos != null && dtos.size() == 1){
-            Paiements = new Paiements();
-            Paiements.setPaiements_id(dtos.get(0).getPaiements_id());
-            Paiements.setDate_prelevement(dtos.get(0).getDate_prelevement());
-            Paiements.setType_paiement(dtos.get(0).getType_paiement());
-            Paiements.setAcquitte(dtos.get(0).isAcquitte());
-            Paiements.setEcheance(dtos.get(0).getEcheance());
+            paiements = new Paiements();
+            paiements.setPaiements_id(dtos.get(0).getPaiements_id());
+            paiements.setDate_prelevement(dtos.get(0).getDate_prelevement());
+            paiements.setType_paiement(dtos.get(0).getType_paiement());
+            paiements.setAcquitte(dtos.get(0).isAcquitte());
+            paiements.setEcheance(dtos.get(0).getEcheance());
+            paiements.setId_facture(dtos.get(0).getPaiements_id());
         }
-        return Paiements;
+        return paiements;
     }
 
     public List<Paiements> read() {
@@ -118,6 +121,7 @@ public class PaiementsDAO {
                 resp.setType_paiement(dto.getType_paiement());
                 resp.setAcquitte(dto.isAcquitte());
                 resp.setEcheance(dto.getEcheance());
+                resp.setId_facture(dto.getPaiements_id());
                 listPaiements.add(resp);
             }
         }
