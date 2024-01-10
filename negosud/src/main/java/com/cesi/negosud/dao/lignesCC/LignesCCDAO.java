@@ -1,9 +1,7 @@
 package com.cesi.negosud.dao.lignesCC;
 
-import com.cesi.negosud.controller.fournisseurs.model.Fournisseurs;
 import com.cesi.negosud.controller.lignesCC.model.LignesCC;
 import com.cesi.negosud.controller.lignesCC.model.NewLignesCC;
-import com.cesi.negosud.dao.fournisseurs.model.FournisseursDTO;
 import com.cesi.negosud.dao.lignesCC.model.LignesCCDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -43,9 +41,9 @@ public class LignesCCDAO {
         return lignesCC1;
     }
 
-    public boolean delete(int article_id, int commandeCLient_id){
+    public boolean delete(int article_id, int commandeClient_id){
         final String query = ("DELETE from lignescommandeclient where fk_article=? and fk_CC=?");
-        int result = this.jdbcTemplate.update(query, article_id, commandeCLient_id);
+        int result = this.jdbcTemplate.update(query, article_id, commandeClient_id);
         if(result == 1){
             return true;
         }else{
