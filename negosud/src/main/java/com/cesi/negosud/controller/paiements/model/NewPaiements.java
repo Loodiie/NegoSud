@@ -1,10 +1,12 @@
 package com.cesi.negosud.controller.paiements.model;
 
+import java.sql.Timestamp;
+
 public class NewPaiements {
-    long date_prelevement;
+    Timestamp date_prelevement;
     String type_paiement;
     boolean acquitte;
-    long echeance;
+    Timestamp echeance;
     int id_facture;
     public int getId_facture() {
         return id_facture;
@@ -13,11 +15,11 @@ public class NewPaiements {
         this.id_facture = id_facture;
     }
 
-    public long getDate_prelevement() {
+    public Timestamp getDate_prelevement() {
         return date_prelevement;
     }
 
-    public void setDate_prelevement(long date_prelevement) {
+    public void setDate_prelevement(Timestamp date_prelevement) {
         this.date_prelevement = date_prelevement;
     }
 
@@ -37,11 +39,11 @@ public class NewPaiements {
         this.acquitte = acquitte;
     }
 
-    public long getEcheance() {
+    public Timestamp getEcheance() {
         return echeance;
     }
 
-    public void setEcheance(long echeance) {
+    public void setEcheance(Timestamp echeance) {
         this.echeance = echeance;
     }
 }
