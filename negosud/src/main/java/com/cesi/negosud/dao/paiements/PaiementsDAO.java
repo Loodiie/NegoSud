@@ -43,7 +43,6 @@ public class PaiementsDAO {
     };
 
 
-
     public Paiements create(NewPaiements Paiements) {
         //INSERT DANS BDD
         Paiements paiements1= null;

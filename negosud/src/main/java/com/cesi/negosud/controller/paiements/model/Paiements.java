@@ -55,5 +55,4 @@ public class Paiements {
     public void setPaiement_id(int paiements_id) {
         this.paiement_id = paiements_id;
     }
-
 }
