@@ -18,15 +18,12 @@ public class ArticlesDAO {
     private final JdbcTemplate jdbcTemplate;
 
     private static final String ID_FIELD = "article_id";
-    private static final String DESIGNATION_FIELD = "designation";
-    private static final String DESCRIPTION_FIELD = "description";
-    private static final String PRIX_UNIT_FIELD = "prix_unit";
-    private static final String SEUIL_FIELD = "seuil";
     private static final String TVA_FIELD = "tva";
     private static final String REDUCTION_FIELD = "reduction";
     private static final String OFFERT_FIELD = "offert";
     private static final String FAMILLE_FIELD = "fk_famille";
-    private static final String FOURNISSEUR_FIELD = "fk_fournisseur";
+    private static final String CARTON_FIELD = "fk_carton";
+
 
     @Autowired
     public ArticlesDAO(DataSource dataSource) { this.jdbcTemplate = new JdbcTemplate(dataSource);}
@@ -34,40 +31,32 @@ public class ArticlesDAO {
     private final RowMapper<ArticlesDTO> rowMapper = (rs, rowNum) -> {
         final ArticlesDTO articles = new ArticlesDTO();
         articles.setArticle_id(rs.getInt(ID_FIELD));
-        articles.setDesignation(rs.getString(DESIGNATION_FIELD));
-        articles.setDescription(rs.getString(DESCRIPTION_FIELD));
-        articles.setPrix_unit(rs.getFloat(PRIX_UNIT_FIELD));
-        articles.setSeuil(rs.getInt(SEUIL_FIELD));
         articles.setTva(rs.getFloat(TVA_FIELD));
         articles.setReduction(rs.getFloat(REDUCTION_FIELD));
         articles.setOffert(rs.getInt(OFFERT_FIELD));
         articles.setFamille_id(rs.getInt(FAMILLE_FIELD));
-        articles.setFournisseur_id(rs.getInt(FOURNISSEUR_FIELD));
+        articles.setCarton_id(rs.getInt(CARTON_FIELD));
 
         return articles;
     };
 
     public Articles create(NewArticles articles) {
         Articles articles1= null;
-        final String query = "INSERT INTO articles(designation, description, prix_unit, seuil, tva, reduction, offert, fk_famille, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, articles.getDesignation(), articles.getDescription(), articles.getPrix_unit(), articles.getSeuil(), articles.getTva(), articles.getReduction(), articles.getOffert(), articles.getFamille_id(), articles.getFournisseur_id());
+        final String query = "INSERT INTO articles(tva, reduction, offert, fk_famille, fk_carton) VALUES(?,?,?,?,?)";
+        int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(), articles.getFamille_id();
         if (result ==1){
             articles1 = new Articles();
-            articles1.setDesignation(articles.getDesignation());
-            articles1.setDescription(articles.getDescription());
-            articles1.setPrix_unit(articles.getPrix_unit());
-            articles1.setSeuil(articles.getSeuil());
             articles1.setTva(articles.getTva());
             articles1.setReduction(articles.getReduction());
             articles1.setOffert(articles.getOffert());
             articles1.setFamille_id(articles.getFamille_id());
-            articles1.setFournisseur_id(articles.getFournisseur_id());
+            articles1.setCarton_id(articles.getCarton_id());
         }
         return articles1;
     }
 
     public boolean delete (int article_id){
-        final String query = ("DELETE from articles wher id=?");
+        final String query = ("DELETE from articles where article_id=?");
         int result = this.jdbcTemplate.update(query, article_id);
         if(result == 1){
             return true;
@@ -78,20 +67,17 @@ public class ArticlesDAO {
 
     public Articles update(int article_id, NewArticles articles){
         Articles articles1= null;
-        final String query = "UPDATE articles set designation=?, description=?, prix_unit=?, seuil=?, tva=?, reduction=?, offert=?, fk_famille=?, fk_fournisseur=? where id=?";
-        int result = this.jdbcTemplate.update(query, articles.getDesignation(), articles.getDescription(), articles.getPrix_unit(), articles.getSeuil(), articles.getTva(), articles.getReduction(), articles.getOffert(), articles.getFamille_id(), articles.getFournisseur_id());
+        final String query = "UPDATE articles set tva=?, reduction=?, offert=?, fk_famille=?, fk_carton=? where article_id=?";
+        int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(),
+                articles.getFamille_id(), articles.getCarton_id(), article_id);
         if(result ==1){
             articles1 = new Articles();
             articles1.setArticle_id(article_id);
-            articles1.setDesignation(articles.getDesignation());
-            articles1.setDescription(articles.getDescription());
-            articles1.setPrix_unit(articles.getPrix_unit());
-            articles1.setSeuil(articles.getSeuil());
             articles1.setTva(articles.getTva());
             articles1.setReduction(articles.getReduction());
             articles1.setOffert(articles.getOffert());
             articles1.setFamille_id(articles.getFamille_id());
-            articles1.setFournisseur_id(articles.getFournisseur_id());
+            articles1.setCarton_id(articles.getCarton_id());
         }
 
         return articles1;
@@ -103,17 +89,13 @@ public class ArticlesDAO {
         if(dtos != null && dtos.size() == 1){
             articles = new Articles();
             articles.setArticle_id(dtos.get(0).getArticle_id());
-            articles.setDesignation(dtos.get(0).getDesignation());
-            articles.setDescription(dtos.get(0).getDescription());
-            articles.setPrix_unit(dtos.get(0).getPrix_unit());
-            articles.setSeuil(dtos.get(0).getSeuil());
             articles.setTva(dtos.get(0).getTva());
             articles.setReduction(dtos.get(0).getReduction());
             articles.setOffert(dtos.get(0).getOffert());
             articles.setFamille_id(dtos.get(0).getFamille_id());
-            articles.setFournisseur_id(dtos.get(0).getFournisseur_id());
+            articles.setCarton_id(dtos.get(0).getCarton_id());
         }
-        return  articles;
+        return articles;
     }
 
     public List<Articles> read() {
@@ -124,15 +106,12 @@ public class ArticlesDAO {
             for (ArticlesDTO dto : dtos) {
                 Articles resp = new Articles();
                 resp.setArticle_id(dto.getArticle_id());
-                resp.setDesignation(dto.getDesignation());
-                resp.setDescription(dto.getDescription());
-                resp.setPrix_unit(dto.getPrix_unit());
-                resp.setSeuil(dto.getSeuil());
                 resp.setTva(dto.getTva());
                 resp.setReduction(dto.getReduction());
                 resp.setOffert(dto.getOffert());
                 resp.setFamille_id(dto.getFamille_id());
-                resp.setFournisseur_id(dto.getFournisseur_id());
+                resp.setCarton_id(dto.getCarton_id());
+                listArticles.add(resp);
             }
         }
         return listArticles;

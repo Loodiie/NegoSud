@@ -3,15 +3,20 @@ package com.cesi.negosud.dao.articles.model;
 public class ArticlesDTO {
 
     int article_id;
-    String designation;
-    String description;
-    float prix_unit;
-    int seuil;
     float tva;
     float reduction;
     int offert;
     int famille_id;
-    int fournisseur_id;
+    int carton_id;
+
+
+    public int getCarton_id() {
+        return carton_id;
+    }
+
+    public void setCarton_id(int carton_id) {
+        this.carton_id = carton_id;
+    }
 
     public int getArticle_id() {
         return article_id;
@@ -21,37 +26,6 @@ public class ArticlesDTO {
         this.article_id = article_id;
     }
 
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public float getPrix_unit() {
-        return prix_unit;
-    }
-
-    public void setPrix_unit(float prix_unit) {
-        this.prix_unit = prix_unit;
-    }
-
-    public int getSeuil() {
-        return seuil;
-    }
-
-    public void setSeuil(int seuil) {
-        this.seuil = seuil;
-    }
 
     public float getTva() {
         return tva;
@@ -85,11 +59,4 @@ public class ArticlesDTO {
         this.famille_id = famille_id;
     }
 
-    public int getFournisseur_id() {
-        return fournisseur_id;
-    }
-
-    public void setFournisseur_id(int fournisseur_id) {
-        this.fournisseur_id = fournisseur_id;
-    }
 }

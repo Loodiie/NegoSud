@@ -1,0 +1,88 @@
+CREATE TABLE `adresses` (
+  `adresse_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `ville` varchar(255) NOT NULL,
+  `code_postal` varchar(255) NOT NULL,
+  `pays` varchar(255) NOT NULL,
+  `numero` varchar(255) NOT NULL,
+  `rue` varchar(255) NOT NULL,
+  `etage` varchar(255) DEFAULT NULL,
+  `batiment` varchar(255) DEFAULT NULL,
+  `complement` varchar(255) DEFAULT NULL,
+);
+CREATE TABLE `clients` (
+  `client_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_adresse` int(11) NOT NULL FOREIGN KEY REFERENCES `adresses`(`adresse_id`),
+  `nom` varchar(255) DEFAULT NULL,
+  `prenom` varchar(255) DEFAULT NULL,
+  `telephone` varchar(255) DEFAULT NULL,
+  `mail` varchar(255) DEFAULT NULL
+);
+CREATE TABLE `fournisseurs` (
+  `fournisseur_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_adresse` int(11) NOT NULL FOREIGN KEY REFERENCES `adresses`(`adresse_id`),
+  `nom` varchar(255) DEFAULT NULL,
+  `telephone` varchar(255) DEFAULT NULL,
+  `mail` varchar(255) DEFAULT NULL
+);
+CREATE TABLE `familles` (
+  `famille_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `libelle` varchar(255) DEFAULT NULL,
+  `prix_unit` decimal(15,4) DEFAULT NULL,
+  `seuil` int(11) DEFAULT NULL,
+  `fk_fournisseur` int(11) NOT NULL FOREIGN KEY REFERENCES `fournisseurs`(`fournisseur_id`)
+);
+CREATE TABLE `cartons` (
+  `carton_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `description` varchar(255) DEFAULT NULL
+);
+CREATE TABLE `articles` (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `tva` decimal(15,4) DEFAULT NULL,
+  `reduction` decimal(15,4) DEFAULT NULL,
+  `offert` tinyint(1) DEFAULT NULL,
+  `fk_famille` int(11) NOT NULL FOREIGN KEY REFERENCES `familles`(`famille_id`),
+  `fk_carton` int(11) NOT NULL FOREIGN KEY REFERENCES `cartons`(`carton_id`)
+);
+CREATE TABLE `commandesClients` (
+  `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_client` int(11) NOT NULL FOREIGN KEY REFERENCES `clients`(`client_id`),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+);
+CREATE TABLE `commandesMagasin` (
+  `commandeMag_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_fournisseur` int(11) NOT NULL FOREIGN KEY REFERENCES `fournisseurs`(`fournisseur_id`),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+);
+CREATE TABLE `livraisonsClient` (
+  `livraisonClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_commandeC` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesClients`(`commandeClient_id`),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+);
+CREATE TABLE `livraisonsMagasin` (
+  `livraisonMag_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_commandeM` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+);
+CREATE TABLE `factures` (
+  `facture_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `marge` decimal(15,4) DEFAULT NULL,
+  `fk_commandeC` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesClients`(`commandeClient_id`),
+  `fk_commandeM` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`)
+);
+CREATE TABLE `paiements` (
+  `paiement_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `type` varchar(255) DEFAULT NULL,
+  `acquitte` tinyint(1) DEFAULT NULL,
+  `echeance` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `fk_facture` int(11) NOT NULL FOREIGN KEY REFERENCES `factures`(`facture_id`)
+);
+CREATE TABLE `lignesCommandeClient` (
+  `fk_article` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `articles`(`article_id`),
+  `fk_CC` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `commandesClients`(`commandeClient_id`)
+);
+CREATE TABLE `lignesCommandeMagasin` (
+  `fk_article` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `articles`(`article_id`),
+  `fk_CM` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`)
+);
