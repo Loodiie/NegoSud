@@ -17,7 +17,7 @@ import java.util.List;
 public class LivraisonsMagasinsDAO {
     private final JdbcTemplate jdbcTemplate;
 
-    private static final String ID_FIELD = "livraisonMagasin_id";
+    private static final String ID_FIELD = "livraisonMag_id";
     private static final String DATE_FIELD = "date";
     private static final String COMMANDEMAGASINID_FIELD = "fk_commandeM";
 
@@ -51,7 +51,7 @@ public class LivraisonsMagasinsDAO {
 
     public boolean delete(int livraisonMagasin_id){
         //DELETE DANS BDD
-        final String query = ("DELETE from livraisonsmagasin where livraisonMagasin_id=?");
+        final String query = ("DELETE from livraisonsmagasin where livraisonMag_id=?");
         int result = this.jdbcTemplate.update(query, livraisonMagasin_id);
         if(result == 1) {
             return true;
@@ -63,7 +63,7 @@ public class LivraisonsMagasinsDAO {
     public LivraisonsMagasins update(int livraisonMagasin_id, NewLivraisonsMagasins livraisonsMagasins){
         //UPDATE DANS BDD
         LivraisonsMagasins livraisonsMagasins1= null;
-        final String query = "UPDATE livraisonsmagasin set date=?, fk_commandeM=? where livraisonMagasin_id=?";
+        final String query = "UPDATE livraisonsmagasin set date=?, fk_commandeM=? where livraisonMag_id=?";
         int result = this.jdbcTemplate.update(query, livraisonsMagasins.getDate(), livraisonsMagasins.getCommandeMagasin_id(), livraisonMagasin_id);
         if(result ==1){
             livraisonsMagasins1= new LivraisonsMagasins();
@@ -76,7 +76,7 @@ public class LivraisonsMagasinsDAO {
 
     public LivraisonsMagasins read(int livraisonMagasin_id) {
         // READ ONE PERSON DANS BDD
-        List<LivraisonsMagasinsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsmagasin where livraisonMagasin_id ="+livraisonMagasin_id, this.rowMapper);
+        List<LivraisonsMagasinsDTO> dtos = this.jdbcTemplate.query("select * from livraisonsmagasin where livraisonMag_id ="+livraisonMagasin_id, this.rowMapper);
         LivraisonsMagasins livraisonsMagasins = null;
         if(dtos != null && dtos.size() == 1){
             livraisonsMagasins = new LivraisonsMagasins();
