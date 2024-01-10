@@ -46,11 +46,11 @@ public class FamillesBusiness {
         }
     }
 
-    public Familles getFamillesBusiness(int adresse_id, boolean rest) {
+    public Familles getFamillesBusiness(int famille_id, boolean rest) {
         if(rest){
-            return famillesDAORest.read(adresse_id);
+            return famillesDAORest.read(famille_id);
         }else {
-            return famillesDAO.read(adresse_id);
+            return famillesDAO.read(famille_id);
         }
     }
 
