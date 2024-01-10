@@ -43,7 +43,8 @@ public class ArticlesDAO {
     public Articles create(NewArticles articles) {
         Articles articles1= null;
         final String query = "INSERT INTO articles(tva, reduction, offert, fk_famille, fk_carton) VALUES(?,?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(), articles.getFamille_id();
+        int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(),
+                articles.getFamille_id());
         if (result ==1){
             articles1 = new Articles();
             articles1.setTva(articles.getTva());
