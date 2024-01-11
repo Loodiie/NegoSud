@@ -7,29 +7,32 @@ CREATE TABLE `adresses` (
   `rue` varchar(255) NOT NULL,
   `etage` varchar(255) DEFAULT NULL,
   `batiment` varchar(255) DEFAULT NULL,
-  `complement` varchar(255) DEFAULT NULL,
+  `complement` varchar(255) DEFAULT NULL
 );
 CREATE TABLE `clients` (
   `client_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_adresse` int(11) NOT NULL FOREIGN KEY REFERENCES `adresses`(`adresse_id`),
+  `fk_adresse` int(11) NOT NULL,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `telephone` varchar(255) DEFAULT NULL,
-  `mail` varchar(255) DEFAULT NULL
+  `mail` varchar(255) DEFAULT NULL,
+  FOREIGN KEY(fk_adresse) REFERENCES adresses(adresse_id)
 );
 CREATE TABLE `fournisseurs` (
   `fournisseur_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_adresse` int(11) NOT NULL FOREIGN KEY REFERENCES `adresses`(`adresse_id`),
+  `fk_adresse` int(11) NOT NULL,
   `nom` varchar(255) DEFAULT NULL,
   `telephone` varchar(255) DEFAULT NULL,
-  `mail` varchar(255) DEFAULT NULL
+  `mail` varchar(255) DEFAULT NULL,
+  FOREIGN KEY(fk_adresse) REFERENCES adresses(adresse_id)
 );
 CREATE TABLE `familles` (
   `famille_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `libelle` varchar(255) DEFAULT NULL,
   `prix_unit` decimal(15,4) DEFAULT NULL,
   `seuil` int(11) DEFAULT NULL,
-  `fk_fournisseur` int(11) NOT NULL FOREIGN KEY REFERENCES `fournisseurs`(`fournisseur_id`)
+  `fk_fournisseur` int(11) NOT NULL,
+   FOREIGN KEY(fk_fournisseur) REFERENCES `fournisseurs`(`fournisseur_id`)
 );
 CREATE TABLE `cartons` (
   `carton_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -39,36 +42,44 @@ CREATE TABLE `articles` (
   `article_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `tva` decimal(15,4) DEFAULT NULL,
   `reduction` decimal(15,4) DEFAULT NULL,
-  `offert` tinyint(1) DEFAULT NULL,
-  `fk_famille` int(11) NOT NULL FOREIGN KEY REFERENCES `familles`(`famille_id`),
-  `fk_carton` int(11) NOT NULL FOREIGN KEY REFERENCES `cartons`(`carton_id`)
+  `offert` tinyint(1) NOT NULL,
+  `fk_famille` int(11) NOT NULL,
+  `fk_carton` int(11) NOT NULL,
+  FOREIGN KEY(fk_famille) REFERENCES `familles`(`famille_id`),
+  FOREIGN KEY(fk_carton) REFERENCES `cartons`(`carton_id`)
 );
 CREATE TABLE `commandesClients` (
   `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_client` int(11) NOT NULL FOREIGN KEY REFERENCES `clients`(`client_id`),
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `fk_client` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY(fk_client) REFERENCES `clients`(`client_id`)
 );
 CREATE TABLE `commandesMagasin` (
   `commandeMag_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_fournisseur` int(11) NOT NULL FOREIGN KEY REFERENCES `fournisseurs`(`fournisseur_id`),
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `fk_fournisseur` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY(fk_fournisseur) REFERENCES `fournisseurs`(`fournisseur_id`)
 );
 CREATE TABLE `livraisonsClient` (
   `livraisonClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_commandeC` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesClients`(`commandeClient_id`),
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `fk_commandeC` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY(fk_commandeC) REFERENCES `commandesClients`(`commandeClient_id`)
 );
 CREATE TABLE `livraisonsMagasin` (
   `livraisonMag_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_commandeM` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`),
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `fk_commandeM` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY(fk_commandeM) REFERENCES `commandesMagasin`(`commandeMag_id`)
 );
 CREATE TABLE `factures` (
   `facture_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `marge` decimal(15,4) DEFAULT NULL,
-  `fk_commandeC` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesClients`(`commandeClient_id`),
-  `fk_commandeM` int(11) NOT NULL FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`)
+  `fk_commandeC` int(11) NOT NULL,
+  `fk_commandeM` int(11) NOT NULL,
+  FOREIGN KEY(fk_commandeC) REFERENCES `commandesClients`(`commandeClient_id`),
+  FOREIGN KEY(fk_commandeM) REFERENCES `commandesMagasin`(`commandeMag_id`)
 );
 CREATE TABLE `paiements` (
   `paiement_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -76,13 +87,18 @@ CREATE TABLE `paiements` (
   `type` varchar(255) DEFAULT NULL,
   `acquitte` tinyint(1) DEFAULT NULL,
   `echeance` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `fk_facture` int(11) NOT NULL FOREIGN KEY REFERENCES `factures`(`facture_id`)
+  `fk_facture` int(11) NOT NULL,
+  FOREIGN KEY('fk_facture) REFERENCES `factures`(`facture_id`)
 );
 CREATE TABLE `lignesCommandeClient` (
-  `fk_article` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `articles`(`article_id`),
-  `fk_CC` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `commandesClients`(`commandeClient_id`)
+  `fk_article` int(11) NOT NULL PRIMARY KEY,
+  `fk_CC` int(11) NOT NULL PRIMARY KEY,
+   FOREIGN KEY(fk_article) REFERENCES `articles`(`article_id`),
+   FOREIGN KEY(fk_CC) REFERENCES `commandesClients`(`commandeClient_id`)
 );
 CREATE TABLE `lignesCommandeMagasin` (
   `fk_article` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `articles`(`article_id`),
-  `fk_CM` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`)
+  `fk_CM` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`),
+   FOREIGN KEY(fk_article) REFERENCES `articles`(`article_id`),
+   FOREIGN KEY(fk_CM) REFERENCES `commandesMagasin`(`commandeMag_id`)
 );
