@@ -7,9 +7,26 @@ public class FamillesDTO {
     String libelle;
     TypeVin type_vin;
     String description;
+    int annee;
+    float degre;
     float prix_unit;
     int seuil;
     int fournisseur_id;
+    public int getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(int annee) {
+        this.annee = annee;
+    }
+
+    public float getDegre() {
+        return degre;
+    }
+
+    public void setDegre(float degre) {
+        this.degre = degre;
+    }
 
     public TypeVin getType_vin() {
         return type_vin;
