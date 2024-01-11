@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS negosuddb2;
+DROP DATABASE IF EXISTS negosuddb;
 
-CREATE DATABASE negosuddb2;
+CREATE DATABASE negosuddb;
 
-USE negosuddb2;
+USE negosuddb;
 
 CREATE TABLE `adresses` (
   `adresse_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -35,6 +35,8 @@ CREATE TABLE `fournisseurs` (
 CREATE TABLE `familles` (
   `famille_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `libelle` varchar(255) DEFAULT NULL,
+  `type` ENUM('Vin Rouge','Vin blanc','Vin Rosé','Vin Effervescent') NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `prix_unit` decimal(15,4) DEFAULT NULL,
   `seuil` int(11) DEFAULT NULL,
   `fk_fournisseur` int(11) NOT NULL,
