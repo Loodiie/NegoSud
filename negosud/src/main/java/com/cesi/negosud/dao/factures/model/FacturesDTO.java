@@ -7,7 +7,6 @@ public class FacturesDTO {
 	Timestamp date;
     float marge;
     int commandeClient_id;
-    int commandeMag_id;
 
 	public int getFacture_id() {
 		return this.facture_id;
@@ -41,13 +40,6 @@ public class FacturesDTO {
 		this.commandeClient_id = commandeClient_id;
 	}
 
-	public int getCommandeMag_id() {
-		return this.commandeMag_id;
-	}
-
-	public void setCommandeMag_id(int commandeMag_id) {
-		this.commandeMag_id = commandeMag_id;
-	}
 }
 
 

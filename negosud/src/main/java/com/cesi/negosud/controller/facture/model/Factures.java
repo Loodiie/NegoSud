@@ -3,11 +3,10 @@ package com.cesi.negosud.controller.factures.model;
 import java.sql.Timestamp;
 
 public class Factures {
-    int facture_id;
+	int facture_id;
 	Timestamp date;
-    float marge;
-    int commandeClient_id;
-    int commandeMag_id;
+	float marge;
+	int commandeClient_id;
 
 	public int getFacture_id() {
 		return this.facture_id;
@@ -39,13 +38,5 @@ public class Factures {
 
 	public void setCommandeClient_id(int commandeClient_id) {
 		this.commandeClient_id = commandeClient_id;
-	}
-
-	public int getCommandeMag_id() {
-		return this.commandeMag_id;
-	}
-
-	public void setCommandeMag_id(int commandeMag_id) {
-		this.commandeMag_id = commandeMag_id;
 	}
 }

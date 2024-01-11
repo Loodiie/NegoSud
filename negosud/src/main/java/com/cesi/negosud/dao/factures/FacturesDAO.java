@@ -20,7 +20,6 @@ public class FacturesDAO {
     private static final String DATE_FIELD = "date";
     private static final String MARGE_FIELD = "marge";
     private static final String COMMANDECLIENTID_FIELD = "fk_commandeC";
-    private static final String COMMANDEMAGID_FIELD = "fk_commandeM";
 
 
     @Autowired
@@ -34,7 +33,6 @@ public class FacturesDAO {
         factures.setDate(rs.getTimestamp(DATE_FIELD));
         factures.setMarge(Float.parseFloat (rs.getString(MARGE_FIELD)));
         factures.setCommandeClient_id(rs.getInt(COMMANDECLIENTID_FIELD));
-        factures.setCommandeMag_id(rs.getInt(COMMANDEMAGID_FIELD));
         return factures;
     };
 
@@ -43,15 +41,14 @@ public class FacturesDAO {
     public Factures create(NewFactures factures) {
         //INSERT DANS BDD
         Factures factures1= null;
-        final String query = "INSERT INTO factures(date, marge, fk_commandeC, fk_commandeM) VALUES(?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id());
+        final String query = "INSERT INTO factures(date, marge, fk_commandeC) VALUES(?,?,?)";
+        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id());
         if(result ==1){
             //faire un select avant
             factures1= new Factures();
             factures1.setDate(factures.getDate());
             factures1.setMarge(factures.getMarge());
             factures1.setCommandeClient_id (factures.getCommandeClient_id());
-            factures1.setCommandeMag_id(factures.getCommandeMag_id());
         }
         return factures1;
     }
@@ -70,15 +67,14 @@ public class FacturesDAO {
     public Factures update(int facture_id, NewFactures factures){
         //UPDATE DANS BDD
         Factures factures1= null;
-        final String query = "UPDATE factures set date=?, marge=?, fk_commandeC=?, fk_commandeM=? where facture_id=?";
-        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), factures.getCommandeMag_id(), facture_id);
+        final String query = "UPDATE factures set date=?, marge=?, fk_commandeC=? where facture_id=?";
+        int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id(), facture_id);
         if(result ==1){
             factures1= new Factures();
             factures1.setFacture_id(facture_id);
             factures1.setDate(factures.getDate());
             factures1.setMarge(factures.getMarge());
             factures1.setCommandeClient_id(factures.getCommandeClient_id());
-            factures1.setCommandeMag_id(factures.getCommandeMag_id());
         }
         return factures1;
     }
@@ -93,7 +89,6 @@ public class FacturesDAO {
             factures.setDate(dtos.get(0).getDate());
             factures.setMarge(dtos.get(0).getMarge());
             factures.setCommandeClient_id(dtos.get(0).getCommandeClient_id());
-            factures.setCommandeMag_id(dtos.get(0).getCommandeMag_id());
         }
         return factures;
     }
@@ -110,7 +105,6 @@ public class FacturesDAO {
                 resp.setDate(dto.getDate());
                 resp.setMarge(dto.getMarge());
                 resp.setCommandeClient_id(dto.getCommandeClient_id());
-                resp.setCommandeMag_id(dto.getCommandeMag_id());
                 listFactures.add(resp);
             }
         }

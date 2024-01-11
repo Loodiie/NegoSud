@@ -6,7 +6,6 @@ public class NewFactures {
 	Timestamp date;
     float marge;
     int commandeClient_id;
-    int commandeMag_id;
 
 	public Timestamp getDate() {
 		return this.date;
@@ -31,16 +30,4 @@ public class NewFactures {
 	public void setCommandeClient_id(int commandeClient_id) {
 		this.commandeClient_id = commandeClient_id;
 	}
-
-	public int getCommandeMag_id() {
-		return this.commandeMag_id;
-	}
-
-	public void setCommandeMag_id(int commandeMag_id) {
-		this.commandeMag_id = commandeMag_id;
-	}
-
-
-
-
 }
