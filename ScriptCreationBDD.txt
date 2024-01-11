@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS negosuddb2;
+
+CREATE DATABASE negosuddb2;
+
+USE negosuddb2;
+
 CREATE TABLE `adresses` (
   `adresse_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `ville` varchar(255) NOT NULL,
@@ -88,17 +94,19 @@ CREATE TABLE `paiements` (
   `acquitte` tinyint(1) DEFAULT NULL,
   `echeance` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `fk_facture` int(11) NOT NULL,
-  FOREIGN KEY('fk_facture) REFERENCES `factures`(`facture_id`)
+  FOREIGN KEY(fk_facture) REFERENCES `factures`(`facture_id`)
 );
 CREATE TABLE `lignesCommandeClient` (
-  `fk_article` int(11) NOT NULL PRIMARY KEY,
-  `fk_CC` int(11) NOT NULL PRIMARY KEY,
+  `ligneComClient_id` int(11) NOT NULL PRIMARY KEY,
+  `fk_article` int(11) NOT NULL,
+  `fk_CC` int(11) NOT NULL,
    FOREIGN KEY(fk_article) REFERENCES `articles`(`article_id`),
    FOREIGN KEY(fk_CC) REFERENCES `commandesClients`(`commandeClient_id`)
 );
 CREATE TABLE `lignesCommandeMagasin` (
-  `fk_article` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `articles`(`article_id`),
-  `fk_CM` int(11) NOT NULL PRIMARY KEY FOREIGN KEY REFERENCES `commandesMagasin`(`commandeMag_id`),
+  `ligneComMag_id` int(11) NOT NULL PRIMARY KEY,
+  `fk_article` int(11) NOT NULL,
+  `fk_CM` int(11) NOT NULL,
    FOREIGN KEY(fk_article) REFERENCES `articles`(`article_id`),
    FOREIGN KEY(fk_CM) REFERENCES `commandesMagasin`(`commandeMag_id`)
 );
