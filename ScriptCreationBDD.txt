@@ -15,13 +15,15 @@ CREATE TABLE `adresses` (
   `batiment` varchar(255) DEFAULT NULL,
   `complement` varchar(255) DEFAULT NULL
 );
-CREATE TABLE `clients` (
-  `client_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE `personnes` (
+  `personne_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `fk_adresse` int(11) NOT NULL,
   `nom` varchar(255) DEFAULT NULL,
   `prenom` varchar(255) DEFAULT NULL,
   `telephone` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `employees` tinyint(1) NOT NULL,
   FOREIGN KEY(fk_adresse) REFERENCES adresses(adresse_id)
 );
 CREATE TABLE `fournisseurs` (
@@ -35,8 +37,10 @@ CREATE TABLE `fournisseurs` (
 CREATE TABLE `familles` (
   `famille_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `libelle` varchar(255) DEFAULT NULL,
-  `type` ENUM('Vin Rouge','Vin blanc','Vin Rosé','Vin Effervescent') NOT NULL,
+  `type_vin` ENUM('rouge','blanc','rose','effervescent','fortifie','soft','autre') NOT NULL,
   `description` varchar(255) DEFAULT NULL,
+  `annee` int(11) NOT NULL,
+  `degre` decimal(15,4) NOT NULL,
   `prix_unit` decimal(15,4) DEFAULT NULL,
   `seuil` int(11) DEFAULT NULL,
   `fk_fournisseur` int(11) NOT NULL,
@@ -60,7 +64,7 @@ CREATE TABLE `commandesClients` (
   `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `fk_client` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  FOREIGN KEY(fk_client) REFERENCES `clients`(`client_id`)
+  FOREIGN KEY(fk_client) REFERENCES `personnes`(`personne_id`)
 );
 CREATE TABLE `commandesMagasin` (
   `commandeMag_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -86,8 +90,7 @@ CREATE TABLE `factures` (
   `marge` decimal(15,4) DEFAULT NULL,
   `fk_commandeC` int(11) NOT NULL,
   `fk_commandeM` int(11) NOT NULL,
-  FOREIGN KEY(fk_commandeC) REFERENCES `commandesClients`(`commandeClient_id`),
-  FOREIGN KEY(fk_commandeM) REFERENCES `commandesMagasin`(`commandeMag_id`)
+  FOREIGN KEY(fk_commandeC) REFERENCES `commandesClients`(`commandeClient_id`)
 );
 CREATE TABLE `paiements` (
   `paiement_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
