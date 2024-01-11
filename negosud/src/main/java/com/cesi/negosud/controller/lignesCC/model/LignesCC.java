@@ -1,8 +1,16 @@
 package com.cesi.negosud.controller.lignesCC.model;
 
 public class LignesCC {
+    int id_LigneCC;
     int fk_article;
     int fk_CC;
+    public int getId_LigneCC() {
+        return id_LigneCC;
+    }
+
+    public void setId_LigneCC(int id_LigneCC) {
+        this.id_LigneCC = id_LigneCC;
+    }
 
     public int getFk_article() {
         return fk_article;

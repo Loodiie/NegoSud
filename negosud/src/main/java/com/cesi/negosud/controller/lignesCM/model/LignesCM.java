@@ -1,8 +1,17 @@
 package com.cesi.negosud.controller.lignesCM.model;
 
 public class LignesCM {
+    int ligneComMag_id;
+
     int fk_article;
     int fk_CM;
+    public int getLigneComMag_id() {
+        return ligneComMag_id;
+    }
+
+    public void setLigneComMag_id(int ligneComMag_id) {
+        this.ligneComMag_id = ligneComMag_id;
+    }
 
     public int getFk_article() {
         return fk_article;

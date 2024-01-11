@@ -1,4 +1,4 @@
-package com.cesi.negosud.business.ligneCM;
+package com.cesi.negosud.business.lignesCM;
 
 import com.cesi.negosud.controller.lignesCM.model.LignesCM;
 import com.cesi.negosud.controller.lignesCM.model.NewLignesCM;
@@ -20,16 +20,16 @@ public class LignesCMBusiness {
     public LignesCM createLignesCMBusiness(NewLignesCM lignesCM){
         return lignesCMDAO.create(lignesCM);}
 
-    public boolean deleteLignesCMBusiness(int article_id, int commandeMag_id){
-        return lignesCMDAO.delete(article_id, commandeMag_id);
+    public boolean deleteLignesCMBusiness(int ligneComMag_id){
+        return lignesCMDAO.delete(ligneComMag_id);
     }
 
-    public LignesCM updateLignesCMBusiness(int article_id, int commandeMag_id, NewLignesCM lignesCM){
-        return lignesCMDAO.update(article_id, commandeMag_id, lignesCM);
+    public LignesCM updateLignesCMBusiness(int ligneComMag_id, NewLignesCM lignesCM){
+        return lignesCMDAO.update(ligneComMag_id, lignesCM);
     }
 
-    public LignesCM getLignesCMBusiness(int article_id, int commandeMag_id){
-        return lignesCMDAO.read(article_id, commandeMag_id);
+    public LignesCM getLignesCMBusiness(int ligneComMag_id){
+        return lignesCMDAO.read(ligneComMag_id);
     }
 
     public List<LignesCM> getAllLignesBusiness(){

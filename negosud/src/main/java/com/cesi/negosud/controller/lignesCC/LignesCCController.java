@@ -26,19 +26,19 @@ public class LignesCCController {
         return lignesCCBusiness.createLignesCCBusiness(lignesCC);
     }
 
-    @DeleteMapping(versionBDD + "/lignesCommandesClients/{article_id_and_commandeClient_id}")
-    public boolean deleteLignesCCBDD(@PathVariable int article_id, int commandeClient_id){
-        return lignesCCBusiness.deleteLignesCCBusiness(article_id, commandeClient_id);
+    @DeleteMapping(versionBDD + "/lignesCommandesClients/{ligneComClient_id}")
+    public boolean deleteLignesCCBDD(@PathVariable int ligneComClient_id){
+        return lignesCCBusiness.deleteLignesCCBusiness(ligneComClient_id);
     }
 
-    @PutMapping(versionBDD + "/lignesCommandesClients/{article_id_and_commandeClient_id}")
-    public LignesCC updateLignesCCBDD(@PathVariable int article_id, int commandeClient_id, @RequestBody NewLignesCC lignesCC){
-        return lignesCCBusiness.updateLignesCCBusiness(article_id, commandeClient_id, lignesCC);
+    @PutMapping(versionBDD + "/lignesCommandesClients/{ligneComClient_id}")
+    public LignesCC updateLignesCCBDD(@PathVariable int ligneComClient_id, @RequestBody NewLignesCC lignesCC){
+        return lignesCCBusiness.updateLignesCCBusiness(ligneComClient_id, lignesCC);
     }
 
-    @GetMapping(versionBDD + "/lignesCommandesClients/{article_id_and_commandeClient_id}")
-    public LignesCC getLignesCCBDD(@PathVariable int article_id, int commandeClient_id){
-        return lignesCCBusiness.getLignesCCBusiness(article_id, commandeClient_id);
+    @GetMapping(versionBDD + "/lignesCommandesClients/{ligneComClient_id}")
+    public LignesCC getLignesCCBDD(@PathVariable int ligneComClient_id){
+        return lignesCCBusiness.getLignesCCBusiness(ligneComClient_id);
     }
 
     @GetMapping(versionBDD + "/lignesCommandesClients")

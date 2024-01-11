@@ -16,6 +16,7 @@ public class LignesCMDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private static final String IDLIGNECOMMAG_FIELD = "ligneComMag_id";
     private static final String FKARTICLE_FIELD = "fk_article";
     private static final String FKCM_FIELD = "fk_Cm";
 
@@ -24,6 +25,7 @@ public class LignesCMDAO {
 
     private final RowMapper<LignesCMDTO> rowMapper = (rs, rowNum) -> {
         final LignesCMDTO lignesCM = new LignesCMDTO ();
+        lignesCM.setLigneComMag_id(rs.getInt(IDLIGNECOMMAG_FIELD));
         lignesCM.setFk_article(rs.getInt(FKARTICLE_FIELD));
         lignesCM.setFk_CM(rs.getInt(FKCM_FIELD));
         return lignesCM;
@@ -34,6 +36,7 @@ public class LignesCMDAO {
         final String query = "INSERT INTO lignescommandemagasin(fk_article, fk_CM) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, lignesCM.getFk_article(), lignesCM.getFk_CM());
         if(result == 1){
+            //Faire un select
             lignesCM1 = new LignesCM();
             lignesCM1.setFk_article(lignesCM.getFk_article());
             lignesCM1.setFk_CM(lignesCM.getFk_CM());
@@ -41,9 +44,9 @@ public class LignesCMDAO {
         return lignesCM1;
     }
 
-    public boolean delete(int article_id, int commandeMag_id){
-        final String query = ("DELETE from lignescommandemagasin where fk_article=? and fk_CC=?");
-        int result = this.jdbcTemplate.update(query, article_id, commandeMag_id);
+    public boolean delete(int ligneComMag_id){
+        final String query = ("DELETE from lignescommandemagasin where ligneComMag_id=?");
+        int result = this.jdbcTemplate.update(query, ligneComMag_id);
         if(result == 1){
             return true;
         }else{
@@ -51,24 +54,26 @@ public class LignesCMDAO {
         }
     }
 
-    public LignesCM update(int article_id, int commandeMag_id, NewLignesCM lignesCM){
+    public LignesCM update(int ligneComMag_id, NewLignesCM lignesCM){
         LignesCM lignesCM1 = null;
-        final String query = "UPDATE lignescommandemagasin set fk_article=?, fk_CM=? where fk_article=? and fk_CM=?";
-        int result = this.jdbcTemplate.update(query, lignesCM.getFk_article(), lignesCM.getFk_CM(), article_id, commandeMag_id);
+        final String query = "UPDATE lignescommandemagasin set fk_article=?, fk_CM=? where ligneComMag_id=?";
+        int result = this.jdbcTemplate.update(query, lignesCM.getFk_article(), lignesCM.getFk_CM(), ligneComMag_id, ligneComMag_id);
         if(result == 1){
             lignesCM1 = new LignesCM();
+            lignesCM1.setLigneComMag_id(ligneComMag_id);
             lignesCM1.setFk_article(lignesCM.getFk_article());
             lignesCM1.setFk_article(lignesCM.getFk_CM());
         }
         return lignesCM1;
     }
 
-    public LignesCM read(int article_id, int commandeMag_id) {
+    public LignesCM read(int ligneComMag_id) {
         // READ ONE PERSON DANS BDD
-        List<LignesCMDTO> dtos = this.jdbcTemplate.query("select * frome lignescommandemagasin where fk_article and fk_CM=" + article_id + commandeMag_id, this.rowMapper);
+        List<LignesCMDTO> dtos = this.jdbcTemplate.query("select * frome lignescommandemagasin where ligneComMag_id=" + ligneComMag_id, this.rowMapper);
         LignesCM lignesCM = null;
         if(dtos != null && dtos.size() == 1){
             lignesCM = new LignesCM();
+            lignesCM.setLigneComMag_id(dtos.get(0).getLigneComMag_id());
             lignesCM.setFk_article(dtos.get(0).getFk_article());
             lignesCM.setFk_CM(dtos.get(0).getFk_CM());
         }
@@ -82,6 +87,7 @@ public class LignesCMDAO {
             listLignesCM = new ArrayList<LignesCM>();
             for(LignesCMDTO dto : dtos){
                 LignesCM resp = new LignesCM();
+                resp.setLigneComMag_id(dto.getLigneComMag_id());
                 resp.setFk_article(dto.getFk_article());
                 resp.setFk_CM(dto.getFk_CM());
                 listLignesCM.add(resp);

@@ -1,9 +1,17 @@
 package com.cesi.negosud.dao.lignesCC.model;
 
 public class LignesCCDTO {
+    int id_ligneCC;
 
     int fk_article;
     int fk_CC;
+    public int getId_ligneCC() {
+        return id_ligneCC;
+    }
+
+    public void setId_ligneCC(int id_ligneCC) {
+        this.id_ligneCC = id_ligneCC;
+    }
     public int getFk_article() {
         return fk_article;
     }

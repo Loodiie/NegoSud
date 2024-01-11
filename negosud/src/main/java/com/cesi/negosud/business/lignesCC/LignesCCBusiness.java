@@ -21,16 +21,16 @@ public class LignesCCBusiness {
         return lignesCCDAO.create(lignesCC);
     }
 
-    public boolean deleteLignesCCBusiness(int article_id, int commandeClient_id){
-        return lignesCCDAO.delete(article_id, commandeClient_id);
+    public boolean deleteLignesCCBusiness(int ligneComClient_id){
+        return lignesCCDAO.delete(ligneComClient_id);
     }
 
-    public  LignesCC updateLignesCCBusiness(int article_id, int commanceClient_id, NewLignesCC lignesCC){
-        return lignesCCDAO.update(article_id, commanceClient_id, lignesCC);
+    public  LignesCC updateLignesCCBusiness(int ligneComClient_id, NewLignesCC lignesCC){
+        return lignesCCDAO.update(ligneComClient_id, lignesCC);
     }
 
-    public LignesCC getLignesCCBusiness(int article_id, int commandeCLient_id){
-        return lignesCCDAO.read(article_id, commandeCLient_id);
+    public LignesCC getLignesCCBusiness(int ligneComClient_id){
+        return lignesCCDAO.read(ligneComClient_id);
     }
 
     public List<LignesCC> getAllLignesCCBusiness(){
