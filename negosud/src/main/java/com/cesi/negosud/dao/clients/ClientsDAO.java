@@ -21,6 +21,8 @@ public class ClientsDAO {
     private static final String PRENOM_FIELD = "prenom";
     private static final String TELEPHONE_FIELD = "telephone";
     private static final String MAIL_FIELD = "mail";
+    private static final String MDP_FIELD = "mdp";
+    private static final String EMPLOYEES_FIELD = "employees";
     private static final String ADRESSEID_FIELD = "fk_adresse";
 
     @Autowired
@@ -36,6 +38,8 @@ public class ClientsDAO {
         clients.setPrenom(rs.getString(PRENOM_FIELD));
         clients.setTelephone(rs.getString(TELEPHONE_FIELD));
         clients.setMail(rs.getString(MAIL_FIELD));
+        clients.setMdp(rs.getString(MDP_FIELD));
+        clients.setEmployees(rs.getBoolean(EMPLOYEES_FIELD));
         clients.setAdresse_id(rs.getInt(ADRESSEID_FIELD));
         return clients;
     };
@@ -43,8 +47,9 @@ public class ClientsDAO {
     public Clients create(NewClients clients) {
         //INSERT DANS BDD
         Clients clients1= null;
-        final String query = "INSERT INTO clients(nom, prenom, telephone, mail, fk_adresse) VALUES(?,?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id());
+        final String query = "INSERT INTO clients(nom, prenom, telephone, mail, mdp, employees, fk_adresse) VALUES(?,?,?,?,?,?,?)";
+        int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(),
+                clients.getMail(), clients.getMdp(), clients.isEmployees(), clients.getAdresse_id());
         if(result ==1){
             //faire un select avant
             clients1= new Clients();
@@ -52,6 +57,7 @@ public class ClientsDAO {
             clients1.setPrenom(clients.getPrenom());
             clients1.setTelephone(clients.getTelephone());
             clients1.setMail(clients.getMail());
+            clients1.setMdp(clients.getMdp());
             clients1.setAdresse_id(clients.getAdresse_id());
         }
         return clients1;
@@ -71,8 +77,9 @@ public class ClientsDAO {
     public Clients update(int client_id, NewClients clients){
         //UPDATE DANS BDD
         Clients clients1= null;
-        final String query = "UPDATE clients set nom=?, prenom=?, telephone=?, mail=?, fk_adresse=? where client_id=?";
-        int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(), clients.getMail(), clients.getAdresse_id(), client_id);
+        final String query = "UPDATE clients set nom=?, prenom=?, telephone=?, mail=?, mdp=?, employees=?, fk_adresse=? where client_id=?";
+        int result = this.jdbcTemplate.update(query, clients.getNom(), clients.getPrenom(), clients.getTelephone(),
+                clients.getMail(), clients.getMdp(), clients.isEmployees(), clients.getAdresse_id(), client_id);
         if(result == 1){
             clients1= new Clients();
             clients1.setClient_id(client_id);
@@ -80,6 +87,8 @@ public class ClientsDAO {
             clients1.setPrenom(clients.getPrenom());
             clients1.setTelephone(clients.getTelephone());
             clients1.setMail(clients.getMail());
+            clients1.setMdp(clients.getMdp());
+            clients1.setEmployees(clients.isEmployees());
             clients1.setAdresse_id(clients.getAdresse_id());
         }
         return clients1;
@@ -96,6 +105,8 @@ public class ClientsDAO {
             clients.setPrenom(dtos.get(0).getPrenom());
             clients.setTelephone(dtos.get(0).getTelephone());
             clients.setMail(dtos.get(0).getMail());
+            clients.setMdp(dtos.get(0).getMdp());
+            clients.setEmployees(dtos.get(0).isEmployees());
             clients.setAdresse_id(dtos.get(0).getAdresse_id());
         }
         return clients;
@@ -114,6 +125,8 @@ public class ClientsDAO {
                 resp.setPrenom(dto.getPrenom());
                 resp.setTelephone(dto.getTelephone());
                 resp.setMail(dto.getMail());
+                resp.setMdp(dto.getMdp());
+                resp.setEmployees(dto.isEmployees());
                 resp.setAdresse_id(dto.getAdresse_id());
                 listClients.add(resp);
             }

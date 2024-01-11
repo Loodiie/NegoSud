@@ -6,7 +6,26 @@ public class ClientsDTO {
     String prenom;
     String telephone;
     String mail;
+    String mdp;
+    boolean employees;
     int adresse_id;
+
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public boolean isEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(boolean employees) {
+        this.employees = employees;
+    }
 
     public int getClient_id() {
         return client_id;
