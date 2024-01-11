@@ -1,27 +1,27 @@
 package com.cesi.negosud.controller.familles.model;
 
+import com.cesi.negosud.utils.TypeVin;
+
 public class NewFamilles {
     String libelle;
-    String designation;
+    TypeVin type_vin;
     String description;
     float prix_unit;
     int seuil;
     int fournisseur_id;
 
+    public TypeVin getType_vin() {
+        return type_vin;
+    }
+    public void setType_vin(TypeVin type_vin) {
+        this.type_vin = type_vin;
+    }
     public String getLibelle() {
         return libelle;
     }
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
     }
 
     public String getDescription() {
