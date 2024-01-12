@@ -89,7 +89,6 @@ CREATE TABLE `factures` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `marge` decimal(15,4) DEFAULT NULL,
   `fk_commandeC` int(11) NOT NULL,
-  `fk_commandeM` int(11) NOT NULL,
   FOREIGN KEY(fk_commandeC) REFERENCES `commandesClients`(`commandeClient_id`)
 );
 CREATE TABLE `paiements` (
