@@ -1,7 +1,7 @@
-package com.cesi.negosud.dao.clients.model;
+package com.cesi.negosud.dao.personnes.model;
 
-public class ClientsDTO {
-    int client_id;
+public class PersonnesDTO {
+    int personne_id;
     String nom;
     String prenom;
     String telephone;
@@ -27,12 +27,12 @@ public class ClientsDTO {
         this.employees = employees;
     }
 
-    public int getClient_id() {
-        return client_id;
+    public int getPersonne_id() {
+        return personne_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setPersonne_id(int personne_id) {
+        this.personne_id = personne_id;
     }
 
     public String getNom() {

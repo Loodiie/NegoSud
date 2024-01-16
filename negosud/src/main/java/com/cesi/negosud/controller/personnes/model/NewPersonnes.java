@@ -1,6 +1,6 @@
-package com.cesi.negosud.controller.clients.model;
+package com.cesi.negosud.controller.personnes.model;
 
-public class NewClients {
+public class NewPersonnes {
     String nom;
     String prenom;
     String telephone;
