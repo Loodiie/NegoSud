@@ -23,6 +23,8 @@ public class ArticlesDAO {
     private static final String OFFERT_FIELD = "offert";
     private static final String FAMILLE_FIELD = "fk_famille";
     private static final String CARTON_FIELD = "fk_carton";
+    private static final String COMMANDESM_FIELD = "fk_commandeMag";
+    private static final String COMMANDESC_FIELD = "fk_commandeClient";
 
 
     @Autowired
@@ -36,15 +38,17 @@ public class ArticlesDAO {
         articles.setOffert(rs.getInt(OFFERT_FIELD));
         articles.setFamille_id(rs.getInt(FAMILLE_FIELD));
         articles.setCarton_id(rs.getInt(CARTON_FIELD));
+        articles.setCommandesM_id(rs.getInt(COMMANDESM_FIELD));
+        articles.setCommandesC_id(rs.getInt(COMMANDESC_FIELD));
 
         return articles;
     };
 
     public Articles create(NewArticles articles) {
         Articles articles1= null;
-        final String query = "INSERT INTO articles(tva, reduction, offert, fk_famille, fk_carton) VALUES(?,?,?,?,?)";
+        final String query = "INSERT INTO articles(tva, reduction, offert, fk_famille, fk_carton, fk_commandeMag, fk_commandeClient) VALUES(?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(),
-                articles.getFamille_id());
+                articles.getFamille_id(), articles.getCommandesM_id(), articles.getCommandesC_id());
         if (result ==1){
             articles1 = new Articles();
             articles1.setTva(articles.getTva());
@@ -52,6 +56,8 @@ public class ArticlesDAO {
             articles1.setOffert(articles.getOffert());
             articles1.setFamille_id(articles.getFamille_id());
             articles1.setCarton_id(articles.getCarton_id());
+            articles1.setCommandesM_id(articles.getCommandesM_id());
+            articles1.setCommandesC_id(articles.getCommandesC_id());
         }
         return articles1;
     }
@@ -68,9 +74,9 @@ public class ArticlesDAO {
 
     public Articles update(int article_id, NewArticles articles){
         Articles articles1= null;
-        final String query = "UPDATE articles set tva=?, reduction=?, offert=?, fk_famille=?, fk_carton=? where article_id=?";
+        final String query = "UPDATE articles set tva=?, reduction=?, offert=?, fk_famille=?, fk_carton=?, fk_commandeMag=?, fk_commandeClient=? where article_id=?";
         int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(),
-                articles.getFamille_id(), articles.getCarton_id(), article_id);
+                articles.getFamille_id(), articles.getCarton_id(), articles.getCommandesM_id(), articles.getCommandesC_id(), article_id);
         if(result ==1){
             articles1 = new Articles();
             articles1.setArticle_id(article_id);
@@ -79,6 +85,8 @@ public class ArticlesDAO {
             articles1.setOffert(articles.getOffert());
             articles1.setFamille_id(articles.getFamille_id());
             articles1.setCarton_id(articles.getCarton_id());
+            articles1.setCommandesM_id(articles.getCommandesM_id());
+            articles1.setCommandesC_id(articles.getCommandesC_id());
         }
 
         return articles1;
@@ -95,6 +103,8 @@ public class ArticlesDAO {
             articles.setOffert(dtos.get(0).getOffert());
             articles.setFamille_id(dtos.get(0).getFamille_id());
             articles.setCarton_id(dtos.get(0).getCarton_id());
+            articles.setCommandesM_id(dtos.get(0).getCommandesM_id());
+            articles.setCommandesC_id(dtos.get(0).getCommandesC_id());
         }
         return articles;
     }
@@ -112,6 +122,8 @@ public class ArticlesDAO {
                 resp.setOffert(dto.getOffert());
                 resp.setFamille_id(dto.getFamille_id());
                 resp.setCarton_id(dto.getCarton_id());
+                resp.setCommandesM_id(dto.getCommandesM_id());
+                resp.setCommandesC_id(dto.getCommandesC_id());
                 listArticles.add(resp);
             }
         }

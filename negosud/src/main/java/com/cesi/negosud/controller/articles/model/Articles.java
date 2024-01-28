@@ -8,6 +8,24 @@ public class Articles {
     int offert;
     int famille_id;
     int carton_id;
+    int commandesM_id;
+    int commandesC_id;
+
+    public int getCommandesM_id() {
+        return commandesM_id;
+    }
+
+    public void setCommandesM_id(int commandesM_id) {
+        this.commandesM_id = commandesM_id;
+    }
+
+    public int getCommandesC_id() {
+        return commandesC_id;
+    }
+
+    public void setCommandesC_id(int commandesC_id) {
+        this.commandesC_id = commandesC_id;
+    }
 
 
     public int getCarton_id() {
