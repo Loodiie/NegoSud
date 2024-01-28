@@ -57,8 +57,11 @@ CREATE TABLE `articles` (
   `offert` tinyint(1) NOT NULL,
   `fk_famille` int(11) NOT NULL,
   `fk_carton` int(11) NOT NULL,
+  `fk_commandeClient` int(11) DEFAULT NULL,
+  `fk_commandeMag` int(11) NOT NULL,
   FOREIGN KEY(fk_famille) REFERENCES `familles`(`famille_id`),
-  FOREIGN KEY(fk_carton) REFERENCES `cartons`(`carton_id`)
+  FOREIGN KEY(fk_commandeClient) REFERENCES commandesClients(`commandeClient_id`),
+  FOREIGN KEY(fk_commandeMag) REFERENCES `commandesMagasin` (`commandeMag_id`)
 );
 CREATE TABLE `commandesClients` (
   `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -100,17 +103,4 @@ CREATE TABLE `paiements` (
   `fk_facture` int(11) NOT NULL,
   FOREIGN KEY(fk_facture) REFERENCES `factures`(`facture_id`)
 );
-CREATE TABLE `lignesCommandeClient` (
-  `ligneComClient_id` int(11) NOT NULL PRIMARY KEY,
-  `fk_article` int(11) NOT NULL,
-  `fk_CC` int(11) NOT NULL,
-   FOREIGN KEY(fk_article) REFERENCES `articles`(`article_id`),
-   FOREIGN KEY(fk_CC) REFERENCES `commandesClients`(`commandeClient_id`)
-);
-CREATE TABLE `lignesCommandeMagasin` (
-  `ligneComMag_id` int(11) NOT NULL PRIMARY KEY,
-  `fk_article` int(11) NOT NULL,
-  `fk_CM` int(11) NOT NULL,
-   FOREIGN KEY(fk_article) REFERENCES `articles`(`article_id`),
-   FOREIGN KEY(fk_CM) REFERENCES `commandesMagasin`(`commandeMag_id`)
-);
+
