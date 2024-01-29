@@ -20,23 +20,23 @@ public class BonDeCommandeController {
     private  BonDeCommandeController (BonDeCommandeBusiness bonDeCommandeBusiness){this.bonDeCommandeBusiness = bonDeCommandeBusiness;}
 
     @PostMapping(versionBDD + "/bonDeCommande")
-    public BonDeCommande createTypeVinBDD(@RequestBody NewBonDeCommande bonDeCommande){
+    public BonDeCommande createBonDeCommandeBDD(@RequestBody NewBonDeCommande bonDeCommande){
         return bonDeCommandeBusiness.createBonDeCommandeBusiness(bonDeCommande);
     }
 
     @DeleteMapping(versionBDD + "/bonDeCommande/{bonDeCommande_id}")
-    public boolean deleteTypeVinBDD(@PathVariable int bonDeCommande_id){
+    public boolean deleteBonDeCommandeBDD(@PathVariable int bonDeCommande_id){
         return bonDeCommandeBusiness.deleteBonDeCommandeBusiness(bonDeCommande_id);
     }
 
     @PutMapping(versionBDD + "/bonDeCommande/{bonDeCommande_id}")
-    public BonDeCommande updateTypeVinBDD(@PathVariable int bonDeCommande_id, @RequestBody NewBonDeCommande bonDeCommande){
+    public BonDeCommande updateBonDeCommandeBDD(@PathVariable int bonDeCommande_id, @RequestBody NewBonDeCommande bonDeCommande){
         return bonDeCommandeBusiness.updateBonDeCommandeBusiness(bonDeCommande_id, bonDeCommande);
     }
 
     @GetMapping(versionBDD + "/bonDeCommande/{bonDeCommande_id}")
-    public BonDeCommande getTypeVinBDD(@PathVariable int bonDeCommande_id){return bonDeCommandeBusiness.getBonDeCommandeBusiness(bonDeCommande_id);}
+    public BonDeCommande getBonDeCommandeBDD(@PathVariable int bonDeCommande_id){return bonDeCommandeBusiness.getBonDeCommandeBusiness(bonDeCommande_id);}
 
     @GetMapping(versionBDD + "/bonDeCommande")
-    public List<BonDeCommande> getAllTypeVinBDD(){return bonDeCommandeBusiness.getAllBonDeCommandeBusiness();}
+    public List<BonDeCommande> getAllBonDeCommandeBDD(){return bonDeCommandeBusiness.getAllBonDeCommandeBusiness();}
 }
