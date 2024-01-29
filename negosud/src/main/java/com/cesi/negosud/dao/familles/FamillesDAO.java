@@ -19,7 +19,7 @@ public class FamillesDAO {
 
     private static final String ID_FIELD = "famille_id";
     private static final String LIBELLE_FIELD = "libelle";
-    private static final String TYPEVIN_FIELD = "type_vin";
+    private static final String TYPEVIN_FIELD = "fk_typevin";
     private static final String DESCRIPTION_FIELD = "description";
     private static final String ANNEE_FIELD = "annee";
     private static final String DEGRE_FIELD = "degre";
@@ -58,10 +58,10 @@ public class FamillesDAO {
     public Familles create(NewFamilles familles) {
         //INSERT DANS BDD
         Familles familles1= null;
-        final String query = "INSERT INTO familles(libelle, type_vin, description, annee, degre, prix_unit, seuil, actic, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?,?)";
+        final String query = "INSERT INTO familles(libelle, fk_typevin, description, annee, degre, prix_unit, seuil, actif, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, familles.getLibelle(), familles.getType_vin(),
-                familles.getDescription(),familles.getAnnee(),familles.getDegre(), familles.getPrix_unit(), familles.getSeuil(), familles.isActif(),
-                familles.getFournisseur_id());
+                familles.getDescription(),familles.getAnnee(),familles.getDegre(), familles.getPrix_unit(), familles.getSeuil(),
+                familles.isActif(), familles.getFournisseur_id());
         if(result ==1){
             List<Familles> listFamille = read();
             familles1= new Familles();
@@ -93,7 +93,7 @@ public class FamillesDAO {
     public Familles update(int famille_id, NewFamilles familles){
         //UPDATE DANS BDD
         Familles familles1= null;
-        final String query = "UPDATE familles set libelle=?, type_vin=?, description=?, annee=?, degre=?, prix_unit=?, seuil=?, actif=?, fk_fournisseur=? where famille_id=?";
+        final String query = "UPDATE familles set libelle=?, fk_typevin=?, description=?, annee=?, degre=?, prix_unit=?, seuil=?, actif=?, fk_fournisseur=? where famille_id=?";
         int result = this.jdbcTemplate.update(query, familles.getLibelle(), familles.getType_vin(),
                 familles.getDescription(), familles.getAnnee(), familles.getDegre(), familles.getPrix_unit(),
                 familles.getSeuil(), familles.isActif(), familles.getFournisseur_id(), famille_id);

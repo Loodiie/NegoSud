@@ -17,29 +17,30 @@ public class BonDeCommandeDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private static String BONDECOMMANDEID_FIELD = "bonDeCmmande_id";
+    private static String BONDECOMMANDEID_FIELD = "bonDeCommande_id";
     private static String QUANTITE_FIELD = "quantite";
-    private static String ETAT_FIELD = "etat";
+    private static String ETAT_FIELD = "actif";
     private static String COMMANDECLIENTID_FIELD = "fk_commandeC";
-    private static String ARTICLEID_FIELD = "fk_article";
+    private static String ARTICLEVIDEID_FIELD = "fk_articleVide";
 
     @Autowired
     public BonDeCommandeDAO(DataSource dataSource){this.jdbcTemplate = new JdbcTemplate(dataSource);}
 
     private final RowMapper<BonDeCommandeDTO> rowMapper = (rs, rowNum) -> {
         final BonDeCommandeDTO bonDeCommande = new BonDeCommandeDTO();
-        bonDeCommande.setArticle_id(rs.getInt(BONDECOMMANDEID_FIELD));
+        bonDeCommande.setBonDeCommande_id(rs.getInt(BONDECOMMANDEID_FIELD));
         bonDeCommande.setQuantite(rs.getInt(QUANTITE_FIELD));
-        bonDeCommande.setEtat(rs.getString(ETAT_FIELD));
+        bonDeCommande.setEtat(rs.getBoolean(ETAT_FIELD));
         bonDeCommande.setCommandeClient_id(rs.getInt(COMMANDECLIENTID_FIELD));
-        bonDeCommande.setArticle_id(rs.getInt(ARTICLEID_FIELD));
+        bonDeCommande.setArticleVide_id(rs.getInt(ARTICLEVIDEID_FIELD));
         return bonDeCommande;
     };
 
     public BonDeCommande create(NewBonDeCommande bonDeCommande){
         BonDeCommande bonDeCommande1 = null;
-        final String query = "INSERT INTO bonDeCommande(quantite, etat, fk_commandeC, fk_article) VALUES (?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), bonDeCommande.getEtat(), bonDeCommande.getCommandeClient_id(), bonDeCommande.getArticle_id());
+        final String query = "INSERT INTO bonDeCommande(quantite, actif, fk_commandeC, fk_articleVide) VALUES (?,?,?,?)";
+        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), bonDeCommande.getEtat(),
+                bonDeCommande.getCommandeClient_id(), bonDeCommande.getArticleVide_id());
         if (result == 1){
             List<BonDeCommande> listBonDeCommande = read();
             bonDeCommande1 = new BonDeCommande();
@@ -47,7 +48,7 @@ public class BonDeCommandeDAO {
             bonDeCommande1.setQuantite(bonDeCommande.getQuantite());
             bonDeCommande1.setEtat(bonDeCommande.getEtat());
             bonDeCommande1.setCommandeClient_id(bonDeCommande.getCommandeClient_id());
-            bonDeCommande1.setArticle_id(bonDeCommande.getArticle_id());
+            bonDeCommande1.setArticleVide_id(bonDeCommande.getArticleVide_id());
         }
         return bonDeCommande1;
     }
@@ -64,15 +65,16 @@ public class BonDeCommandeDAO {
 
     public BonDeCommande update(int bonDeCommande_id, NewBonDeCommande bonDeCommande){
         BonDeCommande bonDeCommande1 = null;
-        final String query = "UPDATE bonDeCommande set quantite=?, etat=?, fk_commandeC=?, fk_article=? where bonDeCommande_id=?";
-        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), bonDeCommande.getEtat(), bonDeCommande.getCommandeClient_id(), bonDeCommande.getArticle_id(), bonDeCommande_id);
+        final String query = "UPDATE bonDeCommande set quantite=?, actif=?, fk_commandeC=?, fk_articleVide=? where bonDeCommande_id=?";
+        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), bonDeCommande.getEtat(),
+                bonDeCommande.getCommandeClient_id(), bonDeCommande.getArticleVide_id(), bonDeCommande_id);
         if(result == 1){
             bonDeCommande1 = new BonDeCommande();
             bonDeCommande1.setBonDeCommande_id(bonDeCommande_id);
             bonDeCommande1.setQuantite(bonDeCommande.getQuantite());
             bonDeCommande1.setEtat(bonDeCommande.getEtat());
             bonDeCommande1.setCommandeClient_id(bonDeCommande.getCommandeClient_id());
-            bonDeCommande1.setArticle_id(bonDeCommande.getArticle_id());
+            bonDeCommande1.setArticleVide_id(bonDeCommande.getArticleVide_id());
         }
         return bonDeCommande1;
     }
@@ -86,7 +88,7 @@ public class BonDeCommandeDAO {
             bonDeCommande.setQuantite(dtos.get(0).getQuantite());
             bonDeCommande.setEtat(dtos.get(0).getEtat());
             bonDeCommande.setCommandeClient_id(dtos.get(0).getCommandeClient_id());
-            bonDeCommande.setArticle_id(dtos.get(0).getArticle_id());
+            bonDeCommande.setArticleVide_id(dtos.get(0).getArticleVide_id());
         }
         return bonDeCommande;
     }
@@ -102,7 +104,7 @@ public class BonDeCommandeDAO {
                 resp.setQuantite(dto.getQuantite());
                 resp.setEtat(dto.getEtat());
                 resp.setCommandeClient_id(dto.getCommandeClient_id());
-                resp.setArticle_id(dto.getArticle_id());
+                resp.setArticleVide_id(dto.getArticleVide_id());
                 listBonDeCommande.add(resp);
             }
         }

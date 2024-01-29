@@ -38,7 +38,7 @@ public class ArticleVideDAO {
             List<ArticleVide> listArticleVide = read();
             articleVide1 = new ArticleVide();
             articleVide1.setArticleVide_id(listArticleVide.get(listArticleVide.size() - 1).getArticleVide_id());
-            articleVide.setFamille_id(articleVide.getFamille_id());
+            articleVide1.setFamille_id(articleVide.getFamille_id());
         }
         return articleVide1;
     }

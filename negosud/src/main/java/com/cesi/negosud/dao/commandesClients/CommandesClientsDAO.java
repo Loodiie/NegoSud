@@ -18,7 +18,7 @@ public class CommandesClientsDAO {
 
     private static final String ID_FIELD = "commandeClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String ETAT_FIELD = "etat";
+    private static final String ETAT_FIELD = "actif";
     private static final String CLIENTID_FIELD = "fk_client";
 
     @Autowired
@@ -31,7 +31,7 @@ public class CommandesClientsDAO {
         final CommandesClientsDTO commandesClients = new CommandesClientsDTO();
         commandesClients.setCommandeClient_id(rs.getInt(ID_FIELD));
         commandesClients.setDate(rs.getTimestamp (DATE_FIELD));
-        commandesClients.setEtat(rs.getString(ETAT_FIELD));
+        commandesClients.setEtat(rs.getBoolean(ETAT_FIELD));
         commandesClients.setClient_id(rs.getInt(CLIENTID_FIELD));
         return commandesClients;
     };
@@ -39,7 +39,7 @@ public class CommandesClientsDAO {
     public CommandesClients create(NewCommandesClients commandesClients) {
         //INSERT DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "INSERT INTO commandesclients(date, etat, fk_client) VALUES(?,?,?)";
+        final String query = "INSERT INTO commandesclients(date, actif, fk_client) VALUES(?,?,?)";
         int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getEtat(), commandesClients.getClient_id());
         if(result ==1){
             List<CommandesClients> listCC = read();
@@ -66,7 +66,7 @@ public class CommandesClientsDAO {
     public CommandesClients update(int commandeClient_id, NewCommandesClients commandesClients){
         //UPDATE DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "UPDATE commandesclients set date=?, etat=?, fk_client=? where commandeClient_id=?";
+        final String query = "UPDATE commandesclients set date=?, actif=?, fk_client=? where commandeClient_id=?";
         int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getEtat(), commandesClients.getClient_id(), commandeClient_id);
         if(result ==1){
             commandesClients1= new CommandesClients();

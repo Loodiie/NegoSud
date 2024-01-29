@@ -48,6 +48,7 @@ CREATE TABLE `familles` (
   `prix_unit` decimal(15,4) DEFAULT NULL,
   `seuil` int(11) DEFAULT NULL,
   `fk_fournisseur` int(11) NOT NULL,
+  `actif` tinyint(1) NOT NULL,
    FOREIGN KEY(fk_fournisseur) REFERENCES `fournisseurs`(`fournisseur_id`),
    FOREIGN KEY(fk_typeVin) REFERENCES `typeVin`(`typeVin_id`)
 );
@@ -59,6 +60,7 @@ CREATE TABLE `commandesClients` (
   `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `fk_client` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `actif` tinyint(1) NOT NULL,
   FOREIGN KEY(fk_client) REFERENCES `personnes`(`personne_id`)
 );
 CREATE TABLE `commandesMagasin` (
@@ -79,6 +81,20 @@ CREATE TABLE `articles` (
   FOREIGN KEY(fk_famille) REFERENCES `familles`(`famille_id`),
   FOREIGN KEY(fk_commandeClient) REFERENCES `commandesClients`(`commandeClient_id`),
   FOREIGN KEY(fk_commandeMag) REFERENCES `commandesMagasin` (`commandeMag_id`)
+);
+CREATE TABLE `articleVide` (
+  `articleVide_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `fk_famille` int(11) NOT NULL,
+  FOREIGN KEY(fk_famille) REFERENCES `familles`(`famille_id`)
+);
+CREATE TABLE `bonDeCommande` (
+  `bonDeCommande_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `quantite` int(11) NOT NULL,
+  `actif` tinyint(1) NOT NULL,
+  `fk_commandeC` int(11) NOT NULL,
+  `fk_articleVide` int(11) NOT NULL,
+  FOREIGN KEY(fk_commandeC) REFERENCES `commandesclients`(`commandeClient_id`),
+  FOREIGN KEY(fk_articleVide) REFERENCES `articleVide` (`articleVide_id`)
 );
 CREATE TABLE `livraisonsClient` (
   `livraisonClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -118,6 +134,8 @@ ALTER TABLE cartons AUTO_INCREMENT = 1;
 ALTER TABLE commandesclients AUTO_INCREMENT = 1;
 ALTER TABLE commandesmagasin AUTO_INCREMENT = 1;
 ALTER TABLE articles AUTO_INCREMENT = 1;
+ALTER TABLE articleVide AUTO_INCREMENT = 1;
+ALTER TABLE bonDeCommande AUTO_INCREMENT = 1;
 ALTER TABLE livraisonsclient AUTO_INCREMENT = 1;
 ALTER TABLE livraisonsmagasin AUTO_INCREMENT = 1;
 ALTER TABLE factures AUTO_INCREMENT = 1;

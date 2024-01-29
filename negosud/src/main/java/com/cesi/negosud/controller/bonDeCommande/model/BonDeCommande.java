@@ -3,9 +3,9 @@ package com.cesi.negosud.controller.bonDeCommande.model;
 public class BonDeCommande {
     int bonDeCommande_id;
     int quantite;
-    String etat;
+    boolean etat;
     int commandeClient_id;
-    int article_id;
+    int articleVide_id;
 
     public int getBonDeCommande_id() {
         return bonDeCommande_id;
@@ -23,11 +23,11 @@ public class BonDeCommande {
         this.quantite = quantite;
     }
 
-    public String getEtat() {
+    public boolean getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(boolean etat) {
         this.etat = etat;
     }
 
@@ -39,12 +39,12 @@ public class BonDeCommande {
         this.commandeClient_id = commandeClient_id;
     }
 
-    public int getArticle_id() {
-        return article_id;
+    public int getArticleVide_id() {
+        return articleVide_id;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
+    public void setArticleVide_id(int article_id) {
+        this.articleVide_id = article_id;
     }
 
 }
