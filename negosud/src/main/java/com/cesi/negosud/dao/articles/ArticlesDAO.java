@@ -50,7 +50,9 @@ public class ArticlesDAO {
         int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(),
                 articles.getFamille_id(), articles.getCommandesM_id(), articles.getCommandesC_id());
         if (result ==1){
+            List<Articles> listArticles = read();
             articles1 = new Articles();
+            articles1.setArticle_id(listArticles.get(listArticles.size() - 1).getArticle_id());
             articles1.setTva(articles.getTva());
             articles1.setReduction(articles.getReduction());
             articles1.setOffert(articles.getOffert());

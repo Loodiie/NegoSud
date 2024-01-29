@@ -2,6 +2,7 @@ package com.cesi.negosud.dao.adresses;
 
 import com.cesi.negosud.controller.adresses.model.Adresses;
 import com.cesi.negosud.controller.adresses.model.NewAdresses;
+import com.cesi.negosud.controller.articles.model.Articles;
 import com.cesi.negosud.dao.adresses.model.AdressesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,8 +57,10 @@ public class AdressesDAO {
         final String query = "INSERT INTO adresses(ville, code_postal, pays, numero, rue, etage, batiment,complement) VALUES(?,?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, adresses.getVille(), adresses.getCode_postal(), adresses.getPays(), adresses.getNumero(), adresses.getRue(), adresses.getEtage(), adresses.getBatiment(), adresses.getComplement());
         if(result ==1){
-            //faire un select avant
+            List<Adresses> listAdresses = read();
+            int adresseId = listAdresses.get(listAdresses.size() - 1).getAdresse_id();
             adresses1= new Adresses();
+            adresses1.setAdresse_id(adresseId);
             adresses1.setVille(adresses.getVille());
             adresses1.setCode_postal(adresses.getCode_postal());
             adresses1.setPays(adresses.getPays());
