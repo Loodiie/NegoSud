@@ -25,6 +25,7 @@ public class FamillesDAO {
     private static final String DEGRE_FIELD = "degre";
     private static final String PRIX_UNIT_FIELD = "prix_unit";
     private static final String SEUIL_FIELD = "seuil";
+    private static final String ACTIF_FIELD = "actif";
     private static final String FOURNISSEUR_FIELD = "fk_fournisseur";
 
 
@@ -46,6 +47,7 @@ public class FamillesDAO {
         familles.setDegre(rs.getFloat(DEGRE_FIELD));
         familles.setPrix_unit(rs.getFloat(PRIX_UNIT_FIELD));
         familles.setSeuil(rs.getInt(SEUIL_FIELD));
+        familles.setActif(rs.getBoolean(ACTIF_FIELD));
         familles.setFournisseur_id(rs.getInt(FOURNISSEUR_FIELD));
 
         return familles;
@@ -56,9 +58,9 @@ public class FamillesDAO {
     public Familles create(NewFamilles familles) {
         //INSERT DANS BDD
         Familles familles1= null;
-        final String query = "INSERT INTO familles(libelle, type_vin, description, annee, degre, prix_unit, seuil, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?)";
+        final String query = "INSERT INTO familles(libelle, type_vin, description, annee, degre, prix_unit, seuil, actic, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, familles.getLibelle(), familles.getType_vin(),
-                familles.getDescription(),familles.getAnnee(),familles.getDegre(), familles.getPrix_unit(), familles.getSeuil(),
+                familles.getDescription(),familles.getAnnee(),familles.getDegre(), familles.getPrix_unit(), familles.getSeuil(), familles.isActif(),
                 familles.getFournisseur_id());
         if(result ==1){
             List<Familles> listFamille = read();
@@ -71,6 +73,7 @@ public class FamillesDAO {
             familles1.setDegre(familles.getDegre());
             familles1.setPrix_unit(familles.getPrix_unit());
             familles1.setSeuil(familles.getSeuil());
+            familles1.setActif(familles.isActif());
             familles1.setFournisseur_id(familles.getFournisseur_id());
         }
         return familles1;
@@ -90,10 +93,10 @@ public class FamillesDAO {
     public Familles update(int famille_id, NewFamilles familles){
         //UPDATE DANS BDD
         Familles familles1= null;
-        final String query = "UPDATE familles set libelle=?, type_vin=?, description=?, annee=?, degre=?, prix_unit=?, seuil=?, fk_fournisseur=? where famille_id=?";
+        final String query = "UPDATE familles set libelle=?, type_vin=?, description=?, annee=?, degre=?, prix_unit=?, seuil=?, actif=?, fk_fournisseur=? where famille_id=?";
         int result = this.jdbcTemplate.update(query, familles.getLibelle(), familles.getType_vin(),
                 familles.getDescription(), familles.getAnnee(), familles.getDegre(), familles.getPrix_unit(),
-                familles.getSeuil(), familles.getFournisseur_id(), famille_id);
+                familles.getSeuil(), familles.isActif(), familles.getFournisseur_id(), famille_id);
         if(result ==1){
             familles1= new Familles();
             familles1.setFamille_id(famille_id);
@@ -104,6 +107,7 @@ public class FamillesDAO {
             familles1.setDegre(familles.getDegre());
             familles1.setPrix_unit(familles.getPrix_unit());
             familles1.setSeuil(familles.getSeuil());
+            familles1.setActif(familles.isActif());
             familles1.setFournisseur_id(familles.getFournisseur_id());
         }
         return familles1;
@@ -123,6 +127,7 @@ public class FamillesDAO {
             familles.setDegre(dtos.get(0).getDegre());
             familles.setPrix_unit(dtos.get(0).getPrix_unit());
             familles.setSeuil(dtos.get(0).getSeuil());
+            familles.setActif(dtos.get(0).isActif());
             familles.setFournisseur_id(dtos.get(0).getFournisseur_id());
         }
         return familles;
@@ -144,6 +149,7 @@ public class FamillesDAO {
                 resp.setDegre(dto.getDegre());
                 resp.setPrix_unit(dto.getPrix_unit());
                 resp.setSeuil(dto.getSeuil());
+                resp.setActif(dto.isActif());
                 resp.setFournisseur_id(dto.getFournisseur_id());
                 listFamilles.add(resp);
             }

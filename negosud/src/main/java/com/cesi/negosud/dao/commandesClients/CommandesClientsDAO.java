@@ -18,6 +18,7 @@ public class CommandesClientsDAO {
 
     private static final String ID_FIELD = "commandeClient_id";
     private static final String DATE_FIELD = "date";
+    private static final String ETAT_FIELD = "etat";
     private static final String CLIENTID_FIELD = "fk_client";
 
     @Autowired
@@ -30,6 +31,7 @@ public class CommandesClientsDAO {
         final CommandesClientsDTO commandesClients = new CommandesClientsDTO();
         commandesClients.setCommandeClient_id(rs.getInt(ID_FIELD));
         commandesClients.setDate(rs.getTimestamp (DATE_FIELD));
+        commandesClients.setEtat(rs.getString(ETAT_FIELD));
         commandesClients.setClient_id(rs.getInt(CLIENTID_FIELD));
         return commandesClients;
     };
@@ -37,13 +39,14 @@ public class CommandesClientsDAO {
     public CommandesClients create(NewCommandesClients commandesClients) {
         //INSERT DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "INSERT INTO commandesclients(date, fk_client) VALUES(?,?)";
-        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id());
+        final String query = "INSERT INTO commandesclients(date, etat, fk_client) VALUES(?,?,?)";
+        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getEtat(), commandesClients.getClient_id());
         if(result ==1){
             List<CommandesClients> listCC = read();
             commandesClients1= new CommandesClients();
             commandesClients1.setCommandeClient_id(listCC.get(listCC.size() - 1).getCommandeClient_id());
             commandesClients1.setDate(commandesClients.getDate());
+            commandesClients1.setEtat((commandesClients.getEtat()));
             commandesClients1.setClient_id(commandesClients.getClient_id());
         }
         return commandesClients1;
@@ -63,12 +66,13 @@ public class CommandesClientsDAO {
     public CommandesClients update(int commandeClient_id, NewCommandesClients commandesClients){
         //UPDATE DANS BDD
         CommandesClients commandesClients1= null;
-        final String query = "UPDATE commandesclients set date=?, fk_client=? where commandeClient_id=?";
-        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getClient_id(), commandeClient_id);
+        final String query = "UPDATE commandesclients set date=?, etat=?, fk_client=? where commandeClient_id=?";
+        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getEtat(), commandesClients.getClient_id(), commandeClient_id);
         if(result ==1){
             commandesClients1= new CommandesClients();
             commandesClients1.setCommandeClient_id(commandeClient_id);
             commandesClients1.setDate(commandesClients.getDate());
+            commandesClients1.setEtat(commandesClients.getEtat());
             commandesClients1.setClient_id(commandesClients.getClient_id());
         }
         return commandesClients1;
@@ -82,6 +86,7 @@ public class CommandesClientsDAO {
             commandesClients = new CommandesClients();
             commandesClients.setCommandeClient_id(dtos.get(0).getCommandeClient_id());
             commandesClients.setDate(dtos.get(0).getDate());
+            commandesClients.setEtat(dtos.get(0).getEtat());
             commandesClients.setClient_id(dtos.get(0).getClient_id());
         }
         return commandesClients;
@@ -97,6 +102,7 @@ public class CommandesClientsDAO {
                 CommandesClients resp = new CommandesClients();
                 resp.setCommandeClient_id(dto.getCommandeClient_id());
                 resp.setDate(dto.getDate());
+                resp.setEtat(dto.getEtat());
                 resp.setClient_id(dto.getClient_id());
                 listCommandesClients.add(resp);
             }

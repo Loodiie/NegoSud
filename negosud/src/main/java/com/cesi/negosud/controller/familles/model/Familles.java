@@ -9,6 +9,7 @@ public class Familles {
     float degre;
     float prix_unit;
     int seuil;
+    boolean actif;
     int fournisseur_id;
     public int getAnnee() {
         return annee;
@@ -70,6 +71,13 @@ public class Familles {
 
     public void setSeuil(int seuil) {
         this.seuil = seuil;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+    public void setActif(boolean actif) {
+        this.actif = actif;
     }
 
     public int getFournisseur_id() {

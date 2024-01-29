@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class NewCommandesClients {
     Timestamp date;
+    String etat;
     int client_id;
 
     public Timestamp getDate() {
@@ -12,6 +13,14 @@ public class NewCommandesClients {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
     public int getClient_id() {
