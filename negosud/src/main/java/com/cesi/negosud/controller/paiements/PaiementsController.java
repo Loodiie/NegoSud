@@ -33,9 +33,9 @@ public class PaiementsController {
         return PaiementsBusiness.createPaiementsBusiness(paiements, true);
     }*/
 
-    @DeleteMapping(versionBDD + "/Paiements/{famille_id}")
-    public boolean deletePaiementsBDD(@PathVariable int famille_id) {
-        return PaiementsBusiness.deletePaiementsBusiness(famille_id, false);
+    @DeleteMapping(versionBDD + "/Paiements/{paiement_id}")
+    public boolean deletePaiementsBDD(@PathVariable int paiement_id) {
+        return PaiementsBusiness.deletePaiementsBusiness(paiement_id, false);
     }
 
     /*@DeleteMapping(versionRest + "/Paiements/{famille_id}")
@@ -43,9 +43,9 @@ public class PaiementsController {
         return PaiementsBusiness.deletePaiementsBusiness(famille_id, true);
     }*/
 
-    @PutMapping(versionBDD + "/Paiements/{famille_id}")
-    public Paiements updatePaiementsBDD(@PathVariable int famille_id, @RequestBody NewPaiements Paiements) {
-        return PaiementsBusiness.updatePaiementsBusinesss(famille_id, Paiements, false);
+    @PutMapping(versionBDD + "/Paiements/{paiement_id}")
+    public Paiements updatePaiementsBDD(@PathVariable int paiement_id, @RequestBody NewPaiements Paiements) {
+        return PaiementsBusiness.updatePaiementsBusinesss(paiement_id, Paiements, false);
     }
 
     /*@PutMapping(versionRest + "/Paiements/{famille_id}")
@@ -53,9 +53,9 @@ public class PaiementsController {
         return PaiementsBusiness.updatePaiementsBusinesss(famille_id, Paiements, true);
     }*/
 
-    @GetMapping(versionBDD + "/Paiements/{famille_id}")
-    public Paiements getPaiementsBDD(@PathVariable int famille_id) {
-        return PaiementsBusiness.getPaiementsBusiness(famille_id, false);
+    @GetMapping(versionBDD + "/Paiements/{paiement_id}")
+    public Paiements getPaiementsBDD(@PathVariable int paiement_id) {
+        return PaiementsBusiness.getPaiementsBusiness(paiement_id, false);
     }
 
     /*@GetMapping(versionRest + "/Paiements/{famille_id}")

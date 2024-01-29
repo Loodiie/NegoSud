@@ -104,3 +104,15 @@ CREATE TABLE `paiements` (
   FOREIGN KEY(fk_facture) REFERENCES `factures`(`facture_id`)
 );
 
+ALTER TABLE adresses AUTO_INCREMENT = 1;
+ALTER TABLE personnes AUTO_INCREMENT = 1;
+ALTER TABLE fournisseurs AUTO_INCREMENT = 1;
+ALTER TABLE familles AUTO_INCREMENT = 1;
+ALTER TABLE cartons AUTO_INCREMENT = 1;
+ALTER TABLE commandesclients AUTO_INCREMENT = 1;
+ALTER TABLE commandesmagasin AUTO_INCREMENT = 1;
+ALTER TABLE articles AUTO_INCREMENT = 1;
+ALTER TABLE livraisonsclient AUTO_INCREMENT = 1;
+ALTER TABLE livraisonsmagasin AUTO_INCREMENT = 1;
+ALTER TABLE factures AUTO_INCREMENT = 1;
+ALTER TABLE paiements AUTO_INCREMENT = 1;

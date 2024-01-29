@@ -28,29 +28,29 @@ public class PaiementsBusiness {
         }
     }
 
-    public boolean deletePaiementsBusiness(int famille_id, boolean rest){
+    public boolean deletePaiementsBusiness(int paiement_id, boolean rest){
         //DELETE BDD
         if(rest){
-            return PaiementsDAORest.delete(famille_id);
+            return PaiementsDAORest.delete(paiement_id);
         }else {
-            return PaiementsDAO.delete(famille_id);
+            return PaiementsDAO.delete(paiement_id);
         }
     }
 
-    public Paiements updatePaiementsBusinesss(int famille_id, NewPaiements Paiements, boolean rest){
+    public Paiements updatePaiementsBusinesss(int paiement_id, NewPaiements Paiements, boolean rest){
         //UPDATE BDD
         if(rest){
-            return PaiementsDAORest.update(famille_id, Paiements);
+            return PaiementsDAORest.update(paiement_id, Paiements);
         }else {
-            return PaiementsDAO.update(famille_id, Paiements);
+            return PaiementsDAO.update(paiement_id, Paiements);
         }
     }
 
-    public Paiements getPaiementsBusiness(int adresse_id, boolean rest) {
+    public Paiements getPaiementsBusiness(int paiement_id, boolean rest) {
         if(rest){
-            return PaiementsDAORest.read(adresse_id);
+            return PaiementsDAORest.read(paiement_id);
         }else {
-            return PaiementsDAO.read(adresse_id);
+            return PaiementsDAO.read(paiement_id);
         }
     }
 
