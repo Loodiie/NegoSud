@@ -50,8 +50,9 @@ public class PaiementsDAO {
         int result = this.jdbcTemplate.update(query, Paiements.getDate_prelevement(),
                 Paiements.getType_paiement(),Paiements.isAcquitte(),Paiements.getEcheance(),Paiements.getId_facture());
         if(result ==1){
-            //faire un select avant
+            List<Paiements> listPaiements = read();
             paiements1= new Paiements();
+            paiements1.setPaiement_id(listPaiements.get(listPaiements.size() -1).getPaiement_id());
             paiements1.setDate_prelevement(Paiements.getDate_prelevement());
             paiements1.setType_paiement(Paiements.getType_paiement());
             paiements1.setAcquitte(Paiements.isAcquitte());

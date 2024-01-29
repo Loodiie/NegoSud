@@ -51,8 +51,9 @@ public class PersonnesDAO {
         int result = this.jdbcTemplate.update(query, personnes.getNom(), personnes.getPrenom(), personnes.getTelephone(),
                 personnes.getMail(), personnes.getMdp(), personnes.isEmployees(), personnes.getAdresse_id());
         if(result ==1){
-            //faire un select avant
+            List<Personnes> listPersonnes = read();
             personnes1= new Personnes();
+            personnes1.setPersonne_id(listPersonnes.get(listPersonnes.size() -1).getPersonne_id ());
             personnes1.setNom(personnes.getNom());
             personnes1.setPrenom(personnes.getPrenom());
             personnes1.setTelephone(personnes.getTelephone());
