@@ -48,7 +48,7 @@ public class ArticlesDAO {
         Articles articles1= null;
         final String query = "INSERT INTO articles(tva, reduction, offert, fk_famille, fk_carton, fk_commandeMag, fk_commandeClient) VALUES(?,?,?,?,?,?,?)";
         int result = this.jdbcTemplate.update(query, articles.getTva(), articles.getReduction(), articles.getOffert(),
-                articles.getFamille_id(), articles.getCommandesM_id(), articles.getCommandesC_id());
+                articles.getFamille_id(),articles.getCarton_id(), articles.getCommandesM_id(), articles.getCommandesC_id());
         if (result ==1){
             List<Articles> listArticles = read();
             articles1 = new Articles();
