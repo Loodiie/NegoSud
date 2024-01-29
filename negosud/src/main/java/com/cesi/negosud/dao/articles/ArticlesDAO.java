@@ -96,7 +96,7 @@ public class ArticlesDAO {
     }
 
     public Articles read(int article_id){
-        List<ArticlesDTO> dtos = this.jdbcTemplate.query("select from articles where article_id="+article_id, this.rowMapper);
+        List<ArticlesDTO> dtos = this.jdbcTemplate.query("select * from articles where article_id="+article_id, this.rowMapper);
         Articles articles = null;
         if(dtos != null && dtos.size() == 1){
             articles = new Articles();
