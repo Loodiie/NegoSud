@@ -3,7 +3,6 @@ package com.cesi.negosud.dao.familles;
 import com.cesi.negosud.controller.familles.model.Familles;
 import com.cesi.negosud.controller.familles.model.NewFamilles;
 import com.cesi.negosud.dao.familles.model.FamillesDTO;
-import com.cesi.negosud.utils.StringToTypeVin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -13,7 +12,6 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.cesi.negosud.utils.StringToTypeVin.*;
 
 @Repository
 public class FamillesDAO {
@@ -42,7 +40,7 @@ public class FamillesDAO {
         final FamillesDTO familles = new FamillesDTO();
         familles.setFamille_id(rs.getInt(ID_FIELD));
         familles.setLibelle(rs.getString(LIBELLE_FIELD));
-        familles.setType_vin(StringToTypeVin.stringToTypeVin(rs.getString(TYPEVIN_FIELD)));
+        familles.setType_vin(rs.getInt(TYPEVIN_FIELD));
         familles.setDescription(rs.getString(DESCRIPTION_FIELD));
         familles.setAnnee(rs.getInt(ANNEE_FIELD));
         familles.setDegre(rs.getFloat(DEGRE_FIELD));
@@ -59,7 +57,7 @@ public class FamillesDAO {
         //INSERT DANS BDD
         Familles familles1= null;
         final String query = "INSERT INTO familles(libelle, type_vin, description, annee, degre, prix_unit, seuil, fk_fournisseur) VALUES(?,?,?,?,?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, familles.getLibelle(), typeVinToString(familles.getType_vin()),
+        int result = this.jdbcTemplate.update(query, familles.getLibelle(), familles.getType_vin(),
                 familles.getDescription(),familles.getAnnee(),familles.getDegre(), familles.getPrix_unit(), familles.getSeuil(),
                 familles.getFournisseur_id());
         if(result ==1){
@@ -93,7 +91,7 @@ public class FamillesDAO {
         //UPDATE DANS BDD
         Familles familles1= null;
         final String query = "UPDATE familles set libelle=?, type_vin=?, description=?, annee=?, degre=?, prix_unit=?, seuil=?, fk_fournisseur=? where famille_id=?";
-        int result = this.jdbcTemplate.update(query, familles.getLibelle(), typeVinToString(familles.getType_vin()),
+        int result = this.jdbcTemplate.update(query, familles.getLibelle(), familles.getType_vin(),
                 familles.getDescription(), familles.getAnnee(), familles.getDegre(), familles.getPrix_unit(),
                 familles.getSeuil(), familles.getFournisseur_id(), famille_id);
         if(result ==1){

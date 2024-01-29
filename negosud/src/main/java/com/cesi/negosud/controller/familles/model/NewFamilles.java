@@ -1,10 +1,8 @@
 package com.cesi.negosud.controller.familles.model;
 
-import com.cesi.negosud.utils.TypeVin;
-
 public class NewFamilles {
     String libelle;
-    TypeVin type_vin;
+    int type_vin;
     String description;
     int annee;
     float degre;
@@ -27,10 +25,10 @@ public class NewFamilles {
         this.degre = degre;
     }
 
-    public TypeVin getType_vin() {
+    public int getType_vin() {
         return type_vin;
     }
-    public void setType_vin(TypeVin type_vin) {
+    public void setType_vin(int type_vin) {
         this.type_vin = type_vin;
     }
     public String getLibelle() {

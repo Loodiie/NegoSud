@@ -34,17 +34,22 @@ CREATE TABLE `fournisseurs` (
   `mail` varchar(255) DEFAULT NULL,
   FOREIGN KEY(fk_adresse) REFERENCES adresses(adresse_id)
 );
+CREATE TABLE `typeVin` (
+  `typeVin_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `libelle` varchar(255) NOT NULL
+);
 CREATE TABLE `familles` (
   `famille_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `libelle` varchar(255) DEFAULT NULL,
-  `type_vin` ENUM('rouge','blanc','rose','effervescent','fortifie','soft','autre') NOT NULL,
+  `fk_typeVin` int(11) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `annee` int(11) NOT NULL,
   `degre` decimal(15,4) NOT NULL,
   `prix_unit` decimal(15,4) DEFAULT NULL,
   `seuil` int(11) DEFAULT NULL,
   `fk_fournisseur` int(11) NOT NULL,
-   FOREIGN KEY(fk_fournisseur) REFERENCES `fournisseurs`(`fournisseur_id`)
+   FOREIGN KEY(fk_fournisseur) REFERENCES `fournisseurs`(`fournisseur_id`),
+   FOREIGN KEY(fk_typeVin) REFERENCES `typeVin`(`typeVin_id`)
 );
 CREATE TABLE `cartons` (
   `carton_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -107,6 +112,7 @@ CREATE TABLE `paiements` (
 ALTER TABLE adresses AUTO_INCREMENT = 1;
 ALTER TABLE personnes AUTO_INCREMENT = 1;
 ALTER TABLE fournisseurs AUTO_INCREMENT = 1;
+ALTER TABLE typevin AUTO_INCREMENT = 1;
 ALTER TABLE familles AUTO_INCREMENT = 1;
 ALTER TABLE cartons AUTO_INCREMENT = 1;
 ALTER TABLE commandesclients AUTO_INCREMENT = 1;
