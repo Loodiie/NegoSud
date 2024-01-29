@@ -43,8 +43,9 @@ public class FournisseursDAO {
         final String query = "INSERT INTO fournisseurs(nom, telephone, mail, fk_adresse) VALUES(?,?,?,?)";
         int result = this.jdbcTemplate.update(query, fournisseurs.getNom(), fournisseurs.getTelephone(), fournisseurs.getMail(), fournisseurs.getAdresse_id());
         if (result == 1) {
-            //faire un select avant
+            List<Fournisseurs> listFournisseur = read();
             fournisseurs1 = new Fournisseurs();
+            fournisseurs1.setAdresse_id(listFournisseur.get(listFournisseur.size() - 1).getAdresse_id() );
             fournisseurs1.setNom(fournisseurs.getNom());
             fournisseurs1.setTelephone(fournisseurs.getTelephone());
             fournisseurs1.setMail(fournisseurs.getMail());

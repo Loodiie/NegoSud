@@ -44,8 +44,9 @@ public class FacturesDAO {
         final String query = "INSERT INTO factures(date, marge, fk_commandeC) VALUES(?,?,?)";
         int result = this.jdbcTemplate.update(query, factures.getDate(), factures.getMarge(), factures.getCommandeClient_id());
         if(result ==1){
-            //faire un select avant
+            List<Factures> listFactures = read();
             factures1= new Factures();
+            factures1.setFacture_id(listFactures.get(listFactures.size() - 1).getFacture_id());
             factures1.setDate(factures.getDate());
             factures1.setMarge(factures.getMarge());
             factures1.setCommandeClient_id (factures.getCommandeClient_id());

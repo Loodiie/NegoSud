@@ -63,8 +63,9 @@ public class FamillesDAO {
                 familles.getDescription(),familles.getAnnee(),familles.getDegre(), familles.getPrix_unit(), familles.getSeuil(),
                 familles.getFournisseur_id());
         if(result ==1){
-            //faire un select avant
+            List<Familles> listFamille = read();
             familles1= new Familles();
+            familles1.setFamille_id(listFamille.get(listFamille.size() - 1).getFamille_id());
             familles1.setLibelle(familles.getLibelle());
             familles1.setType_vin(familles.getType_vin());
             familles1.setDescription(familles.getDescription());

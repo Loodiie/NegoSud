@@ -41,8 +41,9 @@ public class LivraisonsClientsDAO {
         final String query = "INSERT INTO livraisonsclient(date, fk_commandeC) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, livraisonsClients.getDate(), livraisonsClients.getCommandeClient_id());
         if(result ==1){
-            //faire un select avant
+            List<LivraisonsClients> listLC = read();
             livraisonsClients1= new LivraisonsClients();
+            livraisonsClients1.setLivraisonClient_id(listLC.get(listLC.size() - 1).getLivraisonClient_id());
             livraisonsClients1.setDate(livraisonsClients.getDate());
             livraisonsClients1.setCommandeClient_id(livraisonsClients.getCommandeClient_id());
         }

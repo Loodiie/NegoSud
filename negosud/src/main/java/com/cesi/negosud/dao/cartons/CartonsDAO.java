@@ -33,7 +33,9 @@ public class CartonsDAO {
         final String query = "INSERT INTO cartons(description) VALUES(?)";
         int result = this.jdbcTemplate.update(query, cartons.getDescription());
         if(result == 1){
+            List<Cartons> listCartons = read();
             cartons1 = new Cartons();
+            cartons1.setCarton_id(listCartons.get(listCartons.size() - 1).getCarton_id());
             cartons1.setDescription(cartons.getDescription());
         }
         return cartons1;

@@ -41,8 +41,9 @@ public class LivraisonsMagasinsDAO {
         final String query = "INSERT INTO livraisonsmagasin(date, fk_commandeM) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, livraisonsMagasins.getDate(), livraisonsMagasins.getCommandeMagasin_id());
         if(result ==1){
-            //faire un select avant
+            List<LivraisonsMagasins> listLM = read();
             livraisonsMagasins1= new LivraisonsMagasins();
+            livraisonsMagasins1.setCommandeMagasin_id(listLM.get(listLM.size() - 1).getCommandeMagasin_id());
             livraisonsMagasins1.setDate(livraisonsMagasins.getDate());
             livraisonsMagasins1.setCommandeMagasin_id(livraisonsMagasins.getCommandeMagasin_id());
         }

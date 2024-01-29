@@ -1,5 +1,6 @@
 package com.cesi.negosud.dao.commandesMagasin;
 
+import com.cesi.negosud.controller.commandesClients.model.CommandesClients;
 import com.cesi.negosud.controller.commandesMagasin.model.CommandesMagasin;
 import com.cesi.negosud.controller.commandesMagasin.model.NewCommandesMagasin;
 import com.cesi.negosud.dao.commandesMagasin.model.CommandesMagasinDTO;
@@ -40,8 +41,9 @@ public class CommandesMagasinDAO {
         final String query = "INSERT INTO commandesmagasin(date, fk_fournisseur) VALUES(?,?)";
         int result = this.jdbcTemplate.update(query, commandesMagasin.getDate(), commandesMagasin.getFournisseur_id());
         if(result ==1){
-            //faire un select avant
+            List<CommandesMagasin> listCM = read();
             commandesMagasin1= new CommandesMagasin();
+            commandesMagasin1.setCommandeMag_id(listCM.get(listCM.size() - 1).getCommandeMag_id());
             commandesMagasin1.setDate(commandesMagasin.getDate());
             commandesMagasin1.setFournisseur_id(commandesMagasin.getFournisseur_id());
         }
