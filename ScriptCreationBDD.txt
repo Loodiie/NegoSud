@@ -23,7 +23,7 @@ CREATE TABLE `personnes` (
   `telephone` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `mdp` varchar(255) NOT NULL,
-  `employees` tinyint(1) NOT NULL,
+  `employees` tinyint(1) NOT NULL DEFAULT FALSE,
   FOREIGN KEY(fk_adresse) REFERENCES adresses(adresse_id)
 );
 CREATE TABLE `fournisseurs` (
@@ -50,19 +50,6 @@ CREATE TABLE `cartons` (
   `carton_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `description` varchar(255) DEFAULT NULL
 );
-CREATE TABLE `articles` (
-  `article_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `tva` decimal(15,4) DEFAULT NULL,
-  `reduction` decimal(15,4) DEFAULT NULL,
-  `offert` tinyint(1) NOT NULL,
-  `fk_famille` int(11) NOT NULL,
-  `fk_carton` int(11) NOT NULL,
-  `fk_commandeClient` int(11) DEFAULT NULL,
-  `fk_commandeMag` int(11) NOT NULL,
-  FOREIGN KEY(fk_famille) REFERENCES `familles`(`famille_id`),
-  FOREIGN KEY(fk_commandeClient) REFERENCES commandesClients(`commandeClient_id`),
-  FOREIGN KEY(fk_commandeMag) REFERENCES `commandesMagasin` (`commandeMag_id`)
-);
 CREATE TABLE `commandesClients` (
   `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `fk_client` int(11) NOT NULL,
@@ -74,6 +61,19 @@ CREATE TABLE `commandesMagasin` (
   `fk_fournisseur` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   FOREIGN KEY(fk_fournisseur) REFERENCES `fournisseurs`(`fournisseur_id`)
+);
+CREATE TABLE `articles` (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `tva` decimal(15,4) DEFAULT NULL,
+  `reduction` decimal(15,4) DEFAULT NULL,
+  `offert` tinyint(1) NOT NULL,
+  `fk_famille` int(11) NOT NULL,
+  `fk_carton` int(11) NOT NULL,
+  `fk_commandeClient` int(11) DEFAULT NULL,
+  `fk_commandeMag` int(11) NOT NULL,
+  FOREIGN KEY(fk_famille) REFERENCES `familles`(`famille_id`),
+  FOREIGN KEY(fk_commandeClient) REFERENCES `commandesClients`(`commandeClient_id`),
+  FOREIGN KEY(fk_commandeMag) REFERENCES `commandesMagasin` (`commandeMag_id`)
 );
 CREATE TABLE `livraisonsClient` (
   `livraisonClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
