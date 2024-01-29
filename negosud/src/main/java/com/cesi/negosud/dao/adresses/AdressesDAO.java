@@ -73,6 +73,7 @@ public class AdressesDAO {
         return adresses1;
     }
 
+
     public boolean delete(int adresse_id){
         //DELETE DANS BDD
         final String query = ("DELETE from adresses where adresse_id=?");

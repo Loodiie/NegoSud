@@ -64,6 +64,7 @@ public class ArticlesDAO {
         return articles1;
     }
 
+
     public boolean delete (int article_id){
         final String query = ("DELETE from articles where article_id=?");
         int result = this.jdbcTemplate.update(query, article_id);
