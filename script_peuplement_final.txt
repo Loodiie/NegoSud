@@ -71,7 +71,7 @@ INSERT INTO `typeVin` (`typeVin_id`,`libelle`) VALUES
 	(4, 'Fortifié'),
 	(5, 'Soft');
 
-INSERT INTO `familles` (`famille_id`, `libelle`, `type_vin`, `description`, `annee`, `degre`, `prix_unit`, `seuil`, `fk_fournisseur`) VALUES
+INSERT INTO `familles` (`famille_id`, `libelle`, `fk_typeVin`, `description`, `annee`, `degre`, `prix_unit`, `seuil`, `fk_fournisseur`) VALUES
 	(1, 'Classic', 2, 'Un vin blanc sec et vif, avec des arômes d\'agrumes, de pêche blanche et une touche florale. Idéal en apéritif ou avec des fruits de mer. Un vin qui contient 12% d\'alcool et son année de production est 2020.', 2020, 12.0000, 8.60, 2, 1),
 	(2, 'Sauvignon', 2, 'Un cépage revisité sous la clémence du ciel gascon qui gagne une nouvelle palette de parfum. Un nez caractéristique sur des notes florales intenses et fines, quelques nuances minérales puis une sensation de « grains murs » dominante. Une belle intensité l', 2021, 9.0000, 8.50, 2, 1),
 	(3, 'Contradiction', 3, 'Les rendements maîtrisés permettent d\'obtenir un fort potentiel aromatique, une belle structure et une grande complexité. Vinifié en rosé, le Marselan présente des notes de fruits rouges mûrs associées à un caractère légèrement épicé. Un rosé qui contient', 2020, 11.0000, 10.90, 2, 1),
