@@ -3,6 +3,7 @@ package com.cesi.negosud.dao.commandesClients;
 import com.cesi.negosud.controller.commandesClients.model.CommandesClients;
 import com.cesi.negosud.controller.commandesClients.model.NewCommandesClients;
 import com.cesi.negosud.dao.commandesClients.model.CommandesClientsDTO;
+import com.cesi.negosud.utils.StringToEtatEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -12,13 +13,15 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.cesi.negosud.utils.StringToEtatEnum.*;
+
 @Repository
 public class CommandesClientsDAO {
     private final JdbcTemplate jdbcTemplate;
 
     private static final String ID_FIELD = "commandeClient_id";
     private static final String DATE_FIELD = "date";
-    private static final String ETAT_FIELD = "actif";
+    private static final String ETAT_FIELD = "etat";
     private static final String CLIENTID_FIELD = "fk_client";
 
     @Autowired
@@ -31,7 +34,7 @@ public class CommandesClientsDAO {
         final CommandesClientsDTO commandesClients = new CommandesClientsDTO();
         commandesClients.setCommandeClient_id(rs.getInt(ID_FIELD));
         commandesClients.setDate(rs.getTimestamp (DATE_FIELD));
-        commandesClients.setEtat(rs.getBoolean(ETAT_FIELD));
+        commandesClients.setEtat(StringToEtatEnum.stringToEtatEnum(rs.getString(ETAT_FIELD)));
         commandesClients.setClient_id(rs.getInt(CLIENTID_FIELD));
         return commandesClients;
     };
@@ -40,7 +43,7 @@ public class CommandesClientsDAO {
         //INSERT DANS BDD
         CommandesClients commandesClients1= null;
         final String query = "INSERT INTO commandesclients(date, actif, fk_client) VALUES(?,?,?)";
-        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getEtat(), commandesClients.getClient_id());
+        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), etatEnumToString(commandesClients.getEtat()), commandesClients.getClient_id());
         if(result ==1){
             List<CommandesClients> listCC = read();
             commandesClients1= new CommandesClients();
@@ -67,7 +70,7 @@ public class CommandesClientsDAO {
         //UPDATE DANS BDD
         CommandesClients commandesClients1= null;
         final String query = "UPDATE commandesclients set date=?, actif=?, fk_client=? where commandeClient_id=?";
-        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), commandesClients.getEtat(), commandesClients.getClient_id(), commandeClient_id);
+        int result = this.jdbcTemplate.update(query, commandesClients.getDate(), etatEnumToString(commandesClients.getEtat()), commandesClients.getClient_id(), commandeClient_id);
         if(result ==1){
             commandesClients1= new CommandesClients();
             commandesClients1.setCommandeClient_id(commandeClient_id);

@@ -1,10 +1,12 @@
 package com.cesi.negosud.controller.commandesClients.model;
 
+import com.cesi.negosud.utils.Etat;
+
 import java.sql.Timestamp;
 
 public class NewCommandesClients {
     Timestamp date;
-    boolean etat;
+    Etat etat;
     int client_id;
 
     public Timestamp getDate() {
@@ -15,11 +17,11 @@ public class NewCommandesClients {
         this.date = date;
     }
 
-    public boolean getEtat() {
+    public Etat getEtat() {
         return etat;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(Etat etat) {
         this.etat = etat;
     }
 
