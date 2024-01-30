@@ -60,7 +60,7 @@ CREATE TABLE `commandesClients` (
   `commandeClient_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `fk_client` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `actif` tinyint(1) NOT NULL,
+  `etat` ENUM('valide','en attente','annule') NOT NULL,
   FOREIGN KEY(fk_client) REFERENCES `personnes`(`personne_id`)
 );
 CREATE TABLE `commandesMagasin` (
@@ -90,7 +90,7 @@ CREATE TABLE `articleVide` (
 CREATE TABLE `bonDeCommande` (
   `bonDeCommande_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `quantite` int(11) NOT NULL,
-  `actif` tinyint(1) NOT NULL,
+  `etat` ENUM('valide','en_attente','annule') NOT NULL,
   `fk_commandeC` int(11) NOT NULL,
   `fk_articleVide` int(11) NOT NULL,
   FOREIGN KEY(fk_commandeC) REFERENCES `commandesclients`(`commandeClient_id`),

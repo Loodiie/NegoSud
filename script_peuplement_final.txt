@@ -98,11 +98,12 @@ INSERT INTO `cartons` (`carton_id`, `description`) VALUES
 	(2, 'Enjoy'),
 	(3, 'Enjoy');
 
-INSERT INTO `commandesclients` (`commandeClient_id`, `fk_client`, `date`, `actif`) VALUES
-	(1, 10, '2023-12-09 00:00:00',0),
-	(2, 12, '2023-12-24 00:00:00',0),
-	(3, 11, '2023-12-17 00:00:00',0),
-	(4, 11, '2024-01-01 00:00:00',0);
+INSERT INTO `commandesclients` (`commandeClient_id`, `fk_client`, `date`, `etat`) VALUES
+	(1, 10, '2023-12-09 00:00:00','valide'),
+	(2, 12, '2023-12-24 00:00:00','valide'),
+	(3, 11, '2023-12-17 00:00:00','valide'),
+	(4, 11, '2024-01-01 00:00:00','valide'),
+	(5, 13, '2024-01-01 00:00:00','annule');
 
 INSERT INTO `commandesmagasin` (`commandeMag_id`, `fk_fournisseur`, `date`) VALUES
 	(1, 5, '2023-12-09 00:00:00'),
