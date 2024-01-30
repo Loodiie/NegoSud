@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="588.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grp.cesi.negosud_javafx.fxml.Main">
+   <children>
+      <VBox prefHeight="588.0" prefWidth="261.0" style="-fx-background-color: #ac1e44;">
+         <children>
+            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="190.0" prefWidth="261.0" style="-fx-background-color: ac1e44;" text="Home" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="126.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <image>
+                        <Image url="@../../../../../../../../Téléchargements/psyduck_vener_transparent.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <MenuButton mnemonicParsing="false" prefHeight="54.0" prefWidth="262.0" style="-fx-background-color: ac1e44;" text="Vente" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Clients">
+                     <graphic>
+                        <Button mnemonicParsing="false" text="Clients" />
+                     </graphic></MenuItem>
+                <MenuItem mnemonicParsing="false" text="Commandes">
+                     <graphic>
+                        <Button mnemonicParsing="false" text="Commandes" />
+                     </graphic></MenuItem>
+              </items>
+               <effect>
+                  <Glow />
+               </effect>
+            </MenuButton>
+            <MenuButton mnemonicParsing="false" prefHeight="54.0" prefWidth="261.0" style="-fx-background-color: ac1e44;" text="Achat" textFill="WHITE">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Fournisseurs">
+                     <graphic>
+                        <Button mnemonicParsing="false" text="Fournisseurs" />
+                     </graphic>
+                  </MenuItem>
+                <MenuItem mnemonicParsing="false" text="Commandes">
+                     <graphic>
+                        <Button mnemonicParsing="false" text="Commandes" />
+                     </graphic>
+                  </MenuItem>
+              </items>
+               <effect>
+                  <Glow />
+               </effect>
+            </MenuButton>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="262.0" style="-fx-background-color: ac1e44;" text="Stock" textFill="WHITE">
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="262.0" style="-fx-background-color: ac1e44;" text="Articles" textFill="WHITE">
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="262.0" style="-fx-background-color: ac1e44;" text="Familles" textFill="#fcfcfc">
+               <effect>
+                  <Glow />
+               </effect>
+            </Button>
+         </children>
+      </VBox>
+      <Pane layoutX="261.0" opacity="0.45" prefHeight="588.0" prefWidth="596.0" style="-fx-background-color: #ac1e44;">
+         <children>
+            <GridPane layoutX="7.0" layoutY="184.0" prefHeight="390.0" prefWidth="582.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="362.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="362.0" minHeight="10.0" prefHeight="362.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="ArticleID" />
+                      <TableColumn prefWidth="75.0" text="Nom" />
+                        <TableColumn prefWidth="122.0" text="Description" />
+                        <TableColumn prefWidth="309.0" text="Actions" />
+                    </columns>
+                  </TableView>
+                  <TextField prefHeight="24.0" prefWidth="539.0" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </GridPane>
+            <Pane layoutX="7.0" layoutY="14.0" prefHeight="164.0" prefWidth="582.0" style="-fx-background-color: #ac1e44;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
