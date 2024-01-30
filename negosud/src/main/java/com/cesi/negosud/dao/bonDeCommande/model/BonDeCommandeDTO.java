@@ -1,9 +1,11 @@
 package com.cesi.negosud.dao.bonDeCommande.model;
 
+import com.cesi.negosud.utils.Etat;
+
 public class BonDeCommandeDTO {
     int bonDeCommande_id;
     int quantite;
-    boolean etat;
+    Etat etat;
     int commandeClient_id;
     int articleVide_id;
 
@@ -23,11 +25,11 @@ public class BonDeCommandeDTO {
         this.quantite = quantite;
     }
 
-    public boolean getEtat() {
+    public Etat getEtat() {
         return etat;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(Etat etat) {
         this.etat = etat;
     }
 

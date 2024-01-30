@@ -1,8 +1,10 @@
 package com.cesi.negosud.controller.bonDeCommande.model;
 
+import com.cesi.negosud.utils.Etat;
+
 public class NewBonDeCommande {
     int quantite;
-    boolean etat;
+    Etat etat;
     int commandeClient_id;
     int articleVide_id;
 
@@ -14,11 +16,11 @@ public class NewBonDeCommande {
         this.quantite = quantite;
     }
 
-    public boolean getEtat() {
+    public Etat getEtat() {
         return etat;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(Etat etat) {
         this.etat = etat;
     }
 

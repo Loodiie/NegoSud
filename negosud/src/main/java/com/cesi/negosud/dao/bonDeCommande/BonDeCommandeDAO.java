@@ -3,6 +3,8 @@ package com.cesi.negosud.dao.bonDeCommande;
 import com.cesi.negosud.controller.bonDeCommande.model.BonDeCommande;
 import com.cesi.negosud.controller.bonDeCommande.model.NewBonDeCommande;
 import com.cesi.negosud.dao.bonDeCommande.model.BonDeCommandeDTO;
+import com.cesi.negosud.utils.Etat;
+import com.cesi.negosud.utils.StringToEtatEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,7 +21,7 @@ public class BonDeCommandeDAO {
 
     private static String BONDECOMMANDEID_FIELD = "bonDeCommande_id";
     private static String QUANTITE_FIELD = "quantite";
-    private static String ETAT_FIELD = "actif";
+    private static String ETAT_FIELD = "etat";
     private static String COMMANDECLIENTID_FIELD = "fk_commandeC";
     private static String ARTICLEVIDEID_FIELD = "fk_articleVide";
 
@@ -30,7 +32,7 @@ public class BonDeCommandeDAO {
         final BonDeCommandeDTO bonDeCommande = new BonDeCommandeDTO();
         bonDeCommande.setBonDeCommande_id(rs.getInt(BONDECOMMANDEID_FIELD));
         bonDeCommande.setQuantite(rs.getInt(QUANTITE_FIELD));
-        bonDeCommande.setEtat(rs.getBoolean(ETAT_FIELD));
+        bonDeCommande.setEtat(StringToEtatEnum.stringToEtatEnum(rs.getString(ETAT_FIELD)));
         bonDeCommande.setCommandeClient_id(rs.getInt(COMMANDECLIENTID_FIELD));
         bonDeCommande.setArticleVide_id(rs.getInt(ARTICLEVIDEID_FIELD));
         return bonDeCommande;
@@ -38,8 +40,8 @@ public class BonDeCommandeDAO {
 
     public BonDeCommande create(NewBonDeCommande bonDeCommande){
         BonDeCommande bonDeCommande1 = null;
-        final String query = "INSERT INTO bonDeCommande(quantite, actif, fk_commandeC, fk_articleVide) VALUES (?,?,?,?)";
-        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), bonDeCommande.getEtat(),
+        final String query = "INSERT INTO bonDeCommande(quantite, etat, fk_commandeC, fk_articleVide) VALUES (?,?,?,?)";
+        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), StringToEtatEnum.etatEnumToString(bonDeCommande.getEtat()),
                 bonDeCommande.getCommandeClient_id(), bonDeCommande.getArticleVide_id());
         if (result == 1){
             List<BonDeCommande> listBonDeCommande = read();
@@ -65,8 +67,8 @@ public class BonDeCommandeDAO {
 
     public BonDeCommande update(int bonDeCommande_id, NewBonDeCommande bonDeCommande){
         BonDeCommande bonDeCommande1 = null;
-        final String query = "UPDATE bonDeCommande set quantite=?, actif=?, fk_commandeC=?, fk_articleVide=? where bonDeCommande_id=?";
-        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), bonDeCommande.getEtat(),
+        final String query = "UPDATE bonDeCommande set quantite=?, etat=?, fk_commandeC=?, fk_articleVide=? where bonDeCommande_id=?";
+        int result = this.jdbcTemplate.update(query, bonDeCommande.getQuantite(), StringToEtatEnum.etatEnumToString(bonDeCommande.getEtat()),
                 bonDeCommande.getCommandeClient_id(), bonDeCommande.getArticleVide_id(), bonDeCommande_id);
         if(result == 1){
             bonDeCommande1 = new BonDeCommande();
