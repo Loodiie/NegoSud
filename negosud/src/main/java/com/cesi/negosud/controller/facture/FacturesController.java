@@ -11,6 +11,7 @@ import java.util.List;
 
 @Validated
 @RestController
+@CrossOrigin("http://localhost:9000/")
 public class FacturesController {
 
     private final String versionBDD = "/api/v1";

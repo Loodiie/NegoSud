@@ -11,6 +11,7 @@ import java.util.List;
 
 @Validated
 @RestController
+@CrossOrigin("http://localhost:9000/")
 public class FournisseursController {
     private final String versionBDD = "/api/v1";
     //private final String versionRest = "/api/v1/rest";
