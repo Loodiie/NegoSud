@@ -1,5 +1,10 @@
 package grp.cesi.negosud_javafx.model.personnes;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import grp.cesi.negosud_javafx.model.adresses.Adresses;
+
 public class Personnes {
     int personne_id;
     String nom;
@@ -10,6 +15,23 @@ public class Personnes {
     boolean employees;
     int adresse_id;
 
+    public Personnes(@JsonProperty("personne_id") int personne_id,
+                     @JsonProperty("nom") String nom,
+                     @JsonProperty("prenom") String prenom,
+                     @JsonProperty("telephone") String telephone,
+                     @JsonProperty("mail") String mail,
+                     @JsonProperty("mdp") String mdp,
+                     @JsonProperty("employees") boolean employees,
+                     @JsonProperty("adresse_id") int adresse_id) {
+        this.personne_id = personne_id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.mail = mail;
+        this.mdp = mdp;
+        this.employees = employees;
+        this.adresse_id = adresse_id;
+    }
 
     public String getMdp() {
         return mdp;
@@ -73,5 +95,13 @@ public class Personnes {
 
     public void setAdresse_id(int adresse_id) {
         this.adresse_id = adresse_id;
+    }
+
+
+
+    public Adresses Deserialize(String json) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Adresses item = objectMapper.readValue(json, Adresses.class);
+        return item;
     }
 }

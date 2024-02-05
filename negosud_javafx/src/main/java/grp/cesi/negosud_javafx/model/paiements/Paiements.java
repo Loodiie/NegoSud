@@ -1,5 +1,10 @@
 package grp.cesi.negosud_javafx.model.paiements;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import grp.cesi.negosud_javafx.model.adresses.Adresses;
+
 import java.sql.Timestamp;
 
 public class Paiements {
@@ -9,6 +14,19 @@ public class Paiements {
     boolean acquitte;
     Timestamp echeance;
     int id_facture;
+
+    public Paiements(@JsonProperty("paiement_id") int paiement_id,
+                        @JsonProperty("date_prelevement") Timestamp date_prelevement,
+                        @JsonProperty("type_paiement") String type_paiement,
+                        @JsonProperty("acquitte") boolean acquitte,
+                        @JsonProperty("echeance") Timestamp echeance,
+                        @JsonProperty("id_facture") int id_facture) {
+        this.date_prelevement = date_prelevement;
+        this.type_paiement = type_paiement;
+        this.acquitte = acquitte;
+        this.echeance = echeance;
+        this.id_facture = id_facture;
+    }
 
     public int getId_facture() {
         return id_facture;
@@ -54,5 +72,11 @@ public class Paiements {
     }
     public void setPaiement_id(int paiements_id) {
         this.paiement_id = paiements_id;
+    }
+
+    public Adresses Deserialize(String json) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Adresses item = objectMapper.readValue(json, Adresses.class);
+        return item;
     }
 }

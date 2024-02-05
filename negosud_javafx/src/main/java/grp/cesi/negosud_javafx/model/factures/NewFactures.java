@@ -1,5 +1,8 @@
 package grp.cesi.negosud_javafx.model.factures;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.sql.Timestamp;
 
 public class NewFactures {
@@ -29,5 +32,11 @@ public class NewFactures {
 
 	public void setCommandeClient_id(int commandeClient_id) {
 		this.commandeClient_id = commandeClient_id;
+	}
+
+	public String Serialize() throws JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		String string = objectMapper.writeValueAsString(this);
+		return string;
 	}
 }

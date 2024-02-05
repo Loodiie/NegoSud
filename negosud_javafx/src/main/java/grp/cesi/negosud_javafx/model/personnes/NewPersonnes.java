@@ -1,5 +1,9 @@
 package grp.cesi.negosud_javafx.model.personnes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import grp.cesi.negosud_javafx.model.adresses.Adresses;
+
 public class NewPersonnes {
     String nom;
     String prenom;
@@ -64,5 +68,11 @@ public class NewPersonnes {
 
     public void setAdresse_id(int adresse_id) {
         this.adresse_id = adresse_id;
+    }
+
+    public String Serialize() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String string = objectMapper.writeValueAsString(this);
+        return string;
     }
 }

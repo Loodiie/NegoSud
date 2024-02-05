@@ -90,12 +90,12 @@
                 <RowConstraints maxHeight="362.0" minHeight="10.0" prefHeight="362.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                  <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="ArticleID" />
-                      <TableColumn prefWidth="75.0" text="Nom" />
-                        <TableColumn prefWidth="122.0" text="Description" />
-                        <TableColumn prefWidth="309.0" text="Actions" />
+                      <TableColumn prefWidth="75.0" text="famille_id" />
+                      <TableColumn prefWidth="75.0" text="libelle" />
+                        <TableColumn prefWidth="122.0" text="fk_typeVin" />
+                        <TableColumn prefWidth="309.0" text="degre" />
                     </columns>
                   </TableView>
                   <TextField prefHeight="24.0" prefWidth="539.0" />

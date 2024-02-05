@@ -1,6 +1,8 @@
 package grp.cesi.negosud_javafx.model.commandesClients;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import grp.cesi.negosud_javafx.model.etat.Etat;
 
 import java.sql.Timestamp;
@@ -32,5 +34,11 @@ public class NewCommandesClients {
 
     public void setClient_id(int client_id) {
         this.client_id = client_id;
+    }
+
+    public String Serialize() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String string = objectMapper.writeValueAsString(this);
+        return string;
     }
 }

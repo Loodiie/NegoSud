@@ -1,11 +1,24 @@
 package grp.cesi.negosud_javafx.model.livraisonsMagasins;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import grp.cesi.negosud_javafx.model.adresses.Adresses;
+
 import java.sql.Timestamp;
 
 public class LivraisonsMagasins {
     int livraisonMagasin_id;
     Timestamp date;
     int commandeMagasin_id;
+
+	public LivraisonsMagasins(@JsonProperty("livraisonMagasin_id") int livraisonMagasin_id,
+							  @JsonProperty("date") Timestamp date,
+							  @JsonProperty("commandeMagasin_id") int commandeMagasin_id) {
+		this.livraisonMagasin_id = livraisonMagasin_id;
+		this.date = date;
+		this.commandeMagasin_id = commandeMagasin_id;
+	}
 
 	public int getLivraisonMagasin_id() {
 		return this.livraisonMagasin_id;
@@ -29,6 +42,12 @@ public class LivraisonsMagasins {
 
 	public void setCommandeMagasin_id(int commandeMagasin_id) {
 		this.commandeMagasin_id = commandeMagasin_id;
+	}
+
+	public Adresses Deserialize(String json) throws JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Adresses item = objectMapper.readValue(json, Adresses.class);
+		return item;
 	}
 
 

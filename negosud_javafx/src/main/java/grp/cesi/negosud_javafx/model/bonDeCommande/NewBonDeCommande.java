@@ -1,6 +1,8 @@
 package grp.cesi.negosud_javafx.model.bonDeCommande;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import grp.cesi.negosud_javafx.model.etat.Etat;
 
 public class NewBonDeCommande {
@@ -39,5 +41,11 @@ public class NewBonDeCommande {
 
     public void setArticleVide_id(int article_id) {
         this.articleVide_id = article_id;
+    }
+
+    public String Serialize() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String string = objectMapper.writeValueAsString(this);
+        return string;
     }
 }

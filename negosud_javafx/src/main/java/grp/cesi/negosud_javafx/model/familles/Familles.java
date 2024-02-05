@@ -1,5 +1,10 @@
 package grp.cesi.negosud_javafx.model.familles;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import grp.cesi.negosud_javafx.model.adresses.Adresses;
+
 public class Familles {
     int famille_id;
     String libelle;
@@ -11,6 +16,31 @@ public class Familles {
     int seuil;
     boolean actif;
     int fournisseur_id;
+
+    public Familles(){};
+
+    public Familles(@JsonProperty("famille_id") int famille_id,
+                    @JsonProperty("libelle") String libelle,
+                    @JsonProperty("type_vin") int type_vin,
+                    @JsonProperty("description") String description,
+                    @JsonProperty("annee") int annee,
+                    @JsonProperty("degre") float degre,
+                    @JsonProperty("prix_unit") float prix_unit,
+                    @JsonProperty("seuil") int seuil,
+                    @JsonProperty("actif") boolean actif,
+                    @JsonProperty("fournisseur_id") int fournisseur_id) {
+        this.famille_id = famille_id;
+        this.libelle = libelle;
+        this.type_vin = type_vin;
+        this.description = description;
+        this.annee = annee;
+        this.degre = degre;
+        this.prix_unit = prix_unit;
+        this.seuil = seuil;
+        this.actif = actif;
+        this.fournisseur_id = fournisseur_id;
+    }
+
     public int getAnnee() {
         return annee;
     }
@@ -86,5 +116,10 @@ public class Familles {
 
     public void setFournisseur_id(int fournisseur_id) {
         this.fournisseur_id = fournisseur_id;
+    }
+    public Adresses Deserialize(String json) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Adresses item = objectMapper.readValue(json, Adresses.class);
+        return item;
     }
 }

@@ -22,4 +22,6 @@ public class NewLivraisonsMagasins {
 		this.commandeMagasin_id = commandeMagasin_id;
 	}
 
+
+
 }

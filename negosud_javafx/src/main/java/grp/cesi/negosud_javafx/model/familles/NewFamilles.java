@@ -1,5 +1,8 @@
 package grp.cesi.negosud_javafx.model.familles;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class NewFamilles {
     String libelle;
     int type_vin;
@@ -80,4 +83,10 @@ public class NewFamilles {
         this.fournisseur_id = fournisseur_id;
     }
 
+
+    public String Serialize() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String string = objectMapper.writeValueAsString(this);
+        return string;
+    }
 }

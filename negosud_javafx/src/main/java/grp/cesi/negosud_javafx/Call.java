@@ -13,15 +13,17 @@ import java.io.IOException;
 class call {
     public static void main(String[] args) throws JsonProcessingException {
 
-        //getAll("typeVin");
+        getAll("adresses");
         //Adresses adresse = new Adresses();
         //String getAdresseResult = get("adresses",11);
         //adresse = adresse.Deserialize(getAdresseResult);
+        //System.out.println(adresse.getAdresse_id());
         //delete("livraisonsMagasins",1);
         NewAdresses adresse2 = new NewAdresses("oui","25000","fronce","1","rue du chien",null,null,null);
         String body = adresse2.Serialize();
         System.out.println(body);
-        create("adresses",body);
+        //create("adresses",body);
+        update("adresses",1,body);
     }
     public static String getAll(String table){
         HttpRequest request = HttpRequest.newBuilder()
@@ -74,7 +76,25 @@ class call {
     public static String create(String table, String body){
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:29200/api/v1/" + table))
+                .setHeader("Content-Type","application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+        HttpResponse<String> response = null;
+        try {
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(response.body());
+        return response.body();
+    }
+    public static String update(String table, int id, String body){
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:29200/api/v1/" + table + "/" + id))
+                .setHeader("Content-Type","application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(body))
                 .build();
         HttpResponse<String> response = null;
         try {
