@@ -1,16 +1,5 @@
+<script setup></script>
+
 <template>
-  <div id="app">
-    <Carton />
-  </div>
+  <RouterView />
 </template>
-
-<script>
-import Carton from "./components/cartonsWeb.vue";
-
-export default {
-  name: "App",
-  components: {
-    Carton,
-  },
-};
-</script>
