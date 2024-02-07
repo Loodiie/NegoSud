@@ -1,5 +1,3 @@
-import Headers from "src/components/layouts/HeadersWeb.vue";
-
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
@@ -13,7 +11,6 @@ app.use(router);
 
 app.mount("#app");
 
-Vue.component("headersVue", Headers);
 Vue.config.productionTip = false;
 
 new Vue({

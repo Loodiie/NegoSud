@@ -1,9 +1,10 @@
+<script setup>
+import HeadersWeb from "../components/layouts/HeadersWeb.vue";
+</script>
+
 <template>
   <q-layout view="hHh Lpr lFf">
-    <!-- Header -->
-    <q-header>
-      <HeaderWeb />
-    </q-header>
+    <HeadersWeb />
 
     <!-- Content -->
     <q-page-container>
@@ -55,9 +56,8 @@
                       possimus. Minus.
                     </p>
                     <p class="card-text">
-                      <small class="text-muted"
-                        >Contactez les directement au
-                        {{ fournisseur.telephone }}</small
+                      Contactez les directement au
+                      {{ fournisseur.telephone }}
                       >
                     </p>
                     <q-btn
@@ -82,7 +82,8 @@
 </template>
 
 <script>
-import FournisseursService from "../services/FournisseursListe";
+import FournisseursService from "../services/FournisseursService";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "fournisseurs",

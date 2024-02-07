@@ -4,7 +4,6 @@
       <q-btn
         flat
         dense
-        round
         @click="leftDrawerOpen = !leftDrawerOpen"
         aria-label="Menu"
         icon="menu"
@@ -12,9 +11,9 @@
 
       <q-toolbar-title>
         <q-avatar>
-          <img src="/src/components/icons/logo_website.png" alt="Logo" />
+          <!-- <img src="/src/components/icons/logo_website.png" alt="Logo" /> -->
         </q-avatar>
-        <span class="q-ml-sm">My App</span>
+        <span class="q-ml-sm">Negosud</span>
       </q-toolbar-title>
 
       <q-space />
@@ -31,13 +30,20 @@
         </template>
       </q-input>
 
-      <q-btn round dense color="primary" icon="shopping_cart" class="q-ml-md" />
-      <q-btn round dense color="primary" icon="notifications" class="q-ml-md" />
+      <q-btn class="q-ml-md" dense color="primary" icon="shopping_cart" />
+      <q-btn class="q-ml-md" dense color="primary" icon="notifications" />
       <q-btn
-        round
+        class="q-ml-md"
         dense
         color="primary"
-        label="Connecter"
+        label="Sign in"
+        @click="openLoginDialog"
+      />
+      <q-btn
+        class="q-ml-md"
+        dense
+        color="primary"
+        label="Sign up"
         @click="openLoginDialog"
       />
     </q-toolbar>
@@ -84,7 +90,7 @@ export default {
   },
   methods: {
     openLoginDialog() {
-      // Implement the logic to open the login dialog
+      // Doit être fait l'appel au coponent de la dialogue de connexion
     },
   },
 };
