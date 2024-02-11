@@ -1,79 +1,42 @@
-<script setup>
-import HeadersWeb from "../components/layouts/HeadersWeb.vue";
-</script>
-
 <template>
   <q-layout view="hHh Lpr lFf">
     <HeadersWeb />
 
     <!-- Content -->
-    <q-page-container>
-      <q-page>
-        <q-page-section class="container-fluid hero-section p-4">
-          <q-container>
-            <q-row class="items-center">
-              <q-col cols="12" md="5">
-                <q-img alt="Image héroïque" class="img-fluid rounded" />
-              </q-col>
-              <q-col cols="12" md="6">
-                <div class="hero-content text-center">
-                  <h1>Nego'Sud</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Ipsum necessitatibus, reprehenderit fugit sapiente eius
-                    nostrum ut, consectetur velit est doloremque ex molestiae
-                    labore deserunt asperiores recusandae! Tempore, voluptatem
-                    officiis. Repudiandae.
-                  </p>
-                  <q-btn color="primary" label="Découvrez tous nos produits" />
-                </div>
-              </q-col>
-            </q-row>
-          </q-container>
-        </q-page-section>
-
-        <h2 class="text-center p-4" id="fournisseur">
-          Retrouvez tous nos fournisseurs
-        </h2>
-        <q-page-section class="container-fluid p-4">
-          <q-container>
-            <q-row>
-              <q-col
-                cols="12"
-                md="4"
-                v-for="fournisseur in fournisseurs"
-                :key="fournisseur.id"
-              >
-                <q-card>
-                  <q-img class="card-img-top" alt="..." />
-                  <q-card-section>
-                    <h5 class="card-title">{{ fournisseur.nom }}</h5>
-                    <p class="card-text">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Sunt voluptatibus dignissimos saepe a doloribus dolorem
-                      facilis nesciunt officiis harum itaque maxime unde
-                      pariatur modi, accusamus, cum, voluptates tempora
-                      possimus. Minus.
-                    </p>
-                    <p class="card-text">
-                      Contactez les directement au
-                      {{ fournisseur.telephone }}
-                      >
-                    </p>
-                    <q-btn
-                      color="primary"
-                      label="Découvrez leurs produits"
-                      class="mx-auto"
-                    />
-                  </q-card-section>
-                </q-card>
-              </q-col>
-            </q-row>
-          </q-container>
-        </q-page-section>
-      </q-page>
+    <q-page-container class="q-pa-md">
+      <div class="q-gutter-md">
+        <h1 class="text-h4">Bienvenue sur notre site de vente de vin</h1>
+        <p>
+          Découvrez notre sélection de vins de qualité et trouvez celui qui
+          correspond à vos goûts.
+        </p>
+        <q-card-group>
+          <q-card
+            v-for="famille in randomWines"
+            :key="famille.id"
+            class="col-md-4"
+          >
+            <q-card-section>
+              <!-- <img :src="wine.image" class="full-width" /> -->
+            </q-card-section>
+            <q-card-section>
+              <q-card-title>{{
+                getTypeVinLibelle(famille.typeVinId)
+              }}</q-card-title>
+              <q-card-subtitle>{{ famille.libelle }}</q-card-subtitle>
+              <q-card-main>{{ famille.description }}</q-card-main>
+            </q-card-section>
+            <q-card-actions align="right">
+              <q-btn
+                color="primary"
+                label="Acheter"
+                @click="addToCart(famille)"
+              />
+            </q-card-actions>
+          </q-card>
+        </q-card-group>
+      </div>
     </q-page-container>
-
     <!-- Footer -->
     <q-footer>
       <FooterWeb />
@@ -81,26 +44,74 @@ import HeadersWeb from "../components/layouts/HeadersWeb.vue";
   </q-layout>
 </template>
 
-<script>
-import FournisseursService from "../services/FournisseursService";
+<script setup>
+import { ref, computed, onMounted } from "vue";
+import HeadersWeb from "../components/layouts/HeadersWeb.vue";
+import FamillesService from "src/services/FamillesService";
+import TypeVinService from "src/services/TypeVinService";
 
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "fournisseurs",
-  data() {
-    return {
-      fournisseurs: [],
-    };
-  },
-  methods: {
-    getFournisseurs() {
-      FournisseursService.getFournisseurs().then((response) => {
-        this.fournisseurs = response.data;
-      });
-    },
-  },
-  created() {
-    this.getFournisseurs();
-  },
+const familles = ref([]);
+const typeVin = ref([]);
+
+const getFamilles = () => {
+  FamillesService.getFamilles().then((response) => {
+    familles.value = response.data;
+  });
 };
+
+const getTypeVin = () => {
+  TypeVinService.getTypeVin().then((response) => {
+    typeVin.value = response.data;
+  });
+};
+
+const getTypeVinLibelle = (typeVinId) => {
+  const vin = typeVin.value.find((element) => element.id === typeVinId);
+  return vin?.libelle;
+};
+
+// Fonction pour sélectionner aléatoirement 5 vins
+const selectRandomWines = () => {
+  const shuffledWines = [...familles.value].sort(() => Math.random() - 0.5);
+  return shuffledWines.slice(0, 5);
+};
+
+onMounted(() => {
+  getFamilles();
+  getTypeVin();
+});
+
+const randomWines = computed(() => selectRandomWines());
 </script>
+
+<style scoped>
+/* Styles pour la section héroïque */
+.hero-section {
+  padding-top: 100px; /* Ajustez l'espacement en fonction de vos besoins */
+  padding-bottom: 100px;
+}
+
+/* Styles pour le contenu héroïque */
+.hero-content {
+  padding: 20px;
+}
+
+/* Styles pour la typographie héroïque */
+.hero-content h1 {
+  font-family: "Playfair Display", serif;
+}
+
+.hero-content p {
+  font-size: 18px;
+}
+
+/* Styles pour la section des fournisseurs */
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 16px;
+}
+</style>

@@ -9,11 +9,14 @@
         icon="menu"
       />
 
-      <q-toolbar-title>
-        <q-avatar>
-          <!-- <img src="/src/components/icons/logo_website.png" alt="Logo" /> -->
-        </q-avatar>
-        <span class="q-ml-sm">Negosud</span>
+      <img
+        src="/src/assets/img/duck.png"
+        alt="Logo"
+        style="height: 40px; margin-right: 10px"
+      />
+
+      <q-toolbar-title class="q-ml-sm">
+        <span class="title">Negosud</span>
       </q-toolbar-title>
 
       <q-space />
@@ -30,8 +33,13 @@
         </template>
       </q-input>
 
-      <q-btn class="q-ml-md" dense color="primary" icon="shopping_cart" />
-      <q-btn class="q-ml-md" dense color="primary" icon="notifications" />
+      <q-btn class="q-ml-md" dense color="primary" icon="shopping_basket" />
+      <q-btn
+        class="q-ml-md"
+        dense
+        color="primary"
+        icon="notifications_active"
+      />
       <q-btn
         class="q-ml-md"
         dense
@@ -60,21 +68,15 @@
       </q-item>
       <q-item clickable to="/allproducts">
         <q-item-section avatar>
-          <q-icon name="list" />
+          <q-icon name="allproducts" />
         </q-item-section>
         <q-item-section>Nos produits</q-item-section>
       </q-item>
-      <q-item clickable to="/home/#supplier">
+      <q-item clickable to="/partners">
         <q-item-section avatar>
-          <q-icon name="store" />
+          <q-icon name="partners" />
         </q-item-section>
         <q-item-section>Nos partenaires</q-item-section>
-      </q-item>
-      <q-item clickable exact to="/home/#wines">
-        <q-item-section avatar>
-          <q-icon name="local_drink" />
-        </q-item-section>
-        <q-item-section>Nos familles de vin</q-item-section>
       </q-item>
     </q-list>
   </q-drawer>
@@ -95,3 +97,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.q-btn {
+  font-family: "Helvetica Neue", sans-serif;
+}
+</style>
