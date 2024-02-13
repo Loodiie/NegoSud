@@ -20,7 +20,6 @@
       </q-toolbar-title>
 
       <q-space />
-
       <q-input
         filled
         dense
@@ -34,6 +33,7 @@
       </q-input>
 
       <q-btn class="q-ml-md" dense color="primary" icon="shopping_basket" />
+
       <q-btn
         class="q-ml-md"
         dense
@@ -44,15 +44,15 @@
         class="q-ml-md"
         dense
         color="primary"
-        label="Sign in"
-        @click="openLoginDialog"
+        label="Connection"
+        @click="openLoginDialog()"
       />
       <q-btn
         class="q-ml-md"
         dense
         color="primary"
-        label="Sign up"
-        @click="openLoginDialog"
+        label="Inscription"
+        @click="openInscriptionDialog()"
       />
     </q-toolbar>
   </q-header>
@@ -80,19 +80,152 @@
       </q-item>
     </q-list>
   </q-drawer>
+  <q-dialog v-model="showLoginDialog">
+    <q-card>
+      <q-card-section class="text-center">
+        <h4 class="text-primary">Connexion</h4>
+      </q-card-section>
+
+      <q-card-section>
+        <!-- Formulaire de connexion -->
+        <q-form @submit="login">
+          <q-input outlined v-model="personne.mail" label="Email" />
+          <q-input
+            outlined
+            v-model="personne.mdp"
+            label="Mot de passe"
+            type="password"
+          />
+          <q-btn color="primary" label="Se connecter" type="submit" />
+          <q-btn
+            color="primary"
+            label="Annuler"
+            type="button"
+            @click="closeInscriptionDialog()"
+          />
+        </q-form>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+
+  <!-- Formulaire d'inscription -->
+  <q-dialog v-model="showInscriptionDialog">
+    <q-card>
+      <q-card-section class="text-center">
+        <h4 class="text-primary">Inscription</h4>
+      </q-card-section>
+      <q-card-section>
+        <q-form @submit="register">
+          <q-input outlined v-model="personne.nom" label="Nom" />
+          <q-input outlined v-model="personne.prenom" label="Prénom" />
+          <q-input outlined v-model="personne.mail" label="Email" />
+          <q-input
+            outlined
+            v-model="personne.mdp"
+            label="Mot de passe"
+            type="password"
+          />
+          <q-input
+            outlined
+            v-model="personne.mdpConfirme"
+            label="Mot de passe"
+            type="password"
+          />
+          <q-btn color="primary" label="S'inscrire" type="submit" />
+        </q-form>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
+import { ref } from "vue";
+import axios from "axios";
 export default {
+  components: {},
   data() {
     return {
       leftDrawerOpen: false,
       search: "",
+      showLoginDialog: ref(false),
+      showInscriptionDialog: ref(false),
+      personne: {
+        nom: "",
+        prenom: "",
+        mail: "",
+        mdp: "",
+        mdpConfirme: "",
+      },
     };
   },
   methods: {
     openLoginDialog() {
-      // Doit être fait l'appel au coponent de la dialogue de connexion
+      this.showLoginDialog = true;
+    },
+    openInscriptionDialog() {
+      this.showInscriptionDialog = true;
+    },
+    closeLoginDialog() {
+      this.showLoginDialog = false;
+    },
+    closeInscriptionDialog() {
+      this.showInscriptionDialog = false;
+    },
+    async login() {
+      try {
+        const response = await axios.post(
+          "http://localhost:29200/api/v1/login",
+          null,
+          {
+            params: {
+              mail: this.personne.mail,
+              mdp: this.personne.mdp,
+            },
+          }
+        );
+        // La connexion est réussie, rediriger l'utilisateur ou afficher un message de succès
+        console.log("Connexion réussie:", response.data);
+        this.showLoginDialog = false; // Fermer la boîte de dialogue de connexion
+        // Rediriger l'utilisateur
+        // this.$router.push('/accueil');
+      } catch (error) {
+        // La connexion a échoué, afficher un message d'erreur à l'utilisateur
+        console.error("Erreur de connexion:", error.response.data);
+        alert("Email ou mot de passe incorrect.");
+      }
+    },
+    async register() {
+      // Vérifier si les mots de passe correspondent
+      if (this.personne.mdp !== this.personne.mdpConfirme) {
+        alert("Les mots de passe ne correspondent pas.");
+        return; // Arrêter l'exécution de la méthode
+      }
+
+      try {
+        const response = await axios.post(
+          "http://localhost:29200/api/v1/personnes",
+          {
+            nom: this.personne.nom,
+            prenom: this.personne.prenom,
+            mail: this.personne.mail,
+            mdp: this.personne.mdp,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        // Inscription réussie
+        console.log("Inscription réussie:", response.data);
+        this.showInscriptionDialog = false; // Fermer la boîte de dialogue d'inscription
+        // Afficher un message de succès à l'utilisateur
+        alert("Inscription réussie !");
+      } catch (error) {
+        // Erreur lors de l'inscription
+        console.error("Erreur lors de l'inscription:", error.response.data);
+        alert("Erreur lors de l'inscription. Veuillez réessayer.");
+      }
     },
   },
 };
