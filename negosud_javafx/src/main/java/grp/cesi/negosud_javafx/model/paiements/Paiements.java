@@ -74,9 +74,9 @@ public class Paiements {
         this.paiement_id = paiements_id;
     }
 
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public Paiements Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        Paiements item = objectMapper.readValue(json, Paiements.class);
         return item;
     }
 }

@@ -30,9 +30,9 @@ public class Cartons {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public Cartons Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        Cartons item = objectMapper.readValue(json, Cartons.class);
         return item;
     }
 

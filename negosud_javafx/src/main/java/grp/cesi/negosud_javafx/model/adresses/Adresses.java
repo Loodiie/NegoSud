@@ -3,7 +3,11 @@ package grp.cesi.negosud_javafx.model.adresses;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
+import javafx.beans.property.SimpleIntegerProperty;
+
+import java.util.Collection;
 
 public class Adresses {
     int adresse_id;
@@ -117,6 +121,12 @@ public class Adresses {
         ObjectMapper objectMapper = new ObjectMapper();
         Adresses item = objectMapper.readValue(json, Adresses.class);
         return item;
+    }
+
+    public Collection<Adresses> DeserializeAll(String json) throws JsonProcessingException{
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<Adresses> collectionItems = objectMapper.readValue(json, new TypeReference<Collection<Adresses>>(){});
+        return collectionItems;
     }
 
 }

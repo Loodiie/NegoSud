@@ -44,9 +44,9 @@ public class LivraisonsMagasins {
 		this.commandeMagasin_id = commandeMagasin_id;
 	}
 
-	public Adresses Deserialize(String json) throws JsonProcessingException {
+	public LivraisonsMagasins Deserialize(String json) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		Adresses item = objectMapper.readValue(json, Adresses.class);
+		LivraisonsMagasins item = objectMapper.readValue(json, LivraisonsMagasins.class);
 		return item;
 	}
 

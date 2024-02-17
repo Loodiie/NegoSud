@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import grp.cesi.negosud_javafx.model.adresses.Adresses;
+import grp.cesi.negosud_javafx.model.articles.Articles;
 
 public class ArticleVide {
     int articleVide_id;
@@ -31,9 +32,9 @@ public class ArticleVide {
     public void setFamille_id(int famille_id) {
         this.famille_id = famille_id;
     }
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public ArticleVide Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        ArticleVide item = objectMapper.readValue(json, ArticleVide.class);
         return item;
     }
 }

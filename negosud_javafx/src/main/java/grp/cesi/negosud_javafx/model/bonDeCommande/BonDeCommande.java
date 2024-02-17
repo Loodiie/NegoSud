@@ -66,9 +66,9 @@ public class BonDeCommande {
         this.articleVide_id = article_id;
     }
 
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public BonDeCommande Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        BonDeCommande item = objectMapper.readValue(json, BonDeCommande.class);
         return item;
     }
 

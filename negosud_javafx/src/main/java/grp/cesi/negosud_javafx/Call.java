@@ -13,17 +13,7 @@ import java.io.IOException;
 class call {
     public static void main(String[] args) throws JsonProcessingException {
 
-        getAll("adresses");
-        //Adresses adresse = new Adresses();
-        //String getAdresseResult = get("adresses",11);
-        //adresse = adresse.Deserialize(getAdresseResult);
-        //System.out.println(adresse.getAdresse_id());
-        //delete("livraisonsMagasins",1);
-        NewAdresses adresse2 = new NewAdresses("oui","25000","fronce","1","rue du chien",null,null,null);
-        String body = adresse2.Serialize();
-        System.out.println(body);
-        //create("adresses",body);
-        update("adresses",1,body);
+        String rep = get("familles",1);
     }
     public static String getAll(String table){
         HttpRequest request = HttpRequest.newBuilder()

@@ -63,9 +63,9 @@ public class Fournisseurs {
     public void setAdresse_id(int adresse_id) {
         this.adresse_id = adresse_id;
     }
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public Fournisseurs Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        Fournisseurs item = objectMapper.readValue(json, Fournisseurs.class);
         return item;
     }
 }

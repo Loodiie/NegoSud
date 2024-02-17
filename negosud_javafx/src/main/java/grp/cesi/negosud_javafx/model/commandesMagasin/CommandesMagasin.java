@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import grp.cesi.negosud_javafx.model.adresses.Adresses;
+import grp.cesi.negosud_javafx.model.commandesClients.CommandesClients;
 
 import java.sql.Timestamp;
 
@@ -44,9 +45,9 @@ public class CommandesMagasin {
         this.fournisseur_id = fournisseur_id;
     }
 
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public CommandesMagasin Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        CommandesMagasin item = objectMapper.readValue(json, CommandesMagasin.class);
         return item;
     }
 }

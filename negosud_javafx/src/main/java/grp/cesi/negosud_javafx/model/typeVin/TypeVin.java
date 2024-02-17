@@ -31,9 +31,9 @@ public class TypeVin {
         this.libelle = libelle;
     }
 
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public TypeVin Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        TypeVin item = objectMapper.readValue(json, TypeVin.class);
         return item;
     }
 }

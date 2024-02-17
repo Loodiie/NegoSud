@@ -99,9 +99,9 @@ public class Personnes {
 
 
 
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public Personnes Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        Personnes item = objectMapper.readValue(json, Personnes.class);
         return item;
     }
 }

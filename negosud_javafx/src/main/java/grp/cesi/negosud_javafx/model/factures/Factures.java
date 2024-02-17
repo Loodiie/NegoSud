@@ -55,9 +55,9 @@ public class Factures {
 		this.commandeClient_id = commandeClient_id;
 	}
 
-	public Adresses Deserialize(String json) throws JsonProcessingException {
+	public Factures Deserialize(String json) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
-		Adresses item = objectMapper.readValue(json, Adresses.class);
+		Factures item = objectMapper.readValue(json, Factures.class);
 		return item;
 	}
 }

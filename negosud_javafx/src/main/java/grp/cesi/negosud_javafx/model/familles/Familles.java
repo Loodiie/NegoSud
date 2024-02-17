@@ -117,9 +117,9 @@ public class Familles {
     public void setFournisseur_id(int fournisseur_id) {
         this.fournisseur_id = fournisseur_id;
     }
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public Familles Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        Familles item = objectMapper.readValue(json, Familles.class);
         return item;
     }
 }

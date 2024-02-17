@@ -106,9 +106,9 @@ public class Articles implements Serializable {
         this.famille_id = famille_id;
     }
 
-    public Adresses Deserialize(String json) throws JsonProcessingException {
+    public Articles Deserialize(String json) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        Adresses item = objectMapper.readValue(json, Adresses.class);
+        Articles item = objectMapper.readValue(json, Articles.class);
         return item;
     }
 }
