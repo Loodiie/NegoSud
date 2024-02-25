@@ -63,4 +63,8 @@ public class PersonnesBusiness {
             return personnesDAO.read();
         }
     }
+    public String connect(String mail, String mdp, boolean rest) {
+            return personnesDAO.connect(mail, mdp);
+    }
+
 }

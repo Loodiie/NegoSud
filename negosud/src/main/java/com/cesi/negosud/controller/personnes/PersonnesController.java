@@ -3,6 +3,7 @@ package com.cesi.negosud.controller.personnes;
 import com.cesi.negosud.business.personnes.PersonnesBusiness;
 import com.cesi.negosud.controller.personnes.model.NewPersonnes;
 import com.cesi.negosud.controller.personnes.model.Personnes;
+import com.cesi.negosud.dao.personnes.model.PersonnesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -73,4 +74,9 @@ public class PersonnesController {
         return personnesBusiness.getAllPersonnesBusiness(true);
     }*/
 
+    @PostMapping(versionBDD + "/personnes/connect")
+    public String connect(@RequestBody PersonnesDTO loginRequest) {
+        // Appel de la méthode pour se connecter et obtenir un token
+        return personnesBusiness.connect(loginRequest.getMail(), loginRequest.getMdp(), false);
+    }
 }

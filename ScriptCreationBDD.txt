@@ -17,11 +17,11 @@ CREATE TABLE `adresses` (
 );
 CREATE TABLE `personnes` (
   `personne_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `fk_adresse` int(11) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenom` varchar(255) DEFAULT NULL,
+  `fk_adresse` int(11) DEFAULTNULL,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
   `telephone` varchar(255) DEFAULT NULL,
-  `mail` varchar(255) DEFAULT NULL,
+  `mail` varchar(255) NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `employees` tinyint(1) NOT NULL DEFAULT FALSE,
   FOREIGN KEY(fk_adresse) REFERENCES adresses(adresse_id)

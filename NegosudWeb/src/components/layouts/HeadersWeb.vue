@@ -41,6 +41,7 @@
         icon="notifications_active"
       />
       <q-btn
+        v-if="!isLoggedIn"
         class="q-ml-md"
         dense
         color="primary"
@@ -48,11 +49,29 @@
         @click="openLoginDialog()"
       />
       <q-btn
+        v-if="!isLoggedIn"
         class="q-ml-md"
         dense
         color="primary"
         label="Inscription"
         @click="openInscriptionDialog()"
+      />
+      <q-btn
+        v-if="isLoggedIn"
+        class="q-ml-md"
+        dense
+        color="primary"
+        label="Mon compte"
+        to="/myAccount"
+      />
+      <q-btn
+        v-if="isLoggedIn"
+        class="q-ml-md"
+        dense
+        color="primary"
+        label="Deconnexion"
+        @click="deconnexion()"
+        to="/home"
       />
     </q-toolbar>
   </q-header>
@@ -139,7 +158,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 export default {
   components: {},
@@ -149,6 +168,7 @@ export default {
       search: "",
       showLoginDialog: ref(false),
       showInscriptionDialog: ref(false),
+      isLoggedIn: localStorage.getItem("isLoggedIn") === "true",
       personne: {
         nom: "",
         prenom: "",
@@ -174,25 +194,30 @@ export default {
     async login() {
       try {
         const response = await axios.post(
-          "http://localhost:29200/api/v1/login",
-          null,
-          {
-            params: {
-              mail: this.personne.mail,
-              mdp: this.personne.mdp,
-            },
-          }
+          "http://localhost:29200/api/v1/personnes/connect",
+          this.personne
         );
-        // La connexion est réussie, rediriger l'utilisateur ou afficher un message de succès
-        console.log("Connexion réussie:", response.data);
-        this.showLoginDialog = false; // Fermer la boîte de dialogue de connexion
-        // Rediriger l'utilisateur
-        // this.$router.push('/accueil');
+
+        if (response.data && response.data.token) {
+          // Connexion réussie, enregistrez le token dans le local storage
+          localStorage.setItem("token", response.data.token);
+          this.isLoggedIn = true;
+          localStorage.setItem("isLoggedIn", "true");
+
+          // Ferme la boîte de dialogue de connexion
+          this.showLoginDialog = false;
+
+          // Redirige l'utilisateur vers la page d'accueil
+          this.$router.push("/home");
+        } else {
+          // Affiche un message d'erreur si aucun token n'est retourné
+          alert("Email ou mot de passe incorrect.");
+        }
       } catch (error) {
-        // La connexion a échoué, afficher un message d'erreur à l'utilisateur
         console.error("Erreur de connexion:", error.response.data);
-        alert("Email ou mot de passe incorrect.");
+        alert("Erreur de connexion.");
       }
+      console.log("personne:", localStorage);
     },
     async register() {
       // Vérifier si les mots de passe correspondent
@@ -218,14 +243,24 @@ export default {
         );
         // Inscription réussie
         console.log("Inscription réussie:", response.data);
-        this.showInscriptionDialog = false; // Fermer la boîte de dialogue d'inscription
-        // Afficher un message de succès à l'utilisateur
+        this.showInscriptionDialog = false; // Ferme la boîte de dialogue d'inscription
+        this.isLoggedIn = true;
+        localStorage.setItem("isLoggedIn", "true");
+        // Affiche un message de succès à l'utilisateur
         alert("Inscription réussie !");
       } catch (error) {
         // Erreur lors de l'inscription
         console.error("Erreur lors de l'inscription:", error.response.data);
         alert("Erreur lors de l'inscription. Veuillez réessayer.");
       }
+    },
+    deconnexion() {
+      // Logique de déconnexion
+      localStorage.removeItem("isLoggedIn"); // Supprimez l'état de connexion
+      localStorage.removeItem("user"); // Supprimez les détails de l'utilisateur
+      isLoggedIn = false;
+      // Redirigez l'utilisateur vers la page de connexion
+      this.$router.push("/home");
     },
   },
 };

@@ -3,14 +3,15 @@ package com.cesi.negosud.dao.personnes;
 import com.cesi.negosud.controller.personnes.model.Personnes;
 import com.cesi.negosud.controller.personnes.model.NewPersonnes;
 import com.cesi.negosud.dao.personnes.model.PersonnesDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class PersonnesDAO {
@@ -133,6 +134,39 @@ public class PersonnesDAO {
             }
         }
         return listPersonnes;
+    }
+    public String connect(String mail, String mdp) {
+        String query = "SELECT * FROM personnes WHERE mail = ? AND mdp = ?";
+        List<PersonnesDTO> dtos = this.jdbcTemplate.query(query, new Object[]{mail, mdp}, this.rowMapper);
+
+        if (dtos != null && !dtos.isEmpty()) {
+            // L'utilisateur est trouvé, récupérez l'identifiant de l'utilisateur
+            int userId = dtos.get(0).getPersonne_id();
+
+            // Générez un token unique
+            String token = UUID.randomUUID().toString();
+
+            // Créez une structure de données pour stocker les informations utilisateur et le token
+            Map<String, Object> authData = new HashMap<>();
+            authData.put("userId", userId);
+            authData.put("token", token);
+
+            // Convertissez la structure de données en JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            String authJson;
+            try {
+                authJson = objectMapper.writeValueAsString(authData);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+            // Retournez le JSON contenant les informations utilisateur et le token
+            return authJson;
+        } else {
+            // L'utilisateur n'est pas trouvé, retourne null pour indiquer l'échec de la connexion
+            return null;
+        }
     }
 
 }
