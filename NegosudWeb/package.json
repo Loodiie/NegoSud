@@ -1,42 +1,35 @@
 {
-  "name": "negosudweb",
-  "version": "0.0.1",
-  "description": "Création d'un site pour le projet Negosud",
-  "productName": "Negosud",
-  "author": "Elody Le Gouyen, Justine Boissard et Eloïc Lesellier",
+  "name": "negosud_web",
+  "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "lint": "eslint --ext .js,.vue ./",
-    "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0",
-    "dev": "quasar dev",
-    "build": "quasar build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.4",
     "axios": "^1.6.7",
-    "cors": "^2.8.5",
-    "pinia": "^2.0.11",
-    "quasar": "^2.8.0",
-    "vue": "^3.2.33",
-    "vue-i18n": "^9.0.0",
-    "vue-router": "^4.0.12",
-    "vuex": "^4.1.0"
+    "bootstrap": "^5.3.2",
+    "nodemailer": "^6.9.10",
+    "pinia": "^2.1.7",
+    "smtp-server": "^3.13.2",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@intlify/vite-plugin-vue-i18n": "^3.3.1",
-    "@quasar/app-vite": "^1.4.3",
-    "autoprefixer": "^10.4.2",
-    "eslint": "^8.11.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-vue": "^9.0.0",
-    "postcss": "^8.4.14",
-    "prettier": "^2.5.1",
-    "vite": "^2.9.17"
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "eslint": "^8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "^3.0.3",
+    "vite": "^5.1.4"
   },
-  "engines": {
-    "node": "^20 || ^18 || ^16",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
-  }
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "author": "",
+  "license": "ISC"
 }

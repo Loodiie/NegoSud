@@ -5,6 +5,8 @@ import com.cesi.negosud.controller.personnes.model.NewPersonnes;
 import com.cesi.negosud.controller.personnes.model.Personnes;
 import com.cesi.negosud.dao.personnes.model.PersonnesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@CrossOrigin("http://localhost:9000/")
+@CrossOrigin("http://localhost:5173/")
 public class PersonnesController {
     private final String versionBDD = "/api/v1";
     //private final String versionRest = "/api/v1/rest";
@@ -74,9 +76,14 @@ public class PersonnesController {
         return personnesBusiness.getAllPersonnesBusiness(true);
     }*/
 
-    @PostMapping(versionBDD + "/personnes/connect")
-    public String connect(@RequestBody PersonnesDTO loginRequest) {
-        // Appel de la méthode pour se connecter et obtenir un token
-        return personnesBusiness.connect(loginRequest.getMail(), loginRequest.getMdp(), false);
+    @GetMapping(versionBDD + "/personnes/login")
+    public ResponseEntity<String> login(@RequestParam String mail, @RequestParam String mdp) {
+        String authJson = personnesBusiness.connectService(mail, mdp);
+        if (authJson != null) {
+            return ResponseEntity.ok().body(authJson);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
+        }
     }
+
 }
