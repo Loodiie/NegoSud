@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8541466d-2a78-4df4-863e-ea09a3d58be6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../NegosudWeb/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../NegosudWeb/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NegosudWeb/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../NegosudWeb/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NegosudWeb/src/components/layouts/HeadersWeb.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../NegosudWeb/src/components/layouts/HeadersWeb.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NegosudWeb/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../NegosudWeb/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NegosudWeb/src/services/PersonnesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../NegosudWeb/src/services/PersonnesService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ScriptCreationBDD.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ScriptCreationBDD.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/business/personnes/PersonnesBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/business/personnes/PersonnesBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/controller/personnes/PersonnesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/controller/personnes/PersonnesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/dao/personnes/PersonnesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/dao/personnes/PersonnesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/dao/personnes/PersonnesDAORest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud/src/main/java/com/cesi/negosud/dao/personnes/PersonnesDAORest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/negosud_javafx-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/negosud_javafx-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/grp/cesi/negosud_javafx/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/grp/cesi/negosud_javafx/Main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +32,24 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2cXj56VTaUGM34Z4sn7mgWvyGHv" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,16 +57,28 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "Gradle.negosud_javafx [:Main.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "WIP__Elody",
-    "last_opened_file_path": "C:/Users/elody/Desktop/CESI/projet/NegoSud/negosud_javafx",
+    "git-widget-placeholder": "livrable",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/elody/OneDrive/Bureau/Cesi/DIA2/Projet cube1/NegoSud/negosud_javafx",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

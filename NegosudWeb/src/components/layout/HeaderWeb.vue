@@ -60,7 +60,7 @@
             height="30"
           />
         </RouterLink>
-        <RouterLink to="/cart" class="btn btn-outline-light me-2">
+        <RouterLink to="/panier" class="btn btn-outline-light me-2">
           <img
             src="/src/assets/icons/cart.png"
             alt="My Account"

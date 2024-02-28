@@ -4,9 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,6 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="588.0" prefWidth="857.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grp.cesi.negosud_javafx.Main">
    <children>
       <VBox prefHeight="588.0" prefWidth="261.0" style="-fx-background-color: #ac1e44;">
@@ -27,6 +27,9 @@
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
+                     <image>
+                        <Image url="@asset/duck.png" />
+                     </image>
                   </ImageView>
                </graphic></Button>
             <MenuButton mnemonicParsing="false" prefHeight="54.0" prefWidth="262.0" style="-fx-background-color: ac1e44;" text="Vente" textFill="WHITE">
@@ -80,6 +83,12 @@
       </VBox>
       <Pane layoutX="261.0" opacity="0.45" prefHeight="588.0" prefWidth="596.0" style="-fx-background-color: #ac1e44;">
          <children>
+            <Pane layoutX="7.0" layoutY="14.0" prefHeight="164.0" prefWidth="582.0" style="-fx-background-color: #ac1e44;">
+               <children>
+                   <Button layoutX="15.0" layoutY="130.0" onAction="#onClickCreate">
+                    CREATE
+                </Button>
+               </children></Pane>
             <GridPane layoutX="7.0" layoutY="184.0" prefHeight="390.0" prefWidth="582.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,25 +98,21 @@
                   <RowConstraints maxHeight="362.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="362.0" minHeight="10.0" prefHeight="362.0" vgrow="SOMETIMES" />
               </rowConstraints>
-                <Button GridPane.rowIndex="1" onAction="#onClickCreate">
-                    CREATE
-                </Button>
                <children>
                   <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                     <columns>
-                        <TableColumn prefWidth="50.0" text="ID" fx:id="article_id" />
-                        <TableColumn prefWidth="125" text="Nom" fx:id="libelle" />
-                        <TableColumn prefWidth="75" text="Type" fx:id="type_vin"/>
-                        <TableColumn prefWidth="75.0" text="TVA" fx:id="tva" />
-                        <TableColumn prefWidth="75.0" text="Reduction" fx:id="reduction" />
-                        <TableColumn prefWidth="75.0" text="Offert" fx:id="offert" />
-                        <TableColumn prefWidth="75" text="Année" fx:id="annee"/>
+                        <TableColumn fx:id="article_id" prefWidth="50.0" text="ID" />
+                        <TableColumn fx:id="libelle" prefWidth="125" text="Nom" />
+                        <TableColumn fx:id="type_vin" prefWidth="75" text="Type" />
+                        <TableColumn fx:id="tva" prefWidth="75.0" text="TVA" />
+                        <TableColumn fx:id="reduction" prefWidth="75.0" text="Reduction" />
+                        <TableColumn fx:id="offert" prefWidth="75.0" text="Offert" />
+                        <TableColumn fx:id="annee" prefWidth="75" text="Année" />
                     </columns>
                   </TableView>
                   <TextField prefHeight="24.0" prefWidth="539.0" />
                </children>
             </GridPane>
-            <Pane layoutX="7.0" layoutY="14.0" prefHeight="164.0" prefWidth="582.0" style="-fx-background-color: #ac1e44;" />
          </children>
       </Pane>
    </children>
