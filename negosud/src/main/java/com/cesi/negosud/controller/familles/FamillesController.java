@@ -11,6 +11,7 @@ import java.util.List;
 
 @Validated
 @RestController
+@CrossOrigin("http://localhost:5173/")
 public class FamillesController {
 
     private final String versionBDD = "/api/v1";

@@ -63,4 +63,10 @@ public class PersonnesBusiness {
             return personnesDAO.read();
         }
     }
+    public String connectService(String userEmail, String password) {
+        String authJSON = personnesDAO.connect(userEmail, password);
+        return authJSON;
+    }
+
+
 }

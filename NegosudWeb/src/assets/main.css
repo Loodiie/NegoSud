@@ -1,0 +1,12 @@
+.bg-header {
+    background-color: #d63384cb;
+}
+
+.custom-border-right {
+    border-right: 1px solid #ccc;
+}
+
+.custom-border-bottom {
+    border-bottom: 1px solid #ccc;
+    padding: 2.5em;
+}
