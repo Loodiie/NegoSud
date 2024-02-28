@@ -2,8 +2,11 @@ package grp.cesi.negosud_javafx.model.familles;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import grp.cesi.negosud_javafx.model.adresses.Adresses;
+
+import java.util.Collection;
 
 public class Familles {
     int famille_id;
@@ -121,5 +124,10 @@ public class Familles {
         ObjectMapper objectMapper = new ObjectMapper();
         Familles item = objectMapper.readValue(json, Familles.class);
         return item;
+    }
+    public Collection<Familles> DeserializeAll(String json) throws JsonProcessingException{
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<Familles> collectionItems = objectMapper.readValue(json, new TypeReference<Collection<Familles>>(){});
+        return collectionItems;
     }
 }

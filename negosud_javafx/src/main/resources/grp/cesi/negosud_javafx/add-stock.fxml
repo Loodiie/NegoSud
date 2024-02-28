@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="grp.cesi.negosud_javafx.AddStockController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Text text="Ajouter du stock" layoutY="25" layoutX="235"/>
+    <TextField fx:id="tva" promptText="Tva" layoutY="75" layoutX="125"/>
+    <TextField fx:id="reduction" promptText="Reduction" layoutY="75" layoutX="325"/>
+    <TextField fx:id="offert" promptText="Offert" layoutY="125" layoutX="125"/>
+    <TextField fx:id="fk_commandeM" promptText="ID Commande Magasin" layoutY="125" layoutX="325"/>
+    <TextField fx:id="nbr_bouteilles" promptText="Nombre de bouteilles" layoutY="225" layoutX="225"/>
+    <ComboBox fx:id="combo_famille" layoutY="175" layoutX="125" prefWidth="150">
+        <value>
+            <String fx:value="Famille" />
+        </value>
+    </ComboBox>
+    <ComboBox fx:id="combo_carton" layoutY="175" layoutX="325" prefWidth="150" value="Carton">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Carton"/>
+                <String fx:value="Oui" />
+                <String fx:value="Non" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Button text="Annuler" layoutY="325" layoutX="150" prefWidth="75" onAction="#onClickAnnuler"/>
+    <Button text="Envoyer" layoutY="325" layoutX="375" prefWidth="75" onAction="#onClickEnvoyer"/>
+</AnchorPane>

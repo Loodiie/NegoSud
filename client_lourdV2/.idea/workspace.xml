@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="60a305f3-dce8-4003-8fc5-012f6e2ad790" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../negosud_javafx/build/classes/java/main/grp/cesi/negosud_javafx/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud_javafx/build/classes/java/main/grp/cesi/negosud_javafx/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../negosud_javafx/build/libs/negosud_javafx-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud_javafx/build/libs/negosud_javafx-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../negosud_javafx/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud_javafx/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../negosud_javafx/src/main/java/grp/cesi/negosud_javafx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../negosud_javafx/src/main/java/grp/cesi/negosud_javafx/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2cuCGzeHuwxO5IwrugXnnsbSAST" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "WIP__Eloic",
+    "last_opened_file_path": "C:/Users/Pc/Documents/NegoSud/client_lourdV2/client_lourd_negosud-develop"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60a305f3-dce8-4003-8fc5-012f6e2ad790" name="Changes" comment="" />
+      <created>1708951986301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708951986301</updated>
+    </task>
+    <servers />
+  </component>
+</project>

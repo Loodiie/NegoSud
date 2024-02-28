@@ -12,5 +12,10 @@ module grp.cesi.negosud_javafx {
     opens grp.cesi.negosud_javafx to javafx.fxml;
     exports grp.cesi.negosud_javafx;
     exports grp.cesi.negosud_javafx.model.adresses;
+    exports grp.cesi.negosud_javafx.model.articles;
+    exports grp.cesi.negosud_javafx.model.familles;
+    exports grp.cesi.negosud_javafx.model.typeVin;
+    exports grp.cesi.negosud_javafx.model.cartons;
+
 
 }

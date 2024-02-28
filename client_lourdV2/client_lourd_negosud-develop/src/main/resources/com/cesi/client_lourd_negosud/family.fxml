@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cesi.client_lourd_negosud.FamilyController">
+    <children>
+        <!-- Include du menu -->
+        <fx:include fx:id="menu" source="menu.fxml" />
+
+      <Label layoutX="232.0" layoutY="14.0" prefHeight="31.0" prefWidth="142.0" text="Family">
+         <font>
+            <Font name="Times New Roman Bold" size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="222.0" layoutY="56.0" prefHeight="726.0" prefWidth="1312.0">
+         <children>
+            <TextField fx:id="fieldSearchFamilyById" layoutX="193.0" layoutY="62.0" onAction="#filterFamilyById" prefHeight="26.0" prefWidth="234.0" />
+            <Button fx:id="buttonSearchFamilyById" layoutX="444.0" layoutY="62.0" mnemonicParsing="false" onAction="#filterFamilyById" prefHeight="26.0" prefWidth="79.0" text="Search" />
+            <Button fx:id="buttonGoToAddFamily" layoutX="195.0" layoutY="133.0" mnemonicParsing="false" onAction="#GoToAddFamily" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: F29C9C;" text="Ajouter">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonGoToUpdateFamily" layoutX="518.0" layoutY="133.0" mnemonicParsing="false" onAction="#GoToUpdateFamily" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: F29C9C;" text="Modifier">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonDeleteFamily" layoutX="847.0" layoutY="133.0" mnemonicParsing="false" onAction="#DeleteFamily" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: F29C9C;" text="Supprimer">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <TableView fx:id="familyTable" layoutX="3.0" layoutY="193.0" prefHeight="530.0" prefWidth="1306.0">
+               <columns>
+                  <TableColumn fx:id="id_family" prefWidth="135.1999969482422" text="id_family" />
+                  <TableColumn fx:id="family_name" prefWidth="444.00006103515625" text="family_name" />
+                  <TableColumn fx:id="family_description" prefWidth="725.6000122070313" text="family_description" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+
+
+    </children>
+
+</AnchorPane>

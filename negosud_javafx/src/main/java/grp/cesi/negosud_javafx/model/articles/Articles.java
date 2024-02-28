@@ -2,11 +2,13 @@ package grp.cesi.negosud_javafx.model.articles;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import grp.cesi.negosud_javafx.model.adresses.Adresses;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 public class Articles implements Serializable {
 
@@ -110,5 +112,10 @@ public class Articles implements Serializable {
         ObjectMapper objectMapper = new ObjectMapper();
         Articles item = objectMapper.readValue(json, Articles.class);
         return item;
+    }
+    public Collection<Articles> DeserializeAll(String json) throws JsonProcessingException{
+        ObjectMapper objectMapper = new ObjectMapper();
+        Collection<Articles> collectionItems = objectMapper.readValue(json, new TypeReference<Collection<Articles>>(){});
+        return collectionItems;
     }
 }

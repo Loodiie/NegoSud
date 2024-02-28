@@ -10,7 +10,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpClient;
 import java.io.IOException;
 
-class call {
+public class Call {
     public static void main(String[] args) throws JsonProcessingException {
 
         String rep = get("familles",1);

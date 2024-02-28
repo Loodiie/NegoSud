@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="783.0" prefWidth="1313.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cesi.client_lourd_negosud.MenuController">
+   <children>
+      <AnchorPane prefHeight="784.0" prefWidth="222.0" style="-fx-background-color: #510012;">
+         <children>
+            <ImageView fitHeight="197.0" fitWidth="200.0" layoutX="13.0" layoutY="-7.0">
+               <image>
+                  <Image url="@../../../image/NegoSud_white.png" />
+               </image>
+            </ImageView>
+            <Line endX="100.0" layoutX="113.0" layoutY="183.0" startX="-100.0" stroke="WHITE" />
+            <Button fx:id="buttonStock" layoutX="4.0" layoutY="220.0" mnemonicParsing="false" onAction="#goToStocks" prefHeight="50.0" prefWidth="218.0" style="-fx-background-color: #510012;" text="Stocks" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="9.0" layoutY="225.0">
+               <image>
+                  <Image url="@../../../image/icone_inventory.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="buttonArticle" layoutX="2.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToArticles" prefHeight="50.0" prefWidth="218.0" style="-fx-background-color: #510012;" text="Articles" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="9.0" layoutY="300.0">
+               <image>
+                  <Image url="@../../../image/icon_bouteille.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="buttonFamily" layoutX="7.0" layoutY="370.0" mnemonicParsing="false" onAction="#goToFamily" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #510012;" text="Familles" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="9.0" layoutY="370.0">
+               <image>
+                  <Image url="@../../../image/icon_family.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="buttonUser" layoutX="8.0" layoutY="440.0" mnemonicParsing="false" onAction="#goToUsers" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #510012;" text="Clients" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="9.0" layoutY="445.0">
+               <image>
+                  <Image url="@../../../image/icone_clients.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="buttonSupplier" layoutX="8.0" layoutY="510.0" mnemonicParsing="false" onAction="#goToSuppliers" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #510012;" text="Domaines" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="4.0" layoutY="510.0">
+               <image>
+                  <Image url="@../../../image/icone_domaine.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="buttonWineOrder" layoutX="9.0" layoutY="580.0" mnemonicParsing="false" onAction="#goToWineOrder" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #510012;" text="Commandes" textFill="WHITE">
+               <font>
+                  <Font name="Serif Regular" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="9.0" layoutY="585.0">
+               <image>
+                  <Image url="@../../../image/cart_icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="222.0" prefHeight="56.0" prefWidth="1313.0" style="-fx-background-color: #FFE0E0;">
+         <children>
+            <Button fx:id="buttonConnexion" layoutX="1234.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToConnexion" prefHeight="50.0" prefWidth="52.0" style="-fx-background-color: #FFE0E0;" />
+            <ImageView fx:id="imageConnexion" fitHeight="30.0" fitWidth="30.0" layoutX="1246.0" layoutY="15.0" onMouseClicked="#goConnexion">
+               <image>
+                  <Image url="@../../../image/icon_off.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="1172.0" layoutY="5.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="52.0" style="-fx-background-color: #FFE0E0;" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1183.0" layoutY="13.0">
+               <image>
+                  <Image url="@../../../image/icon_administrateur.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cesi.client_lourd_negosud.SupplierController">
+    <!-- Inclure le menu -->
+    <fx:include fx:id="menu" source="menu.fxml" />
+   <Label layoutX="233.0" layoutY="14.0" prefHeight="31.0" prefWidth="142.0" text="Domaines">
+      <font>
+         <Font name="Times New Roman Bold" size="28.0" />
+      </font>
+   </Label>
+   <AnchorPane layoutX="222.0" layoutY="56.0" prefHeight="726.0" prefWidth="1312.0">
+      <children>
+         <TextField fx:id="fieldSearchSupplierById" layoutX="193.0" layoutY="62.0" prefHeight="26.0" prefWidth="234.0" />
+         <Button fx:id="buttonSearchSupplierById" layoutX="444.0" layoutY="62.0" mnemonicParsing="false" onAction="#filterSupplierById" prefHeight="26.0" prefWidth="79.0" text="Search" />
+         <Button fx:id="buttonGoToAddSupplier" layoutX="195.0" layoutY="133.0" mnemonicParsing="false" onAction="#GoToAddSupplier" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: F29C9C;" text="Ajouter">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Button fx:id="buttonGoToUpdateSupplier" layoutX="518.0" layoutY="133.0" mnemonicParsing="false" onAction="#GoToUpdateSupplier" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: F29C9C;" text="Modifier">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <Button fx:id="buttonDeleteSupplier" layoutX="840.0" layoutY="133.0" mnemonicParsing="false" onAction="#DeleteSupplier" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: F29C9C;" text="Supprimer">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Button>
+         <TableView fx:id="supplierTable" layoutX="3.0" layoutY="193.0" prefHeight="530.0" prefWidth="1306.0">
+            <columns>
+               <TableColumn fx:id="idColumn" prefWidth="112.800048828125" text="idSupplier" />
+               <TableColumn fx:id="nameColumn" prefWidth="265.6000061035156" text="supplierName" />
+               <TableColumn fx:id="phoneColumn" prefWidth="292.79998779296875" text="supplierPhone" />
+               <TableColumn fx:id="mailColumn" prefWidth="306.4000244140625" text="supplierMail" />
+               <TableColumn fx:id="addressColumn" prefWidth="330.39996337890625" text="address" />
+            </columns>
+         </TableView>
+      </children>
+   </AnchorPane>
+
+</AnchorPane>
